@@ -309,15 +309,7 @@ def send_email(to_email: str, subject: str, body: str):
                         <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td class="header">
-                                    <table role="presentation" cellspacing="0" cellpadding="0" align="center">
-                                        <tr>
-                                            <td>
-                                                <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.15); border-radius: 50%; margin: 0 auto 24px; text-align: center; line-height: 80px; border: 2px solid rgba(255,255,255,0.2);">
-                                                    <span style="font-size: 36px;">🎓</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
+
                                     <h1>Your Learning Journey Starts Here!</h1>
                                     <p>Personalized AI & Automation Guidance</p>
                                 </td>
@@ -364,9 +356,7 @@ def send_email(to_email: str, subject: str, body: str):
                                     <table role="presentation" cellspacing="0" cellpadding="0">
                                         <tr>
                                             <td style="vertical-align: top; padding-right: 20px;">
-                                                <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); border-radius: 50%; text-align: center; line-height: 70px;">
-                                                    <span style="color: #ffffff; font-size: 24px; font-weight: 700;">TM</span>
-                                                </div>
+                                                <img src="https://teaching-platform-560659035104.europe-west1.run.app/profile.png" alt="Thiyanayugi Mariraj" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 3px solid #3b82f6;">
                                             </td>
                                             <td style="vertical-align: middle;">
                                                 <h4 style="color: #0f172a; font-size: 18px; font-weight: 700; margin: 0 0 4px;">Thiyanayugi Mariraj</h4>
@@ -385,12 +375,6 @@ def send_email(to_email: str, subject: str, body: str):
                                     <div class="social-links">
                                         <a href="https://linkedin.com/in/thiyanayugi-mariraj-a2b1b820b" target="_blank">
                                             <span>in</span>
-                                        </a>
-                                        <a href="mailto:mariraj.thiyanayugi@gmail.com">
-                                            <span>✉</span>
-                                        </a>
-                                        <a href="https://calendly.com/mariraj-thiyanayugi/30min" target="_blank">
-                                            <span>📅</span>
                                         </a>
                                     </div>
                                     
