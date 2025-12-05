@@ -75,7 +75,8 @@ Email: {data['email']}
 Topic: {data['topic']}
 Background: {data['background']}
 Experience Level: {data['experience']}
-Goals: {data['goals']}
+Specific Interest: {data.get('interest', 'Not specified')}
+Learning Goal: {data.get('goal', 'Not specified')}
 
 AI-GENERATED EMAIL SENT TO USER:
 ---------------------------------
