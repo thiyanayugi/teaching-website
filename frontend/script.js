@@ -45,7 +45,9 @@ document.getElementById('contact-form').addEventListener('submit', async functio
         submitBtn.disabled = false;
         btnText.style.display = 'inline';
         btnLoading.style.display = 'none';
-        // Show error in console only
+        
+        // Show error to user
+        alert('Error: ' + (error.message || 'Something went wrong. Please try again.'));
         console.error('Error:', error);
     }
 });
