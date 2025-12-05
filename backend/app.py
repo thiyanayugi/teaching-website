@@ -25,27 +25,42 @@ def serve_static(path):
 def handle_submission():
     try:
         data = request.json
+        print(f"📥 Received form submission from: {data.get('email')}")
         
-        # Validate required fields (goal is now optional)
+        # Validate required fields
         required_fields = ['name', 'email', 'topic', 'background', 'experience']
         for field in required_fields:
             if not data.get(field):
                 return jsonify({'success': False, 'message': f'Missing required field: {field}'}), 400
         
         # Generate personalized email using Claude
-        email_content = generate_personalized_email(data)
+        print("🤖 Calling Anthropic API to generate email...")
+        try:
+            email_content = generate_personalized_email(data)
+            print(f"✅ Email content generated successfully ({len(email_content)} chars)")
+        except Exception as e:
+            print(f"❌ Anthropic API error: {type(e).__name__}: {str(e)}")
+            return jsonify({'success': False, 'message': f'AI generation failed: {str(e)}'}), 500
         
         # Send the email
-        send_email(
-            to_email=data['email'],
-            subject=f"Your Personalized {data['topic'].upper()} Learning Path - Thiyanayugi Mariraj",
-            body=email_content
-        )
+        print("📧 Sending email via Gmail SMTP...")
+        try:
+            send_email(
+                to_email=data['email'],
+                subject=f"Your Personalized {data['topic'].upper()} Learning Path - Thiyanayugi Mariraj",
+                body=email_content
+            )
+            print("✅ Email sent successfully!")
+        except Exception as e:
+            print(f"❌ Email sending error: {type(e).__name__}: {str(e)}")
+            return jsonify({'success': False, 'message': f'Email sending failed: {str(e)}'}), 500
         
         return jsonify({'success': True, 'message': 'Email sent successfully'})
     
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"❌ Unexpected error: {type(e).__name__}: {str(e)}")
+        import traceback
+        traceback.print_exc()
         return jsonify({'success': False, 'message': str(e)}), 500
 
 if __name__ == '__main__':
