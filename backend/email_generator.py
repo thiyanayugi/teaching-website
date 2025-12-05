@@ -6,7 +6,10 @@ import os
 
 def get_anthropic_client():
     """Get or create Anthropic client instance."""
-    return Anthropic()
+    api_key = os.getenv('ANTHROPIC_API_KEY')
+    if not api_key:
+        raise ValueError("ANTHROPIC_API_KEY not found in environment variables")
+    return Anthropic(api_key=api_key)
 
 def generate_personalized_email(data: dict) -> str:
     """Generate a personalized email using Claude Sonnet."""
