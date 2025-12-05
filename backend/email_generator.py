@@ -3,16 +3,18 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
-import anthropic as anthropic_module
-
-# Debug: Print version
-print(f"🔍 Anthropic SDK version: {anthropic_module.__version__}")
 
 def get_anthropic_client():
     """Get or create Anthropic client instance."""
     # Anthropic SDK automatically reads ANTHROPIC_API_KEY from environment
-    print(f"✅ Creating Anthropic client (auto-detecting API key from env)")
-    return Anthropic()
+    try:
+        import anthropic as anthropic_module
+        print(f"🔍 Anthropic SDK version: {anthropic_module.__version__}")
+        print(f"✅ Creating Anthropic client (auto-detecting API key from env)")
+        return Anthropic()
+    except Exception as e:
+        print(f"❌ Error creating Anthropic client: {e}")
+        raise
 
 def generate_personalized_email(data: dict) -> str:
     """Generate a personalized email using Claude Sonnet."""
