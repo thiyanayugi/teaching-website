@@ -92,62 +92,323 @@ def send_email(to_email: str, subject: str, body: str):
     
     print(f"📧 Sending email from {sender_email} to {to_email} via Gmail SMTP")
     
-    # Create HTML version with nice formatting
+    # Professional HTML Email Template
     html_body = f"""
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta name="color-scheme" content="light">
+    <meta name="supported-color-schemes" content="light">
+    <title>Your Learning Path</title>
+    <!--[if mso]>
+    <noscript>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <style>
+        table {{border-collapse: collapse;}}
+        td,th,div,p,a,h1,h2,h3,h4,h5,h6 {{font-family: Arial, sans-serif;}}
+    </style>
+    <![endif]-->
+    <style>
+        * {{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }}
+        body {{
+            margin: 0 !important;
+            padding: 0 !important;
+            background-color: #f1f5f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }}
+        table {{
+            border-spacing: 0;
+            border-collapse: collapse;
+        }}
+        td {{
+            padding: 0;
+        }}
+        img {{
+            border: 0;
+            display: block;
+        }}
+        .wrapper {{
+            width: 100%;
+            background-color: #f1f5f9;
+            padding: 40px 20px;
+        }}
+        .container {{
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }}
+        .header {{
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #3b82f6 100%);
+            padding: 50px 40px;
+            text-align: center;
+        }}
+        .header h1 {{
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 12px;
+            letter-spacing: -0.5px;
+        }}
+        .header p {{
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            margin: 0;
+        }}
+        .content {{
+            padding: 45px 40px;
+        }}
+        .greeting {{
+            font-size: 15px;
+            color: #3b82f6;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }}
+        .recipient-name {{
+            font-size: 26px;
+            color: #0f172a;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }}
+        .message-body {{
+            font-size: 16px;
+            line-height: 1.8;
+            color: #334155;
+            white-space: pre-wrap;
+        }}
+        .message-body b {{
+            color: #1e40af;
+            font-weight: 600;
+        }}
+        .divider {{
+            height: 2px;
+            background: linear-gradient(90deg, #e2e8f0 0%, #3b82f6 50%, #e2e8f0 100%);
+            margin: 35px 0;
+            border-radius: 1px;
+        }}
+        .cta-section {{
+            text-align: center;
+            padding: 35px 40px;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+        }}
+        .cta-title {{
+            font-size: 18px;
+            color: #0f172a;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }}
+        .cta-subtitle {{
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 24px;
+        }}
+        .cta-button {{
+            display: inline-block;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: #ffffff !important;
+            text-decoration: none;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.35);
+        }}
+        .cta-note {{
+            font-size: 13px;
+            color: #94a3b8;
+            margin-top: 16px;
+        }}
+        .signature {{
+            padding: 35px 40px;
+            border-top: 1px solid #e2e8f0;
+        }}
+        .footer {{
+            background: #0f172a;
+            padding: 30px 40px;
+            text-align: center;
+        }}
+        .social-links {{
+            margin-bottom: 20px;
+        }}
+        .social-links a {{
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin: 0 6px;
+            line-height: 40px;
+            text-align: center;
+            text-decoration: none;
+        }}
+        .social-links a span {{
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+        }}
+        .footer-text {{
+            color: #94a3b8;
+            font-size: 13px;
+            margin: 0 0 8px;
+        }}
+        .footer-links {{
+            margin-top: 15px;
+        }}
+        .footer-links a {{
+            color: #60a5fa;
+            text-decoration: none;
+            font-size: 13px;
+            margin: 0 12px;
+        }}
+        
+        @media only screen and (max-width: 600px) {{
+            .wrapper {{ padding: 20px 15px; }}
+            .container {{ border-radius: 16px; }}
+            .header {{ padding: 35px 25px; }}
+            .header h1 {{ font-size: 24px; }}
+            .content {{ padding: 30px 25px; }}
+            .recipient-name {{ font-size: 22px; }}
+            .message-body {{ font-size: 15px; }}
+            .cta-section {{ padding: 30px 25px; }}
+            .cta-button {{ padding: 16px 35px; font-size: 15px; }}
+            .signature {{ padding: 25px; }}
+            .footer {{ padding: 25px 20px; }}
+        }}
+    </style>
 </head>
-<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8fafc;">
-    <div style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); padding: 30px; text-align: center; border-radius: 12px 12px 0 0;">
-        <h2 style="color: white; margin: 0; font-size: 24px;">🎓 Your Learning Journey Starts Here!</h2>
+<body>
+    <div style="display: none; max-height: 0px; overflow: hidden;">
+        Your personalized learning path is ready! Let's start your AI & Automation journey together. 🚀
     </div>
-    <div style="background-color: white; padding: 35px; border-radius: 0 0 12px 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-        <div style="white-space: pre-wrap; line-height: 1.8; color: #1e293b;">{body}</div>
-        
-        <div style="margin-top: 30px; padding-top: 25px; border-top: 2px solid #e2e8f0;">
-            <p style="margin: 0 0 20px 0; font-size: 16px; color: #1e293b; line-height: 1.6;">
-                Let's discuss your learning goals in a free 30-minute consultation call:
-            </p>
-            
-            <div style="text-align: center; margin: 25px 0;">
-                <a href="https://calendly.com/mariraj-thiyanayugi/30min" 
-                   style="display: inline-block; 
-                          background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); 
-                          color: white; 
-                          padding: 16px 40px; 
-                          text-decoration: none; 
-                          border-radius: 10px; 
-                          font-weight: bold; 
-                          font-size: 15px; 
-                          box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);">
-                    📅 Schedule Your Free Call
-                </a>
-            </div>
-            
-            <p style="margin: 20px 0 0 0; text-align: center; font-size: 14px; color: #64748b;">
-                Pick a time that works best for you - I'm looking forward to connecting!
-            </p>
-        </div>
-        
-        <div style="margin-top: 35px; padding-top: 25px; border-top: 1px solid #e2e8f0;">
-            <p style="margin: 0; color: #1e293b;">Best regards,<br><b>Thiyanayugi Mariraj</b></p>
-            <p style="margin: 8px 0 0 0; font-size: 14px; color: #64748b;">
-                M.Sc. Automation &amp; Robotics | TU Dortmund
-            </p>
-        </div>
-    </div>
-    <div style="margin-top: 25px; padding: 20px; text-align: center; font-size: 14px; background-color: #1e293b; border-radius: 8px;">
-        <p style="margin: 0 0 10px 0; color: #94a3b8;">
-            © 2025 Thiyanayugi Mariraj | Dortmund, Germany
-        </p>
-        <div style="margin: 0;">
-            <a href="https://linkedin.com/in/thiyanayugi-mariraj-a2b1b820b" style="color: #60a5fa; text-decoration: none; margin: 0 10px;">LinkedIn</a>
-            <a href="mailto:mariraj.thiyanayugi@gmail.com" style="color: #60a5fa; text-decoration: none; margin: 0 10px;">Email</a>
-            <a href="https://calendly.com/mariraj-thiyanayugi/30min" style="color: #60a5fa; text-decoration: none; margin: 0 10px;">Book Appointment</a>
-        </div>
+
+    <div class="wrapper">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+            <tr>
+                <td align="center">
+                    <div class="container">
+                        
+                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="header">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" align="center">
+                                        <tr>
+                                            <td>
+                                                <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.15); border-radius: 50%; margin: 0 auto 24px; text-align: center; line-height: 80px; border: 2px solid rgba(255,255,255,0.2);">
+                                                    <span style="font-size: 36px;">🎓</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <h1>Your Learning Journey Starts Here!</h1>
+                                    <p>Personalized AI & Automation Guidance</p>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="content">
+                                    <p class="greeting">WELCOME</p>
+                                    <p class="recipient-name">Hello there! 👋</p>
+                                    
+                                    <div class="message-body">{body}</div>
+                                    
+                                    <div class="divider"></div>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="cta-section">
+                                    <p class="cta-title">Ready to Take the Next Step?</p>
+                                    <p class="cta-subtitle">Let's discuss your learning goals in a free 30-minute consultation</p>
+                                    
+                                    <table role="presentation" cellspacing="0" cellpadding="0" align="center">
+                                        <tr>
+                                            <td>
+                                                <a href="https://calendly.com/mariraj-thiyanayugi/30min" class="cta-button" target="_blank">
+                                                    📅 Schedule Your Free Call
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    
+                                    <p class="cta-note">Pick a time that works best for you</p>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="signature">
+                                    <table role="presentation" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td style="vertical-align: top; padding-right: 20px;">
+                                                <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); border-radius: 50%; text-align: center; line-height: 70px;">
+                                                    <span style="color: #ffffff; font-size: 24px; font-weight: 700;">TM</span>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align: middle;">
+                                                <h4 style="color: #0f172a; font-size: 18px; font-weight: 700; margin: 0 0 4px;">Thiyanayugi Mariraj</h4>
+                                                <p style="color: #3b82f6; font-size: 14px; font-weight: 600; margin: 0 0 6px;">M.Sc. Automation & Robotics</p>
+                                                <p style="color: #64748b; font-size: 13px; margin: 0;">TU Dortmund | AI & Automation Expert</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="footer">
+                                    <div class="social-links">
+                                        <a href="https://linkedin.com/in/thiyanayugi-mariraj-a2b1b820b" target="_blank">
+                                            <span>in</span>
+                                        </a>
+                                        <a href="mailto:mariraj.thiyanayugi@gmail.com">
+                                            <span>✉</span>
+                                        </a>
+                                        <a href="https://calendly.com/mariraj-thiyanayugi/30min" target="_blank">
+                                            <span>📅</span>
+                                        </a>
+                                    </div>
+                                    
+                                    <p class="footer-text">© 2025 Thiyanayugi Mariraj | Dortmund, Germany</p>
+                                    
+                                    <div class="footer-links">
+                                        <a href="https://linkedin.com/in/thiyanayugi-mariraj-a2b1b820b">LinkedIn</a>
+                                        <a href="mailto:mariraj.thiyanayugi@gmail.com">Contact</a>
+                                        <a href="https://calendly.com/mariraj-thiyanayugi/30min">Book a Call</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
