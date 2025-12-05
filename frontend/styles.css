@@ -435,7 +435,7 @@ footer p {
 
 /* About Section */
 .about {
-    padding: 6rem 2rem 3rem 2rem;
+    padding: 3rem 2rem;
     background: var(--light);
 }
 
@@ -682,7 +682,7 @@ footer p {
 
 /* Services Section - Enhanced */
 .services {
-    padding: 2rem 2rem 4rem 2rem;
+    padding: 3rem 2rem;
     background: var(--light);
     position: relative;
 }
@@ -838,7 +838,7 @@ footer p {
 
 /* Contact Form */
 .contact {
-    padding: 6rem 2rem;
+    padding: 3rem 2rem;
     background: linear-gradient(180deg, var(--light) 0%, #e0e7ff 100%);
 }
 
