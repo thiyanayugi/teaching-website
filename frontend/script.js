@@ -70,16 +70,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 function toggleAbout() {
     const content = document.getElementById('about-content');
     const toggle = document.getElementById('about-toggle');
+    const header = document.querySelector('.about-header');
     
     content.classList.toggle('expanded');
     toggle.classList.toggle('rotated');
+    header.classList.toggle('expanded');
 }
 
 // Toggle What I Teach section
 function toggleServices() {
     const content = document.getElementById('services-content');
     const toggle = document.getElementById('services-toggle');
+    const header = document.querySelector('.services-header');
     
     content.classList.toggle('expanded');
     toggle.classList.toggle('rotated');
+    header.classList.toggle('expanded');
 }
