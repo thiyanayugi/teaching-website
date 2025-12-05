@@ -2,7 +2,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     e.preventDefault();
 
     const form = e.target;
-    const submitBtn = form.querySelector('.submit-button');
+    const submitBtn = form.querySelector('.submit-btn');
     const btnText = submitBtn.querySelector('.button-text');
     const btnLoading = submitBtn.querySelector('.button-loading');
 
