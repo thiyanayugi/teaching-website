@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import os
+import datetime
 from email_generator import generate_personalized_email, send_email
 from dotenv import load_dotenv
 
