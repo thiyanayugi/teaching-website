@@ -16,5 +16,6 @@ COPY . .
 # Expose port (Cloud Run will set PORT env variable)
 ENV PORT=8080
 
-# Run the application
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 backend.app:app
+# Change to backend directory and run the application
+WORKDIR /app/backend
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 app:app
