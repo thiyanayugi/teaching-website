@@ -3,12 +3,17 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
+import anthropic as anthropic_module
+
+# Debug: Print version
+print(f"🔍 Anthropic SDK version: {anthropic_module.__version__}")
 
 def get_anthropic_client():
     """Get or create Anthropic client instance."""
     api_key = os.getenv('ANTHROPIC_API_KEY')
     if not api_key:
         raise ValueError("ANTHROPIC_API_KEY not found in environment variables")
+    print(f"✅ Creating Anthropic client with API key: {api_key[:10]}...")
     return Anthropic(api_key=api_key)
 
 def generate_personalized_email(data: dict) -> str:
