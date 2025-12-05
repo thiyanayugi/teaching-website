@@ -515,6 +515,22 @@ footer p {
     opacity: 0;
 }
 
+.language-switcher {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 0.7rem 1.2rem;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    color: white;
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    z-index: 1000;
+}
 
 .about-content.expanded {
     max-height: 2000px;
@@ -666,7 +682,7 @@ footer p {
 
 /* Services Section - Enhanced */
 .services {
-    padding: 4rem 2rem 5rem 2rem;
+    padding: 2rem 2rem 4rem 2rem;
     background: var(--light);
     position: relative;
 }
@@ -820,12 +836,10 @@ footer p {
     transform: scale(1.05);
 }
 
-/* Contact Form Section */
+/* Contact Form */
 .contact {
-    padding: 2rem 2rem 6rem 2rem;
-    background: var(--dark);
-    position: relative;
-    overflow: hidden;
+    padding: 6rem 2rem;
+    background: linear-gradient(180deg, var(--light) 0%, #e0e7ff 100%);
 }
 
 .contact h2 {
