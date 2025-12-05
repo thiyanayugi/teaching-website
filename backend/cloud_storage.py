@@ -55,7 +55,7 @@ def save_user_data(data: dict):
             data.get('topic', ''),
             data.get('background', ''),
             data.get('experience', ''),
-            data.get('goals', '')
+            data.get('goals', 'N/A')  # Optional field
         ]
         
         sheet = workbook.active

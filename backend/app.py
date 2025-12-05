@@ -37,7 +37,7 @@ def submit_form():
         print(f"   Topic: {data.get('topic')}, Background: {data.get('background')}, Experience: {data.get('experience')}")
         
         # Validate required fields
-        required_fields = ['name', 'email', 'topic', 'background', 'experience', 'goals'] # Added 'goals' to required fields
+        required_fields = ['name', 'email', 'topic', 'background', 'experience']
         for field in required_fields:
             if not data.get(field):
                 return jsonify({'success': False, 'message': f'Missing required field: {field}'}), 400
@@ -50,7 +50,7 @@ def submit_form():
                 topic=data['topic'],
                 background=data['background'],
                 experience=data['experience'],
-                goals=data['goals']
+                goals=data.get('goals', '')  # Optional field
             )
             print("✅ Email content generated successfully!")
         except Exception as e:
