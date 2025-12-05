@@ -1006,6 +1006,24 @@ footer p {
     transform: translateY(-2px);
 }
 
+/* Placeholder text styling for select dropdowns */
+.contact select option:first-child {
+    color: #94a3b8;
+}
+
+.contact select:invalid {
+    color: #94a3b8;
+}
+
+.contact select:valid {
+    color: var(--dark);
+}
+
+.contact select:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
 .submit-btn {
     width: 100%;
     padding: 1.2rem 2rem;
