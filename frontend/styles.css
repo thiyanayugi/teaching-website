@@ -665,7 +665,7 @@ footer p {
 
 /* Services Section - Enhanced */
 .services {
-    padding: 2rem 2rem 2rem 2rem;
+    padding: 2rem 2rem 4rem 2rem;
     background: var(--light);
     position: relative;
 }
@@ -697,11 +697,13 @@ footer p {
     overflow: hidden;
     transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
     opacity: 0;
+    padding-top: 0;
 }
 
 .services-content.expanded {
     max-height: 2000px;
     opacity: 1;
+    padding-top: 2rem;
 }
 
 .services-grid {
