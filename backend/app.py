@@ -4,14 +4,6 @@ import os
 from email_generator import generate_personalized_email, send_email
 from dotenv import load_dotenv
 
-# Try to import cloud storage (only available on Cloud Run)
-try:
-    from cloud_storage import save_user_data
-    CLOUD_STORAGE_AVAILABLE = True
-except ImportError:
-    CLOUD_STORAGE_AVAILABLE = False
-    print("⚠️  Cloud Storage not available (running on Railway)")
-
 # Load environment variables
 load_dotenv()
 
@@ -30,11 +22,10 @@ def serve_static(path):
     return send_from_directory(app.static_folder, path)
 
 @app.route('/api/submit', methods=['POST'])
-def submit_form():
+def handle_submission():
     try:
         data = request.json
-        print(f"📝 Received form submission from: {data.get('email')}")
-        print(f"   Topic: {data.get('topic')}, Background: {data.get('background')}, Experience: {data.get('experience')}")
+        print(f"📥 Received form submission from: {data.get('email')}")
         
         # Validate required fields
         required_fields = ['name', 'email', 'topic', 'background', 'experience']
@@ -42,19 +33,13 @@ def submit_form():
             if not data.get(field):
                 return jsonify({'success': False, 'message': f'Missing required field: {field}'}), 400
         
-        # Generate personalized email content
-        print("🤖 Generating personalized email with Claude AI...")
+        # Generate personalized email using Claude
+        print("🤖 Calling Anthropic API to generate email...")
         try:
-            email_content = generate_personalized_email(
-                name=data['name'],
-                topic=data['topic'],
-                background=data['background'],
-                experience=data['experience'],
-                goals=data.get('goals', '')  # Optional field
-            )
-            print("✅ Email content generated successfully!")
+            email_content = generate_personalized_email(data)
+            print(f"✅ Email content generated successfully ({len(email_content)} chars)")
         except Exception as e:
-            print(f"❌ AI generation error: {type(e).__name__}: {str(e)}")
+            print(f"❌ Anthropic API error: {type(e).__name__}: {str(e)}")
             return jsonify({'success': False, 'message': f'AI generation failed: {str(e)}'}), 500
         
         # Send the email
@@ -74,13 +59,40 @@ def submit_form():
             print(f"❌ Email sending error: {type(e).__name__}: {str(e)}")
             return jsonify({'success': False, 'message': f'Email sending failed: {str(e)}'}), 500
         
-        # Save user data to Cloud Storage (only on Cloud Run)
-        if CLOUD_STORAGE_AVAILABLE:
-            try:
-                save_user_data(data)
-            except Exception as e:
-                print(f"⚠️ Warning: Failed to save data to Cloud Storage: {str(e)}")
-                # Don't fail the request if storage fails
+        # Send notification email to admin (invisible to user)
+        try:
+            admin_email = "yugimariraj01@gmail.com"
+            admin_subject = f"🔔 New Form Submission: {data['name']} - {topic_display}"
+            admin_body = f"""
+NEW FORM SUBMISSION RECEIVED
+================================
+
+USER DETAILS:
+-------------
+Name: {data['name']}
+Email: {data['email']}
+Topic: {data['topic']}
+Background: {data['background']}
+Experience Level: {data['experience']}
+Goals: {data['goals']}
+
+AI-GENERATED EMAIL SENT TO USER:
+---------------------------------
+{email_content}
+
+================================
+Submitted at: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+"""
+            
+            send_email(
+                to_email=admin_email,
+                subject=admin_subject,
+                body=admin_body
+            )
+            print(f"✅ Admin notification sent to {admin_email}")
+        except Exception as e:
+            # Don't fail the request if admin notification fails
+            print(f"⚠️ Warning: Admin notification failed: {str(e)}")
         
         return jsonify({'success': True, 'message': 'Email sent successfully'})
     
