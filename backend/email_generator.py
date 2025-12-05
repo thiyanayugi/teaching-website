@@ -332,12 +332,12 @@ def send_email(to_email: str, subject: str, body: str):
                         <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td class="cta-section">
-                                    <p class="cta-title">Ready to Take the Next Step?</p>
-                                    <p class="cta-subtitle">Let's discuss your learning goals in a free 30-minute consultation</p>
-                                    
-                                    <table role="presentation" cellspacing="0" cellpadding="0" align="center">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" align="center" width="100%">
                                         <tr>
-                                            <td>
+                                            <td align="center">
+                                                <p class="cta-title">Ready to Take the Next Step?</p>
+                                                <p class="cta-subtitle">Let's discuss your learning goals in a free 30-minute consultation</p>
+                                                
                                                 <a href="https://calendly.com/mariraj-thiyanayugi/30min" class="cta-button" target="_blank">
                                                     📅 Schedule Your Free Call
                                                 </a>
@@ -356,7 +356,7 @@ def send_email(to_email: str, subject: str, body: str):
                                     <table role="presentation" cellspacing="0" cellpadding="0">
                                         <tr>
                                             <td style="vertical-align: top; padding-right: 20px;">
-                                                <img src="https://teaching-platform-560659035104.europe-west1.run.app/profile.png" alt="Thiyanayugi Mariraj" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 3px solid #3b82f6;">
+                                                <img src="https://teaching-platform-560659035104.europe-west1.run.app/profile.png" alt="Thiyanayugi Mariraj" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; object-position: center 30%; border: 3px solid #3b82f6;">
                                             </td>
                                             <td style="vertical-align: middle;">
                                                 <h4 style="color: #0f172a; font-size: 18px; font-weight: 700; margin: 0 0 4px;">Thiyanayugi Mariraj</h4>
