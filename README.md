@@ -1,190 +1,138 @@
-# AI-Powered Teaching Website
+# AI-Powered Teaching Platform
 
-A premium, bilingual (English/German) teaching website for AI and Automation courses, featuring advanced animations, AI-powered email generation, and a modern glassmorphism design.
+A modern, responsive web application that generates personalized learning paths using Claude AI and delivers them via email.
 
-## 🚀 Features
+## 🎯 Overview
 
-- **Bilingual Support**: Full English and German translations
-- **AI-Powered Contact**: Claude Sonnet 4 generates personalized learning paths
-- **Modern Design**: Liquid glass animations, smooth transitions, premium aesthetics
-- **Responsive Form**: Dynamic animations while typing, smart validation
-- **Email Integration**: Automated email sending with Gmail SMTP
+This platform allows students to receive AI-generated, personalized learning recommendations based on their background, experience level, and learning goals. The system uses Anthropic's Claude Sonnet 4 to create tailored educational content and SendGrid to deliver professional email responses.
+
+## ✨ Key Features
+
+- **AI-Powered Personalization**: Claude Sonnet 4 generates custom learning paths based on user input
+- **Professional Email Delivery**: Automated emails with personalized content via SendGrid
+- **Modern UI/UX**: Liquid glass morphism design with smooth animations
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **Bilingual Support**: English and German language options
+- **Interactive Sections**: Collapsible About Me and What I Teach sections
+
+## 🛠️ Technology Stack
+
+### Frontend
+
+- HTML5, CSS3, Vanilla JavaScript
+- Glass-morphism design aesthetic
+- Responsive grid layouts
+
+### Backend
+
+- Flask (Python web framework)
+- Flask-CORS for cross-origin requests
+- Anthropic Claude API for AI generation
+- SendGrid API for email delivery
+
+### Deployment
+
+- Railway (automated deployment)
+- Gunicorn WSGI server
 
 ## 📋 Prerequisites
 
-- Python 3.9+
-- Anthropic API Key
-- Gmail account with App Password
+- Python 3.8+
+- Anthropic API key
+- SendGrid API key
+- Gmail account (for sender email)
 
-## 🛠️ Local Development
+## 🚀 Quick Start
 
 1. **Clone the repository**
 
    ```bash
-   git clone <your-repo-url>
+   git clone <repository-url>
    cd teaching-website
    ```
 
-2. **Set up Python environment**
+2. **Set up environment variables**
+
+   ```bash
+   cp backend/.env.example backend/.env
+   ```
+
+   Configure the following in `backend/.env`:
+
+   - `ANTHROPIC_API_KEY`: Your Anthropic API key
+   - `SENDGRID_API_KEY`: Your SendGrid API key
+   - `GMAIL_USER`: Your sender email address
+
+3. **Install dependencies**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Run locally**
 
    ```bash
    cd backend
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   pip install -r ../requirements.txt
-   ```
-
-3. **Configure environment variables**
-
-   Create `backend/.env` file:
-
-   ```env
-   ANTHROPIC_API_KEY=your_anthropic_api_key_here
-   GMAIL_USER=your_email@gmail.com
-   GMAIL_APP_PASSWORD=your_16_char_app_password
-   ```
-
-4. **Run the application**
-
-   ```bash
    python app.py
    ```
 
-   Visit `http://localhost:5000`
+   Access the application at `http://localhost:5000`
 
-## 🚂 Railway Deployment
+## 🌐 Deployment
 
-### Quick Deploy
+The application is configured for automatic deployment on Railway:
 
-1. **Push to GitHub**
+1. Push to the main branch
+2. Railway automatically builds and deploys
+3. Environment variables are managed in Railway dashboard
 
-   ```bash
-   git add .
-   git commit -m "Initial commit"
-   git remote add origin <your-github-repo-url>
-   git push -u origin main
-   ```
+**Live URL**: https://web-production-543c9.up.railway.app
 
-2. **Deploy on Railway**
+## 📧 Email Features
 
-   - Go to [Railway.app](https://railway.app)
-   - Click "New Project" → "Deploy from GitHub repo"
-   - Select your repository
-   - Railway will auto-detect the configuration
+- Personalized learning path recommendations
+- Professional HTML email templates
+- Calendly integration for consultation booking
+- Responsive email design
 
-3. **Set Environment Variables**
+## 🎨 Design Highlights
 
-   In Railway dashboard, add these variables:
+- **Liquid Glass Aesthetic**: iOS-style glass morphism throughout
+- **Smooth Animations**: Morphing containers and hover effects
+- **Accessible**: WCAG-compliant color contrasts and semantic HTML
+- **Performance**: Optimized assets and efficient CSS
 
-   - `ANTHROPIC_API_KEY`: Your Anthropic API key
-   - `GMAIL_USER`: Your Gmail address
-   - `GMAIL_APP_PASSWORD`: Your Gmail app password
-
-4. **Deploy**
-   - Railway will automatically build and deploy
-   - Your site will be live at `https://your-app.railway.app`
-
-### Manual Railway CLI Deployment
-
-```bash
-# Install Railway CLI
-npm i -g @railway/cli
-
-# Login
-railway login
-
-# Initialize project
-railway init
-
-# Add environment variables
-railway variables set ANTHROPIC_API_KEY=your_key
-railway variables set GMAIL_USER=your_email
-railway variables set GMAIL_APP_PASSWORD=your_password
-
-# Deploy
-railway up
-```
-
-## 📁 Project Structure
+## 📝 Project Structure
 
 ```
 teaching-website/
+├── frontend/
+│   ├── index.html          # Main HTML file
+│   ├── styles.css          # Styling and animations
+│   └── script.js           # Client-side logic
 ├── backend/
 │   ├── app.py              # Flask application
-│   ├── email_generator.py  # AI email generation
-│   └── .env               # Environment variables (not in git)
-├── frontend/
-│   ├── index.html         # Main HTML
-│   ├── styles.css         # Styling with animations
-│   ├── script.js          # Form handling
-│   ├── language-switcher.js  # Bilingual support
-│   └── liquid-glass.js    # Glassmorphism effects
-├── requirements.txt       # Python dependencies
-├── Procfile              # Railway start command
-├── railway.json          # Railway configuration
-└── .gitignore           # Git ignore rules
+│   └── email_generator.py  # AI and email logic
+├── requirements.txt        # Python dependencies
+└── railway.json           # Railway configuration
 ```
 
-## 🔧 Technologies
+## 🔒 Security
 
-- **Backend**: Flask, Python
-- **Frontend**: HTML, CSS, Vanilla JavaScript
-- **AI**: Anthropic Claude Sonnet 4
-- **Email**: Gmail SMTP
-- **Deployment**: Railway
-- **Design**: Glassmorphism, CSS animations
+- Environment variables for sensitive data
+- CORS configuration for API security
+- Input validation on form submissions
+- Secure API key handling
 
-## 🎨 Features Breakdown
+## 📄 License
 
-### Design
-
-- Liquid glass background animations
-- Smooth form field animations
-- Collapsible About Me section
-- Premium dark blue theme
-- Responsive design
-
-### Functionality
-
-- Bilingual language switcher (EN/DE)
-- AI-generated personalized learning paths
-- Automated email sending
-- Form validation
-- Success/error handling
-
-## 📧 Email Configuration
-
-To enable email functionality:
-
-1. Enable 2-Factor Authentication on your Gmail account
-2. Generate an App Password:
-   - Go to Google Account → Security → 2-Step Verification → App passwords
-   - Select "Mail" and your device
-   - Copy the 16-character password
-3. Add to `.env` file as `GMAIL_APP_PASSWORD`
-
-## 🌐 Environment Variables
-
-| Variable             | Description                       | Required |
-| -------------------- | --------------------------------- | -------- |
-| `ANTHROPIC_API_KEY`  | Anthropic API key for Claude      | Yes      |
-| `GMAIL_USER`         | Gmail address for sending emails  | Yes      |
-| `GMAIL_APP_PASSWORD` | Gmail app password (16 chars)     | Yes      |
-| `PORT`               | Server port (auto-set by Railway) | No       |
-
-## 📝 License
-
-Private project - All rights reserved
+This project is part of a personal portfolio.
 
 ## 👤 Author
 
-**Thiyanayugi Mariraj**
+**Thiyanayugi Mariraj**  
+M.Sc. Automation & Robotics | TU Dortmund
 
-- M.Sc. Automation & Robotics | AI Engineer | Educator
+- LinkedIn: [thiyanayugi-mariraj](https://linkedin.com/in/thiyanayugi-mariraj-a2b1b820b)
+- Email: mariraj.thiyanayugi@gmail.com
 - Location: Dortmund, Germany
-- LinkedIn: [Your LinkedIn]
-- Email: [Your Email]
-
----
-
-Built with ❤️ using Flask, Claude AI, and modern web technologies
