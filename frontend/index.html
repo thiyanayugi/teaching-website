@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Thiyanayugi Mariraj - AI & Automation Teaching. Master's student at TU Dortmund specializing in AI-driven automation, multi-agent systems, and robotics.">
+    <title>Thiyanayugi Mariraj | AI & Automation Teaching</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <span class="lang-separator">/</span>
+        <button class="lang-btn" data-lang="de">DE</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-image">
+                <div class="image-placeholder">
+                    <img src="profile.png" alt="Thiyanayugi Mariraj">
+                </div>
+            </div>
+            <div class="hero-text">
+                <p class="greeting">Hello, I'm</p>
+                <h1>Thiyanayugi Mariraj</h1>
+                <p class="tagline">M.Sc. Automation & Robotics | AI Engineer | Educator</p>
+                <p class="intro">
+                    I'm a Master's student at TU Dortmund specializing in AI-driven automation,
+                    multi-agent systems, and robotics. I help students and professionals
+                    master cutting-edge technologies through personalized, hands-on teaching.
+                </p>
+                <a href="#contact" class="cta-button">Start Learning →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-header" onclick="toggleAbout()">
+                <h2>About Me</h2>
+                <span class="toggle-icon" id="about-toggle">+</span>
+            </div>
+            <div class="about-content collapsed" id="about-content">
+                <div class="about-text">
+                    <p class="intro-text">
+                        With hands-on experience in both research and
+                        industry,
+                        I bridge the gap between cutting-edge AI research and practical engineering applications.
+                    </p>
+
+                    <div class="highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">🎓</div>
+                            <div class="highlight-content">
+                                <h4>Academic Excellence</h4>
+                                <p>M.Sc. Automation & Robotics at TU Dortmund | B.E. Robotics & Automation from PSG
+                                    College of Technology, India</p>
+                            </div>
+                        </div>
+
+                        <div class="highlight-item">
+                            <div class="highlight-icon">💼</div>
+                            <div class="highlight-content">
+                                <h4>Professional Experience</h4>
+                                <p>Research Assistant at TU Dortmund's Information Processing Lab | Robotics Engineering
+                                    Intern at Pricol Limited</p>
+                            </div>
+                        </div>
+
+                        <div class="highlight-item">
+                            <div class="highlight-icon">✅</div>
+                            <div class="highlight-content">
+                                <h4>Recent Achievement</h4>
+                                <p>Completed Master's Thesis on 6G-enabled collaborative robotics with Graph Neural
+                                    Networks for warehouse automation</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="expertise-areas">
+                        <h3>Core Competencies</h3>
+                        <div class="competencies-grid">
+                            <div class="competency-card">
+                                <div class="competency-icon">🤖</div>
+                                <h4>AI & Machine Learning</h4>
+                                <ul>
+                                    <li>LLM Fine-tuning & Prompt Engineering</li>
+                                    <li>RAG & Vector Databases</li>
+                                    <li>Multi-agent Systems (LangChain)</li>
+                                    <li>Deep Learning (PyTorch/TensorFlow)</li>
+                                    <li>Natural Language Processing</li>
+                                </ul>
+                            </div>
+                            <div class="competency-card">
+                                <div class="competency-icon">⚙️</div>
+                                <h4>Robotics & Automation</h4>
+                                <ul>
+                                    <li>ROS Framework & Development</li>
+                                    <li>Computer Vision & Object Detection</li>
+                                    <li>Sensor Fusion & SLAM</li>
+                                    <li>Path Planning & Navigation</li>
+                                    <li>Industrial Automation Systems</li>
+                                </ul>
+                            </div>
+                            <div class="competency-card">
+                                <div class="competency-icon">💻</div>
+                                <h4>Development & Deployment</h4>
+                                <ul>
+                                    <li>Python, C++, SQL</li>
+                                    <li>AWS SageMaker & Cloud ML</li>
+                                    <li>MLOps & Model Deployment</li>
+                                    <li>Docker & Containerization</li>
+                                    <li>Git, Linux, Agile Methods</li>
+                                </ul>
+                            </div>
+                            <div class="competency-card">
+                                <div class="competency-icon">🌍</div>
+                                <h4>Communication</h4>
+                                <ul>
+                                    <li>English (Fluent/C2)</li>
+                                    <li>German (B2)</li>
+                                    <li>Tamil (Native)</li>
+                                    <li>Technical Documentation</li>
+                                    <li>Cross-functional Collaboration</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2>What I Teach</h2>
+        <div class="services-grid">
+            <!-- Automation Card -->
+            <div class="service-card">
+                <div class="icon">⚙️</div>
+                <h3>Automation</h3>
+                <ul>
+                    <li>Industrial Process Automation</li>
+                    <li>ROS & Robotics Programming</li>
+                    <li>Sensor Fusion & SLAM</li>
+                    <li>PLC & Control Systems</li>
+                    <li>Workflow Automation with Python</li>
+                </ul>
+            </div>
+
+            <!-- AI Card -->
+            <div class="service-card">
+                <div class="icon">🧠</div>
+                <h3>Artificial Intelligence</h3>
+                <ul>
+                    <li>LLMs & Prompt Engineering</li>
+                    <li>Multi-Agent Systems (LangChain)</li>
+                    <li>Deep Learning (PyTorch/TensorFlow)</li>
+                    <li>RAG & Vector Databases</li>
+                    <li>Computer Vision & NLP</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact" id="contact">
+        <h2>Let's Start Your Learning Journey</h2>
+        <p class="form-subtitle">Tell me about yourself and I'll craft a personalized learning path for you.</p>
+
+        <form id="contact-form" class="contact-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="e.g., Max Mustermann">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required placeholder="max@example.com">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="topic">I Want to Learn *</label>
+                    <select id="topic" name="topic" required>
+                        <option value="">Select a topic...</option>
+                        <option value="automation">🔧 Automation</option>
+                        <option value="ai">🤖 Artificial Intelligence</option>
+                        <option value="both">⚡ Both</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="background">My Background *</label>
+                    <select id="background" name="background" required>
+                        <option value="">Select your background...</option>
+                        <option value="student">📚 Student</option>
+                        <option value="professional">💼 Working Professional</option>
+                        <option value="researcher">🔬 Researcher</option>
+                        <option value="hobbyist">🎯 Hobbyist/Self-learner</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="experience">Experience Level *</label>
+                    <select id="experience" name="experience" required>
+                        <option value="">Select level...</option>
+                        <option value="beginner">🌱 Beginner - Just starting out</option>
+                        <option value="intermediate">🌿 Intermediate - Some experience</option>
+                        <option value="advanced">🌳 Advanced - Looking to specialize</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="interest">Specific Interest</label>
+                    <input type="text" id="interest" name="interest" placeholder="e.g., LLM agents, robotics, MLOps...">
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="goal">What do you want to achieve?</label>
+                <textarea id="goal" name="goal" rows="3"
+                    placeholder="e.g., I want to build AI agents for my startup... / I need to automate workflows at my company..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span class="button-text">Send Request</span>
+                <span class="button-loading" style="display: none;">✨ Sending...</span>
+            </button>
+        </form>
+
+        <div id="success-message" class="success-message" style="display: none;">
+            <div class="success-icon">✉️</div>
+            <h3>Thank you!</h3>
+            <p>A personalized email with learning recommendations has been sent to your inbox.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Thiyanayugi Mariraj | Dortmund, Germany</p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/thiyanayugi-mariraj-a2b1b820b" target="_blank">LinkedIn</a>
+                <a href="mailto:mariraj.thiyanayugi@gmail.com">Email</a>
+                <a href="https://calendly.com/mariraj-thiyanayugi/30min" target="_blank">Book Appointment</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="language-switcher.js"></script>
+    <script src="script.js"></script>
+    <script src="liquid-glass.js"></script>
+</body>
+
+</html>
