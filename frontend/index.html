@@ -139,37 +139,38 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <h2>What I Teach</h2>
-        <div class="services-grid">
-            <!-- Automation Card -->
-            <div class="service-card">
-                <div class="icon">⚙️</div>
-                <h3>Automation</h3>
-                <ul>
-                    <li>Industrial Process Automation</li>
-                    <li>ROS & Robotics Programming</li>
-                    <li>Sensor Fusion & SLAM</li>
-                    <li>PLC & Control Systems</li>
-                    <li>Workflow Automation with Python</li>
-                </ul>
+        <!-- What I Teach Section -->
+        <section class="services" id="services">
+            <div class="services-header" onclick="toggleServices()">
+                <h2>What I Teach</h2>
+                <span class="toggle-icon" id="services-toggle">+</span>
             </div>
-
-            <!-- AI Card -->
-            <div class="service-card">
-                <div class="icon">🧠</div>
-                <h3>Artificial Intelligence</h3>
-                <ul>
-                    <li>LLMs & Prompt Engineering</li>
-                    <li>Multi-Agent Systems (LangChain)</li>
-                    <li>Deep Learning (PyTorch/TensorFlow)</li>
-                    <li>RAG & Vector Databases</li>
-                    <li>Computer Vision & NLP</li>
-                </ul>
+            
+            <div class="services-content" id="services-content">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="icon">🔧</div>
+                        <h3>Automation & Robotics</h3>
+                        <ul>
+                            <li>ROS (Robot Operating System)</li>
+                            <li>Sensor Fusion & SLAM</li>
+                            <li>Industrial Process Automation</li>
+                            <li>Python Workflow Automation</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon">🤖</div>
+                        <h3>Artificial Intelligence</h3>
+                        <ul>
+                            <li>Large Language Models (LLMs)</li>
+                            <li>Multi-Agent Systems with LangChain</li>
+                            <li>Deep Learning (PyTorch/TensorFlow)</li>
+                            <li>RAG Pipelines & Prompt Engineering</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
     <!-- Contact Form Section -->
     <section class="contact" id="contact">

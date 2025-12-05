@@ -74,3 +74,12 @@ function toggleAbout() {
     content.classList.toggle('expanded');
     toggle.classList.toggle('rotated');
 }
+
+// Toggle What I Teach section
+function toggleServices() {
+    const content = document.getElementById('services-content');
+    const toggle = document.getElementById('services-toggle');
+    
+    content.classList.toggle('expanded');
+    toggle.classList.toggle('rotated');
+}
