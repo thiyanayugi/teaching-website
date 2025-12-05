@@ -451,12 +451,23 @@ footer p {
     user-select: none;
     padding: 0;
     margin-bottom: 3rem;
-    transition: all 0.3s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-align: center;
     position: relative;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.about-header:hover,
+.services-header:hover {
+    transform: scale(1.05);
+}
+
+.about-header:hover h2,
+.services-header:hover h2 {
+    color: var(--accent);
+    text-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
 .about h2,
@@ -467,6 +478,7 @@ footer p {
     position: relative;
     display: block;
     width: fit-content;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .about h2::after,
@@ -480,6 +492,13 @@ footer p {
     height: 4px;
     background: var(--gradient);
     border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-header:hover h2::after,
+.services-header:hover h2::after {
+    width: 100px;
+    box-shadow: 0 2px 12px rgba(59, 130, 246, 0.5);
 }
 
 .toggle-icon {
@@ -493,10 +512,17 @@ footer p {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    transition: all 0.3s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: absolute;
     right: 0;
     top: 0;
+}
+
+.about-header:hover .toggle-icon,
+.services-header:hover .toggle-icon {
+    background: rgba(59, 130, 246, 0.2);
+    transform: scale(1.15);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .toggle-icon:hover {
@@ -721,6 +747,7 @@ footer p {
     max-height: 2000px;
     opacity: 1;
     padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 .services-grid {
