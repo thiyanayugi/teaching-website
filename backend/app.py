@@ -85,15 +85,18 @@ AI-GENERATED EMAIL SENT TO USER:
 Submitted at: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 """
             
+            print(f"📧 Attempting to send admin notification to {admin_email}...")
             send_email(
                 to_email=admin_email,
                 subject=admin_subject,
                 body=admin_body
             )
-            print(f"✅ Admin notification sent to {admin_email}")
+            print(f"✅ Admin notification sent successfully to {admin_email}")
         except Exception as e:
             # Don't fail the request if admin notification fails
-            print(f"⚠️ Warning: Admin notification failed: {str(e)}")
+            print(f"⚠️ Warning: Admin notification failed: {type(e).__name__}: {str(e)}")
+            import traceback
+            traceback.print_exc()
         
         return jsonify({'success': True, 'message': 'Email sent successfully'})
     
