@@ -202,11 +202,12 @@ body::before {
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #3b82f6 100%);
-    background-size: 400% 400%;
-    animation: gradient-shift 20s ease infinite;
     padding: 2rem;
     position: relative;
     overflow: hidden;
+    /* Prevent flickering on mobile */
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
 }
 
 /* Floating geometric shapes */
