@@ -135,7 +135,7 @@ def send_email(to_email: str, subject: str, body: str):
         <div style="margin-top: 35px; padding-top: 25px; border-top: 1px solid #e2e8f0;">
             <p style="margin: 0; color: #1e293b;">Best regards,<br><b>Thiyanayugi Mariraj</b></p>
             <p style="margin: 8px 0 0 0; font-size: 14px; color: #64748b;">
-                M.Sc. Automation & Robotics | TU Dortmund
+                M.Sc. Automation &amp; Robotics | TU Dortmund
             </p>
         </div>
     </div>
