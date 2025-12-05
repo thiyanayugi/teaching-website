@@ -445,7 +445,8 @@ footer p {
     width: 100%;
 }
 
-.about-header {
+.about-header,
+.services-header {
     cursor: pointer;
     user-select: none;
     padding: 0;
@@ -453,9 +454,13 @@ footer p {
     transition: all 0.3s;
     text-align: center;
     position: relative;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.about h2 {
+.about h2,
+.services h2 {
     font-size: 2.5rem;
     color: var(--dark);
     margin: 0 auto;
@@ -464,7 +469,8 @@ footer p {
     width: fit-content;
 }
 
-.about h2::after {
+.about h2::after,
+.services h2::after {
     content: '';
     position: absolute;
     bottom: -10px;
@@ -490,8 +496,7 @@ footer p {
     transition: all 0.3s;
     position: absolute;
     right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0;
 }
 
 .toggle-icon:hover {
@@ -660,18 +665,8 @@ footer p {
 
 /* Services Section - Enhanced */
 .services {
-    padding: 2rem 2rem 6rem 2rem;
+    padding: 2rem 2rem 2rem 2rem;
     background: var(--light);
-    position: relative;
-}
-
-.services-header {
-    cursor: pointer;
-    user-select: none;
-    padding: 0;
-    margin-bottom: 3rem;
-    transition: all 0.3s;
-    text-align: center;
     position: relative;
 }
 
