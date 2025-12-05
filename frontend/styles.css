@@ -1011,6 +1011,15 @@ footer p {
     cursor: pointer;
 }
 
+/* Override any transitions for select to keep arrow static */
+.contact select,
+.contact select::before,
+.contact select::after {
+    transition: border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
 /* Unified hover effect */
 .form-group input:hover,
 .form-group textarea:hover,
