@@ -932,7 +932,15 @@ footer p {
     background: white;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    color: #0f172a;
+    color: #0f172a !important;
+    font-weight: 400;
+}
+
+/* Placeholder styling - same grey for all */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #94a3b8;
+    opacity: 1;
 }
 
 /* Unified focus effect for all form elements */
@@ -1011,21 +1019,22 @@ footer p {
     box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
 }
 
-/* Placeholder text styling for select dropdowns */
+/* Select dropdown placeholder and option colors */
 .contact select option:first-child {
-    color: #94a3b8;
+    color: #94a3b8 !important;
 }
 
 .contact select:invalid {
-    color: #94a3b8;
+    color: #94a3b8 !important;
 }
 
 .contact select:valid {
-    color: #0f172a;
+    color: #0f172a !important;
 }
 
 .contact select option {
-    color: #0f172a;
+    color: #0f172a !important;
+    font-weight: 400;
 }
 
 .contact select:hover {
