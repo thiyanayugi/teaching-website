@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import os
-from email_generator import generate_email_html, send_email
+from email_generator import generate_personalized_email, send_email
 from dotenv import load_dotenv
 
 # Load environment variables
