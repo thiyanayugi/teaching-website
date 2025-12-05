@@ -175,7 +175,7 @@ def _send_via_smtp(to_email: str, subject: str, body: str, sender_email: str, pa
     # Create message
     msg = MIMEMultipart('alternative')
     msg['Subject'] = subject
-    msg['From'] = sender_email
+    msg['From'] = f"Thiyanayugi Mariraj <{sender_email}>"
     msg['To'] = to_email
     
     # Attach both plain text and HTML versions
