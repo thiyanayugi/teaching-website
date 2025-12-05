@@ -79,27 +79,18 @@ DO NOT include any sign-off or signature - this will be added automatically."""
 
 
 def send_email(to_email: str, subject: str, body: str):
-    """Send email via Gmail SMTP."""
+    """Send email via SendGrid API (works on Railway, unlike SMTP)."""
     
-    sender_email = os.getenv('GMAIL_ADDRESS')
-    app_password = os.getenv('GMAIL_APP_PASSWORD')
+    sendgrid_api_key = os.getenv('SENDGRID_API_KEY')
+    sender_email = os.getenv('GMAIL_ADDRESS', 'mariraj.thiyanayugi@gmail.com')
     
-    if not sender_email or not app_password:
-        raise ValueError("Gmail credentials not configured. Please set GMAIL_ADDRESS and GMAIL_APP_PASSWORD in .env file")
+    if not sendgrid_api_key:
+        raise ValueError("SENDGRID_API_KEY not configured. Please set it in Railway environment variables")
     
-    # Remove any whitespace from app password (in case it has spaces)
-    app_password = app_password.strip().replace(' ', '')
+    print(f"Attempting to send email from {sender_email} to {to_email} via SendGrid")
     
-    print(f"Attempting to send email from {sender_email} to {to_email}")
-    
-    # Create message
-    message = MIMEMultipart('alternative')
-    message['Subject'] = subject
-    message['From'] = f"Thiyanayugi Mariraj <{sender_email}>"
-    message['To'] = to_email
-    
-    # Create plain text version
-    text_part = MIMEText(body, 'plain')
+    from sendgrid import SendGridAPIClient
+    from sendgrid.helpers.mail import Mail, Email, To, Content
     
     # Create HTML version with nice formatting
     html_body = f"""
@@ -131,8 +122,7 @@ def send_email(to_email: str, subject: str, body: str):
                           border-radius: 10px; 
                           font-weight: bold; 
                           font-size: 15px; 
-                          box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
-                          transition: all 0.3s;">
+                          box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);">
                     📅 Schedule Your Free Call
                 </a>
             </div>
@@ -163,18 +153,18 @@ def send_email(to_email: str, subject: str, body: str):
 </html>
 """
     
-    html_part = MIMEText(html_body, 'html')
+    message = Mail(
+        from_email=Email(sender_email, "Thiyanayugi Mariraj"),
+        to_emails=To(to_email),
+        subject=subject,
+        html_content=Content("text/html", html_body)
+    )
     
-    # Attach both versions (email clients will choose)
-    message.attach(text_part)
-    message.attach(html_part)
-    
-    # Send via SMTP using SSL (port 465)
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465, timeout=30) as server:
-        # Login
-        server.login(sender_email, app_password)
-        
-        # Send email using send_message (not sendmail)
-        server.send_message(message)
-        
-        print(f"Email sent successfully to {to_email}")
+    try:
+        sg = SendGridAPIClient(sendgrid_api_key)
+        response = sg.send(message)
+        print(f"Email sent successfully! Status code: {response.status_code}")
+        return response
+    except Exception as e:
+        print(f"SendGrid error: {e}")
+        raise
