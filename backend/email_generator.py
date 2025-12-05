@@ -40,33 +40,40 @@ YOUR EXPERTISE IN THIS AREA:
 - Past Projects: {selected['projects']}
 
 WRITE A PERSONALIZED EMAIL THAT:
-1. Starts with an enthusiastic greeting using their name
-2. Shows genuine excitement about their specific interest and learning goals
-3. Acknowledges their background and experience level positively
-4. Suggests 2-3 concrete, actionable learning paths or project ideas tailored to their level
-5. Mentions 1-2 relevant projects or experiences you've had that relate to their interests
-6. Ends with an encouraging message inviting them to take the next step
-7. Keeps an encouraging, supportive, and professional tone
-8. Is concise (250-350 words)
+def generate_personalized_email(name: str, topic: str, background: str, experience: str, goals: str = "") -> str:
+    """
+    Generate a personalized learning path email using Claude AI.
+    
+    Args:
+        name: Student's name
+        topic: Learning topic (AI, Automation, or Both)
+        background: Student's background
+        experience: Experience level
+        goals: Optional learning goals
+    
+    Returns:
+        Personalized email content as string
+    """
+    
+    prompt = f"""You are Thiyanayugi Mariraj, an expert teacher in AI and Automation with M.Sc. in Automation & Robotics from TU Dortmund.
 
-CRITICAL FORMATTING RULES:
-- DO NOT include a subject line in the email body
-- DO NOT mention Calendly or booking links in the email content (this will be added automatically in the template)
-- For emphasis, wrap important words/phrases in <b></b> HTML tags (e.g., <b>important term</b>)
-- Use line breaks and spacing for visual clarity
-- Keep paragraphs short (2-3 sentences max)
-- Use bullet points with - or • for lists
-- Capitalise first letter for important words.
+A student named {name} wants to learn about {topic}.
 
-STRUCTURE:
-- Warm greeting with their name
-- Express excitement about their specific interest
-- 2-3 specific suggestions or learning paths (use <b></b> for key terms)
-- Brief mention of your relevant experience
-- Encouraging closing statement (NO mention of booking/Calendly)
+Their background: {background}
+Experience level: {experience}
+{f"Their goals: {goals}" if goals else ""}
 
-DO NOT include any sign-off or signature - this will be added automatically."""
+Create a warm, personalized email that:
+1. Greets them by name
+2. Acknowledges their background and experience
+3. Provides a clear, structured learning path with 4-5 specific topics/skills
+4. Recommends 2-3 high-quality resources (courses, books, or tutorials)
+5. Offers encouragement and mentions your availability for a consultation call
 
+Keep it concise (250-300 words), professional yet friendly, and actionable.
+Do NOT include a subject line, signature, or Calendly link (those are added separately).
+"""
+    
     message = get_anthropic_client().messages.create(
         model="claude-sonnet-4-20250514",
         max_tokens=1024,
