@@ -932,6 +932,7 @@ footer p {
     background: white;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    color: #0f172a;
 }
 
 /* Unified focus effect for all form elements */
@@ -1002,22 +1003,6 @@ footer p {
     cursor: pointer;
 }
 
-/* Smooth dropdown opening animation */
-.contact select option {
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-5px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 /* Unified hover effect */
 .form-group input:hover,
 .form-group textarea:hover,
@@ -1036,7 +1021,11 @@ footer p {
 }
 
 .contact select:valid {
-    color: var(--dark);
+    color: #0f172a;
+}
+
+.contact select option {
+    color: #0f172a;
 }
 
 .contact select:hover {
