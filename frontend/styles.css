@@ -515,6 +515,23 @@ footer p {
     opacity: 0;
 }
 
+.language-switcher {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 0.7rem 1.2rem;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    color: var(--primary);
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    z-index: 1000;
+}
+
 .about-content.expanded {
     max-height: 2000px;
     opacity: 1;
