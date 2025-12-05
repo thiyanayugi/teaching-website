@@ -988,11 +988,15 @@ footer p {
     backdrop-filter: blur(10px);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23334155' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 3rem;
 }
 
 .contact select:hover {
     border-color: rgba(59, 130, 246, 0.3);
-    transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
 }
 
@@ -1003,7 +1007,6 @@ footer p {
         0 0 0 3px rgba(59, 130, 246, 0.15),
         0 4px 12px rgba(59, 130, 246, 0.2);
     background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
-    transform: translateY(-2px);
 }
 
 /* Placeholder text styling for select dropdowns */
