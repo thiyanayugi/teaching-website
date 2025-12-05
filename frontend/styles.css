@@ -476,6 +476,23 @@ footer p {
     border-radius: 2px;
 }
 
+/* Always visible preview text */
+.about-preview {
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--dark);
+    padding: 0 2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.about-preview:hover {
+    color: var(--accent);
+}
+
 .toggle-icon {
     font-size: 1.8rem;
     font-weight: bold;
@@ -505,38 +522,6 @@ footer p {
 
 .about-content {
     max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
-    opacity: 0;
-}
-
-.about-content.expanded {
-    max-height: 2000px;
-    opacity: 1;
-}
-
-.about-text {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(20px);
-    padding: 3rem;
-    border-radius: 20px;
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.1),
-        0 0 20px rgba(59, 130, 246, 0.05);
-    margin-top: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-.intro-text {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--dark);
-    margin-bottom: 2.5rem;
-}
-
-.highlights {
-    margin-bottom: 2.5rem;
-}
 
 .highlight-item {
     display: flex;
