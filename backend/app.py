@@ -44,10 +44,14 @@ def handle_submission():
         
         # Send the email
         print("📧 Sending email via Gmail SMTP...")
+        
+        # Create meaningful subject line
+        topic_display = "AI & Automation" if data['topic'].lower() == 'both' else data['topic'].upper()
+        
         try:
             send_email(
                 to_email=data['email'],
-                subject=f"Your Personalized {data['topic'].upper()} Learning Path - Thiyanayugi Mariraj",
+                subject=f"Your Personalized {topic_display} Learning Path - Thiyanayugi Mariraj",
                 body=email_content
             )
             print("✅ Email sent successfully!")
