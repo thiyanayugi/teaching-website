@@ -70,7 +70,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 function toggleAbout() {
     const content = document.getElementById('about-content');
     const toggle = document.getElementById('about-toggle');
+    const btn = document.getElementById('read-more-btn');
+    const btnText = btn.querySelector('.btn-text');
     
     content.classList.toggle('expanded');
     toggle.classList.toggle('rotated');
+    
+    if (content.classList.contains('expanded')) {
+        btnText.textContent = 'Read Less';
+    } else {
+        btnText.textContent = 'Read More';
+    }
 }
