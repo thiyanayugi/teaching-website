@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import os
 from email_generator import generate_personalized_email, send_email
+from data_storage import save_user_data
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -54,6 +55,13 @@ def handle_submission():
         except Exception as e:
             print(f"❌ Email sending error: {type(e).__name__}: {str(e)}")
             return jsonify({'success': False, 'message': f'Email sending failed: {str(e)}'}), 500
+        
+        # Save user data to Excel
+        try:
+            save_user_data(data)
+        except Exception as e:
+            print(f"⚠️ Warning: Failed to save data to Excel: {str(e)}")
+            # Don't fail the request if Excel save fails
         
         return jsonify({'success': True, 'message': 'Email sent successfully'})
     
