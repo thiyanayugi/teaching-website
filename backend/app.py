@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import os
 import datetime
+from anthropic import Anthropic
 from email_generator import generate_personalized_email, send_email
 from dotenv import load_dotenv
 
@@ -166,9 +167,7 @@ If asked to book or get started, encourage them to fill out the form on the page
 
         # Generate response using Claude
         
-        client = Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))
-        
-        response = client.messages.create(
+        response = anthropic_client.messages.create(
             model="claude-sonnet-4-20250514",
             max_tokens=300,
             messages=[
