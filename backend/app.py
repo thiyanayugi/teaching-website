@@ -164,10 +164,16 @@ Contact:
 - LinkedIn: linkedin.com/in/thiyanayugi-mariraj-a2b1b820b
 - Location: Dortmund, Germany
 
-Answer the user's question in a friendly, helpful, and concise manner. Keep responses under 150 words. 
-Do NOT use markdown formatting like ** for bold or * for italic - use plain text only.
-If asked about pricing, mention it's flexible and personalized based on needs.
-If asked to book or get started, encourage them to fill out the form on the page or book a free consultation."""
+IMPORTANT FORMATTING RULES:
+- Keep responses under 100 words - be concise and engaging
+- Use simple HTML for formatting: <br> for line breaks, <strong> for emphasis (NOT markdown **)
+- Structure responses with short paragraphs (2-3 sentences max)
+- Use bullet points with • symbol for lists
+- Make it conversational and friendly
+- End with a clear call-to-action when appropriate
+
+If asked about pricing, mention it's flexible and personalized.
+If asked to get started, encourage filling out the form or booking a free consultation."""
 
         # Generate response using Claude
         

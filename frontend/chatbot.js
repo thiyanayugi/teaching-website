@@ -4,6 +4,13 @@ class AIChatbot {
         this.isOpen = false;
         this.messages = [];
         this.apiUrl = '/api/chat';
+        this.isDragging = false;
+        this.currentX = 0;
+        this.currentY = 0;
+        this.initialX = 0;
+        this.initialY = 0;
+        this.xOffset = 0;
+        this.yOffset = 0;
         this.init();
     }
 
@@ -77,6 +84,8 @@ class AIChatbot {
         const sendBtn = document.getElementById('chatbot-send');
         const input = document.getElementById('chatbot-input');
         const suggestions = document.querySelectorAll('.suggestion-chip');
+        const header = document.querySelector('.chatbot-header');
+        const container = document.querySelector('.chatbot-container');
 
         toggleBtn.addEventListener('click', () => this.toggleChatbot());
         closeBtn.addEventListener('click', () => this.closeChatbot());
@@ -92,6 +101,60 @@ class AIChatbot {
                 this.sendMessage();
             });
         });
+
+        // Drag functionality
+        header.addEventListener('mousedown', (e) => this.dragStart(e));
+        document.addEventListener('mousemove', (e) => this.drag(e));
+        document.addEventListener('mouseup', () => this.dragEnd());
+
+        // Touch support for mobile
+        header.addEventListener('touchstart', (e) => this.dragStart(e));
+        document.addEventListener('touchmove', (e) => this.drag(e));
+        document.addEventListener('touchend', () => this.dragEnd());
+    }
+
+    dragStart(e) {
+        const container = document.querySelector('.chatbot-container');
+        if (e.type === 'touchstart') {
+            this.initialX = e.touches[0].clientX - this.xOffset;
+            this.initialY = e.touches[0].clientY - this.yOffset;
+        } else {
+            this.initialX = e.clientX - this.xOffset;
+            this.initialY = e.clientY - this.yOffset;
+        }
+
+        if (e.target.closest('.chatbot-header')) {
+            this.isDragging = true;
+            container.style.cursor = 'grabbing';
+        }
+    }
+
+    drag(e) {
+        if (this.isDragging) {
+            e.preventDefault();
+            const container = document.querySelector('.chatbot-container');
+
+            if (e.type === 'touchmove') {
+                this.currentX = e.touches[0].clientX - this.initialX;
+                this.currentY = e.touches[0].clientY - this.initialY;
+            } else {
+                this.currentX = e.clientX - this.initialX;
+                this.currentY = e.clientY - this.initialY;
+            }
+
+            this.xOffset = this.currentX;
+            this.yOffset = this.currentY;
+
+            container.style.transform = `translate(${this.currentX}px, ${this.currentY}px)`;
+        }
+    }
+
+    dragEnd() {
+        if (this.isDragging) {
+            this.isDragging = false;
+            const container = document.querySelector('.chatbot-container');
+            container.style.cursor = 'auto';
+        }
     }
 
     toggleChatbot() {
