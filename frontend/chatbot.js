@@ -122,17 +122,14 @@ class AIChatbot {
 
     dragStart(e) {
         const container = document.querySelector('.chatbot-container');
-        
-        // Get current transform values
-        const style = window.getComputedStyle(container);
-        const matrix = new DOMMatrix(style.transform);
+        const rect = container.getBoundingClientRect();
         
         if (e.type === 'touchstart') {
-            this.initialX = e.touches[0].clientX - matrix.m41;
-            this.initialY = e.touches[0].clientY - matrix.m42;
+            this.initialX = e.touches[0].clientX - rect.left;
+            this.initialY = e.touches[0].clientY - rect.top;
         } else {
-            this.initialX = e.clientX - matrix.m41;
-            this.initialY = e.clientY - matrix.m42;
+            this.initialX = e.clientX - rect.left;
+            this.initialY = e.clientY - rect.top;
         }
 
         this.isDragging = true;
@@ -141,23 +138,29 @@ class AIChatbot {
     }
 
     drag(e) {
-        if (this.isDragging) {
-            e.preventDefault();
-            const container = document.querySelector('.chatbot-container');
+        if (!this.isDragging) return;
+        
+        e.preventDefault();
+        const container = document.querySelector('.chatbot-container');
 
-            if (e.type === 'touchmove') {
-                this.currentX = e.touches[0].clientX - this.initialX;
-                this.currentY = e.touches[0].clientY - this.initialY;
-            } else {
-                this.currentX = e.clientX - this.initialX;
-                this.currentY = e.clientY - this.initialY;
-            }
-
-            this.xOffset = this.currentX;
-            this.yOffset = this.currentY;
-
-            container.style.transform = `translate(${this.currentX}px, ${this.currentY}px)`;
+        let clientX, clientY;
+        if (e.type === 'touchmove') {
+            clientX = e.touches[0].clientX;
+            clientY = e.touches[0].clientY;
+        } else {
+            clientX = e.clientX;
+            clientY = e.clientY;
         }
+
+        // Calculate new position
+        const newLeft = clientX - this.initialX;
+        const newTop = clientY - this.initialY;
+
+        // Apply new position
+        container.style.left = newLeft + 'px';
+        container.style.top = newTop + 'px';
+        container.style.right = 'auto';
+        container.style.marginTop = '0';
     }
 
     dragEnd() {
