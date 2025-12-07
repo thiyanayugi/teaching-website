@@ -605,7 +605,7 @@ footer p {
 .about-content.expanded {
     max-height: none;
     min-height: 800px; /* Ensure enough space for all content including certifications */
-    padding-bottom: 20px; /* Reduced padding */
+    padding-bottom: 3rem; /* Increased from 20px to match top spacing */
     opacity: 1;
 }
 
