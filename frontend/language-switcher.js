@@ -311,12 +311,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             const interestLabel = document.querySelector('label[for="interest"]');
-            if (interestLabel) interestLabel.textContent = t.formInterest;
+            if (interestLabel) interestLabel.innerHTML = t.formInterest;
             const interestInput = document.querySelector('#interest');
             if (interestInput) interestInput.placeholder = t.formInterestPlaceholder;
             
             const goalLabel = document.querySelector('label[for="goal"]');
-            if (goalLabel) goalLabel.textContent = t.formGoal;
+            if (goalLabel) goalLabel.innerHTML = t.formGoal;
             const goalInput = document.querySelector('#goal');
             if (goalInput) goalInput.placeholder = t.formGoalPlaceholder;
             
