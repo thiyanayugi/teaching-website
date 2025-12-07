@@ -12,6 +12,9 @@ load_dotenv()
 app = Flask(__name__, static_folder='../frontend', static_url_path='')
 CORS(app)
 
+# Initialize Anthropic client
+anthropic_client = Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))
+
 # Get port from environment variable (Railway sets this)
 PORT = int(os.environ.get('PORT', 5000))
 
