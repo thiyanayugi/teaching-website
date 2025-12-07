@@ -57,7 +57,8 @@ def handle_submission():
             send_email(
                 to_email=data['email'],
                 subject=f"Your Personalized {topic_display} Learning Path - Thiyanayugi Mariraj",
-                body=email_content
+                body=email_content,
+                name=data['name']
             )
             print("✅ Email sent successfully!")
         except Exception as e:

@@ -78,7 +78,7 @@ DO NOT include any sign-off or signature - this will be added automatically."""
     return message.content[0].text
 
 
-def send_email(to_email: str, subject: str, body: str):
+def send_email(to_email: str, subject: str, body: str, name: str = "there"):
     """Send email via Gmail SMTP."""
     import smtplib
     from email.mime.text import MIMEText
