@@ -23,9 +23,18 @@ def generate_personalized_email(data: dict) -> str:
     }
     
     selected = topic_details.get(data['topic'], topic_details['ai'])
+    language = data.get('language', 'en')
+    
+    # Language-specific instructions
+    lang_instructions = {
+        'en': 'Write the email in English.',
+        'de': 'Write the email in German (Deutsch). Use formal "Sie" form for addressing the student.'
+    }
     
     prompt = f"""You are Thiyanayugi Mariraj, a Master's student in Automation & Robotics at TU Dortmund 
 with expertise in AI and automation. Generate a warm, personalized email response to a potential student.
+
+IMPORTANT: {lang_instructions.get(language, lang_instructions['en'])}
 
 STUDENT INFORMATION:
 - Name: {data['name']}

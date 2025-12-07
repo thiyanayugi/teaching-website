@@ -8,11 +8,37 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     // Show loading overlay
     loadingOverlay.classList.add('active');
 
+    // Detect language automatically
+    function detectLanguage() {
+        // Check current page language from language-switcher
+        const currentLang = document.documentElement.lang || 'en';
+        if (currentLang === 'de') return 'de';
+        
+        // Check for German text in form fields
+        const textFields = [
+            form.interest.value,
+            form.goal.value,
+            form.background.value
+        ].join(' ');
+        
+        // Simple German detection: common German words
+        const germanWords = /\b(ich|und|der|die|das|ist|sind|haben|sein|mit|für|auf|von|zu|im|am|ein|eine|einen|einem|mein|dein|sein|ihr|unser|möchte|würde|können|müssen|sollen|wollen)\b/i;
+        
+        if (germanWords.test(textFields)) {
+            return 'de';
+        }
+        
+        return 'en';
+    }
+
+    const detectedLanguage = detectLanguage();
+
     // Collect form data
     const formData = {
         name: form.name.value,
         email: form.email.value,
         topic: form.topic.value,
+        language: detectedLanguage,
         background: form.background.value,
         experience: form.experience.value,
         interest: form.interest.value,
