@@ -104,9 +104,10 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there", lang
             'header_title': 'Your Learning Journey Starts Here!',
             'header_subtitle': 'Personalized AI & Automation Guidance',
             'greeting': 'WELCOME',
+            'signoff': 'Best Regards,',
             'cta_title': 'Ready to Take the Next Step?',
             'cta_subtitle': "Let's discuss your learning goals in a free 30-minute consultation",
-            'cta_button': '📅 Schedule Your Free Call',
+            'cta_button': 'Schedule Your Free Call',
             'cta_note': 'Pick a time that works best for you',
             'footer_text': '© 2025 Thiyanayugi Mariraj | Dortmund, Germany',
             'footer_linkedin': 'LinkedIn',
@@ -117,9 +118,10 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there", lang
             'header_title': 'Ihre Lernreise beginnt hier!',
             'header_subtitle': 'Personalisierte KI & Automatisierungs-Beratung',
             'greeting': 'WILLKOMMEN',
+            'signoff': 'Mit freundlichen Grüßen,',
             'cta_title': 'Bereit für den nächsten Schritt?',
             'cta_subtitle': 'Lassen Sie uns Ihre Lernziele in einer kostenlosen 30-minütigen Beratung besprechen',
-            'cta_button': '📅 Kostenloses Gespräch vereinbaren',
+            'cta_button': 'Kostenloses Gespräch vereinbaren',
             'cta_note': 'Wählen Sie eine Zeit, die Ihnen am besten passt',
             'footer_text': '© 2025 Thiyanayugi Mariraj | Dortmund, Deutschland',
             'footer_linkedin': 'LinkedIn',
@@ -239,12 +241,12 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there", lang
         .divider {{
             height: 2px;
             background: linear-gradient(90deg, #e2e8f0 0%, #3b82f6 50%, #e2e8f0 100%);
-            margin: 35px 0;
+            margin: 20px 0;
             border-radius: 1px;
         }}
         .cta-section {{
             text-align: center;
-            padding: 35px 40px;
+            padding: 20px 40px 35px;
             background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
         }}
         .cta-title {{
@@ -365,6 +367,9 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there", lang
                                     <p class="recipient-name">Hello {name}! 👋</p>
                                     
                                     <div class="message-body">{body}</div>
+                                    
+                                    <p style="color: #334155; font-size: 16px; margin-top: 24px; margin-bottom: 4px;">{t['signoff']}</p>
+                                    <p style="color: #0f172a; font-size: 16px; font-weight: 700; margin: 0;">Thiyanayugi</p>
                                     
                                     <div class="divider"></div>
                                 </td>
