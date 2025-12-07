@@ -80,7 +80,7 @@ DO NOT include any sign-off or signature - this will be added automatically."""
     return message.content[0].text
 
 
-def send_email(to_email: str, subject: str, body: str, name: str = "there"):
+def send_email(to_email: str, subject: str, body: str, name: str = "there", language: str = "en"):
     """Send email via Gmail SMTP."""
     import smtplib
     from email.mime.text import MIMEText
@@ -92,7 +92,39 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there"):
     if not gmail_password:
         raise ValueError("GMAIL_PASSWORD not configured. Please set it in environment variables")
     
-    print(f"📧 Sending email from {sender_email} to {to_email} via Gmail SMTP")
+    print(f"📧 Sending email from {sender_email} to {to_email} via Gmail SMTP (Language: {language})")
+    
+    # Language-specific translations
+    translations = {
+        'en': {
+            'header_title': 'Your Learning Journey Starts Here!',
+            'header_subtitle': 'Personalized AI & Automation Guidance',
+            'greeting': 'WELCOME',
+            'cta_title': 'Ready to Take the Next Step?',
+            'cta_subtitle': "Let's discuss your learning goals in a free 30-minute consultation",
+            'cta_button': '📅 Schedule Your Free Call',
+            'cta_note': 'Pick a time that works best for you',
+            'footer_text': '© 2025 Thiyanayugi Mariraj | Dortmund, Germany',
+            'footer_linkedin': 'LinkedIn',
+            'footer_contact': 'Contact',
+            'footer_book': 'Book a Call'
+        },
+        'de': {
+            'header_title': 'Ihre Lernreise beginnt hier!',
+            'header_subtitle': 'Personalisierte KI & Automatisierungs-Beratung',
+            'greeting': 'WILLKOMMEN',
+            'cta_title': 'Bereit für den nächsten Schritt?',
+            'cta_subtitle': 'Lassen Sie uns Ihre Lernziele in einer kostenlosen 30-minütigen Beratung besprechen',
+            'cta_button': '📅 Kostenloses Gespräch vereinbaren',
+            'cta_note': 'Wählen Sie eine Zeit, die Ihnen am besten passt',
+            'footer_text': '© 2025 Thiyanayugi Mariraj | Dortmund, Deutschland',
+            'footer_linkedin': 'LinkedIn',
+            'footer_contact': 'Kontakt',
+            'footer_book': 'Termin buchen'
+        }
+    }
+    
+    t = translations.get(language, translations['en'])
     
     # Professional HTML Email Template
     html_body = f"""
@@ -316,8 +348,8 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there"):
                             <tr>
                                 <td class="header">
 
-                                    <h1 style="color: #ffffff !important;">Your Learning Journey Starts Here!</h1>
-                                    <p style="color: rgba(255, 255, 255, 0.9) !important;">Personalized AI & Automation Guidance</p>
+                                    <h1 style="color: #ffffff !important;">{t['header_title']}</h1>
+                                    <p style="color: rgba(255, 255, 255, 0.9) !important;">{t['header_subtitle']}</p>
                                 </td>
                             </tr>
                         </table>
@@ -325,7 +357,7 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there"):
                         <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td class="content">
-                                    <p class="greeting">WELCOME</p>
+                                    <p class="greeting">{t['greeting']}</p>
                                     <p class="recipient-name">Hello {name}! 👋</p>
                                     
                                     <div class="message-body">{body}</div>
@@ -341,17 +373,17 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there"):
                                     <table role="presentation" cellspacing="0" cellpadding="0" align="center" width="100%">
                                         <tr>
                                             <td align="center">
-                                                <p class="cta-title">Ready to Take the Next Step?</p>
-                                                <p class="cta-subtitle">Let's discuss your learning goals in a free 30-minute consultation</p>
+                                                <p class="cta-title">{t['cta_title']}</p>
+                                                <p class="cta-subtitle">{t['cta_subtitle']}</p>
                                                 
                                                 <a href="https://calendly.com/mariraj-thiyanayugi/30min" class="cta-button" target="_blank">
-                                                    📅 Schedule Your Free Call
+                                                    {t['cta_button']}
                                                 </a>
                                             </td>
                                         </tr>
                                     </table>
                                     
-                                    <p class="cta-note">Pick a time that works best for you</p>
+                                    <p class="cta-note">{t['cta_note']}</p>
                                 </td>
                             </tr>
                         </table>
@@ -380,12 +412,12 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there"):
                                 <td class="footer">
 
                                     
-                                    <p class="footer-text" style="color: #94a3b8 !important;">© 2025 Thiyanayugi Mariraj | Dortmund, Germany</p>
+                                    <p class="footer-text" style="color: #94a3b8 !important;">{t['footer_text']}</p>
                                     
                                     <div class="footer-links">
-                                        <a href="https://linkedin.com/in/thiyanayugi-mariraj-a2b1b820b">LinkedIn</a>
-                                        <a href="mailto:mariraj.thiyanayugi@gmail.com">Contact</a>
-                                        <a href="https://calendly.com/mariraj-thiyanayugi/30min">Book a Call</a>
+                                        <a href="https://linkedin.com/in/thiyanayugi-mariraj-a2b1b820b">{t['footer_linkedin']}</a>
+                                        <a href="mailto:mariraj.thiyanayugi@gmail.com">{t['footer_contact']}</a>
+                                        <a href="https://calendly.com/mariraj-thiyanayugi/30min">{t['footer_book']}</a>
                                     </div>
                                 </td>
                             </tr>

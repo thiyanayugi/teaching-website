@@ -177,6 +177,12 @@ document.addEventListener('DOMContentLoaded', function() {
             langButtons.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
 
+            // Update document lang attribute for other scripts
+            document.documentElement.lang = newLang;
+            
+            // Dispatch custom event for translations.js
+            window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: newLang } }));
+
             // Switch language
             switchLanguage(newLang);
             currentLang = newLang;
