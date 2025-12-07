@@ -50,26 +50,20 @@ const translations = {
         formTopicBoth: "⚡ Both",
         formBackground: "My Background *",
         formBackgroundPlaceholder: "Select your background...",
-        formBgStudent: "📚 Student",
-        formBgProfessional: "💼 Working Professional",
-        formBgResearcher: "🔬 Researcher",
-        formBgHobbyist: "🎯 Hobbyist/Self-learner",
+        formBackgroundStudent: "📚 Student",
+        formBackgroundProfessional: "💼 Professional",
+        formBackgroundCareerChanger: "🔄 Career Changer",
+        formBackgroundHobbyist: "🎯 Hobbyist/Self-Learner",
         formExperience: "Experience Level *",
-        formExperiencePlaceholder: "Select level...",
-        formExpBeginner: "🌱 Beginner",
-        formExpIntermediate: "📈 Intermediate",
-        formExpAdvanced: "🚀 Advanced",
-        formInterest: "Specific Interest <span class='optional-text'>(Optional)</span>",
-        formInterestPlaceholder: "e.g., Robotics, Machine Learning, Industrial Automation...",
-        formGoal: "What do you want to achieve? <span class='optional-text'>(Optional)</span>",
-        formGoalPlaceholder: "What do you hope to achieve?",
-        formSubmit: "Send Message",
-        
-        // Background options
-        formBgStudent: "📚 Student",
-        formBgProfessional: "💼 Working Professional",
-        formBgResearcher: "🔬 Researcher",
-        formBgHobbyist: "🎯 Hobbyist/Self-learner",
+        formExperiencePlaceholder: "Select your level...",
+        formExperienceBeginner: "🌱 Beginner",
+        formExperienceIntermediate: "📈 Intermediate",
+        formExperienceAdvanced: "🚀 Advanced",
+        formInterest: "Specific Interest <span style=\"font-style: italic; color: #94a3b8; font-weight: 400;\">(optional)</span>",
+        formInterestPlaceholder: "e.g., Building chatbots with LLMs... / Automating warehouse robots...",
+        formGoal: "What do you want to achieve? <span style=\"font-style: italic; color: #94a3b8; font-weight: 400;\">(optional)</span>",
+        formGoalPlaceholder: "e.g., I want to build AI agents for my startup... / I need to automate workflows at my company...",
+        formSubmit: "Get My Personalized Learning Path",
         
         // Footer
         footer: "© 2025 Thiyanayugi Mariraj | Dortmund, Germany",
@@ -83,7 +77,7 @@ const translations = {
         name: "Thiyanayugi Mariraj",
         tagline: "M.Sc. Automatisierung & Robotik | KI-Ingenieur | Dozent",
         intro: "Mit praktischer Erfahrung in Forschung und Industrie überbrücke ich die Lücke zwischen modernster KI-Forschung und praktischen Ingenieuranwendungen.",
-        ctaButton: "Jetzt Lernen →",
+        ctaButton: "Jetzt lernen →",
         
         // About Me
         aboutMe: "Über Mich",
@@ -116,7 +110,7 @@ const translations = {
         aiTag: "KI/ML",
         
         // Contact Form
-        contactTitle: "Beginnen Wir Ihre Lernreise",
+        contactTitle: "Starten Sie Ihre Lernreise",
         contactSubtitle: "Erzählen Sie mir von sich und ich erstelle einen personalisierten Lernpfad für Sie.",
         formName: "Ihr Name *",
         formEmail: "E-Mail-Adresse *",
@@ -127,26 +121,20 @@ const translations = {
         formTopicBoth: "⚡ Beides",
         formBackground: "Mein Hintergrund *",
         formBackgroundPlaceholder: "Hintergrund auswählen...",
-        formBgStudent: "📚 Student",
-        formBgProfessional: "💼 Berufstätiger",
-        formBgResearcher: "🔬 Forscher",
-        formBgHobbyist: "🎯 Hobbyist/Selbstlerner",
+        formBackgroundStudent: "📚 Student",
+        formBackgroundProfessional: "💼 Berufstätig",
+        formBackgroundCareerChanger: "🔄 Karrierewechsler",
+        formBackgroundHobbyist: "🎯 Hobbyist/Selbstlerner",
         formExperience: "Erfahrungsstufe *",
         formExperiencePlaceholder: "Stufe auswählen...",
-        formExpBeginner: "🌱 Anfänger",
-        formExpIntermediate: "📈 Fortgeschritten",
-        formExpAdvanced: "🚀 Experte",
-        formInterest: "Spezifisches Interesse <span class='optional-text'>(Optional)</span>",
-        formInterestPlaceholder: "z.B., Robotik, Maschinelles Lernen, Industrielle Automatisierung...",
-        formGoal: "Was möchten Sie erreichen? <span class='optional-text'>(Optional)</span>",
-        formGoalPlaceholder: "Was möchten Sie erreichen?",
-        formSubmit: "Nachricht Senden",
-        
-        // Background options
-        formBgStudent: "📚 Student",
-        formBgProfessional: "💼 Berufstätiger",
-        formBgResearcher: "🔬 Forscher",
-        formBgHobbyist: "🎯 Hobbyist/Selbstlerner",
+        formExperienceBeginner: "🌱 Anfänger",
+        formExperienceIntermediate: "📈 Fortgeschritten",
+        formExperienceAdvanced: "🚀 Experte",
+        formInterest: "Spezifisches Interesse <span style=\"font-style: italic; color: #94a3b8; font-weight: 400;\">(optional)</span>",
+        formInterestPlaceholder: "z.B., Chatbots mit LLMs erstellen... / Lagerroboter automatisieren...",
+        formGoal: "Was möchten Sie erreichen? <span style=\"font-style: italic; color: #94a3b8; font-weight: 400;\">(optional)</span>",
+        formGoalPlaceholder: "z.B., Ich möchte KI-Agenten für mein Startup entwickeln... / Ich muss Workflows in meinem Unternehmen automatisieren...",
+        formSubmit: "Meinen personalisierten Lernpfad erhalten",
         
         // Footer
         footer: "© 2025 Thiyanayugi Mariraj | Dortmund, Deutschland",
@@ -323,12 +311,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             const interestLabel = document.querySelector('label[for="interest"]');
-            if (interestLabel) interestLabel.innerHTML = t.formInterest;
+            if (interestLabel) interestLabel.textContent = t.formInterest;
             const interestInput = document.querySelector('#interest');
             if (interestInput) interestInput.placeholder = t.formInterestPlaceholder;
             
             const goalLabel = document.querySelector('label[for="goal"]');
-            if (goalLabel) goalLabel.innerHTML = t.formGoal;
+            if (goalLabel) goalLabel.textContent = t.formGoal;
             const goalInput = document.querySelector('#goal');
             if (goalInput) goalInput.placeholder = t.formGoalPlaceholder;
             

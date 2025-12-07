@@ -406,23 +406,24 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there", lang
                                 </td>
                             </tr>
                         </table>
-                        
+                        <!-- Footer -->
                         <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td class="footer">
 
                                     
-                                    <p class="footer-text" style="color: #94a3b8 !important;">{t['footer_text']}</p>
+                                    <p class="footer-text" style="color: #94a3b8 !important; margin-bottom: 12px;">{t['footer_text']}</p>
                                     
-                                    <div class="footer-links">
-                                        <a href="https://linkedin.com/in/thiyanayugi-mariraj-a2b1b820b">{t['footer_linkedin']}</a>
-                                        <a href="mailto:mariraj.thiyanayugi@gmail.com">{t['footer_contact']}</a>
-                                        <a href="https://calendly.com/mariraj-thiyanayugi/30min">{t['footer_book']}</a>
+                                    <div class="footer-links" style="margin-top: 12px;">
+                                        <a href="https://linkedin.com/in/thiyanayugi-mariraj-a2b1b820b" style="color: #60a5fa !important; text-decoration: none; margin: 0 8px;">{t['footer_linkedin']}</a>
+                                        <span style="color: #475569;">|</span>
+                                        <a href="mailto:mariraj.thiyanayugi@gmail.com" style="color: #60a5fa !important; text-decoration: none; margin: 0 8px;">{t['footer_contact']}</a>
+                                        <span style="color: #475569;">|</span>
+                                        <a href="https://calendly.com/mariraj-thiyanayugi/30min" style="color: #60a5fa !important; text-decoration: none; margin: 0 8px;">{t['footer_book']}</a>
                                     </div>
                                 </td>
                             </tr>
                         </table>
-                        
                     </div>
                 </td>
             </tr>
