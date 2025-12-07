@@ -403,8 +403,8 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there", lang
                                     <table role="presentation" cellspacing="0" cellpadding="0">
                                         <tr>
                                             <td style="vertical-align: top; padding-right: 20px;">
-                                                <div style="width: 70px; height: 70px; border-radius: 50%; overflow: hidden; border: 3px solid #3b82f6;">
-                                                    <img src="https://teaching-platform-560659035104.europe-west1.run.app/profile.png" alt="Thiyanayugi Mariraj" style="width: 100%; height: 100%; object-fit: cover; object-position: center 20%; transform: scale(1.6);">
+                                                <div style="width: 70px; height: 70px; border-radius: 50%; overflow: hidden; border: 3px solid #3b82f6; position: relative;">
+                                                    <img src="https://teaching-platform-560659035104.europe-west1.run.app/profile.png" alt="Thiyanayugi Mariraj" style="width: 112px; height: 112px; max-width: none; margin-left: -21px; margin-top: -10px; object-fit: cover;">
                                                 </div>
                                             </td>
                                             <td style="vertical-align: middle;">
