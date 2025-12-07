@@ -107,5 +107,94 @@ Submitted at: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
         traceback.print_exc()
         return jsonify({'success': False, 'message': str(e)}), 500
 
+
+@app.route('/api/chat', methods=['POST'])
+def handle_chat():
+    """Handle chatbot messages using Claude AI"""
+    try:
+        data = request.json
+        user_message = data.get('message', '').strip()
+        
+        if not user_message:
+            return jsonify({'success': False, 'message': 'Message is required'}), 400
+        
+        print(f"💬 Chatbot question: {user_message}")
+        
+        # Create context about the teaching services
+        context = """You are an AI assistant for Thiyanayugi Mariraj's teaching platform. 
+
+About Thiyanayugi:
+- M.Sc. student in Automation & Robotics at TU Dortmund, Germany
+- Specializes in AI-driven automation, multi-agent systems, and robotics
+- Offers personalized 1-on-1 teaching in AI and Automation
+
+Courses Offered:
+1. AI & Machine Learning:
+   - Large Language Models (LLMs) and AI Agents
+   - Neural Networks and Deep Learning
+   - Computer Vision and NLP
+   - Prompt Engineering
+   - AI Integration in real-world applications
+
+2. Automation:
+   - Process Automation and Workflow Optimization
+   - Python Automation Scripts
+   - API Integration and Web Scraping
+   - Task Automation and Scheduling
+
+Teaching Approach:
+- Personalized 1-on-1 sessions tailored to student's background and goals
+- Hands-on, project-based learning
+- Focus on practical, real-world applications
+- Flexible scheduling
+- Both English and German language support
+
+Getting Started:
+- Students fill out a form with their background, experience level, and goals
+- Receive a personalized learning path via email
+- Book a free 30-minute consultation call via Calendly
+- Flexible pricing based on student needs
+
+Contact:
+- Email: mariraj.thiyanayugi@gmail.com
+- LinkedIn: linkedin.com/in/thiyanayugi-mariraj-a2b1b820b
+- Location: Dortmund, Germany
+
+Answer the user's question in a friendly, helpful, and concise manner. Keep responses under 150 words. 
+If asked about pricing, mention it's flexible and personalized based on needs.
+If asked to book or get started, encourage them to fill out the form on the page or book a free consultation."""
+
+        # Generate response using Claude
+        
+        client = Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))
+        
+        response = client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=300,
+            messages=[
+                {
+                    "role": "user",
+                    "content": f"{context}\n\nUser question: {user_message}\n\nProvide a helpful, concise response:"
+                }
+            ]
+        )
+        
+        bot_response = response.content[0].text
+        print(f"🤖 Bot response: {bot_response[:100]}...")
+        
+        return jsonify({
+            'success': True,
+            'response': bot_response
+        })
+        
+    except Exception as e:
+        print(f"❌ Chatbot error: {type(e).__name__}: {str(e)}")
+        return jsonify({
+            'success': False,
+            'message': 'Sorry, I encountered an error. Please try again or use the contact form.'
+        }), 500
+
+
 if __name__ == '__main__':
+    print(f"🚀 Starting server on port {PORT}...")
     app.run(host='0.0.0.0', port=PORT, debug=True)
