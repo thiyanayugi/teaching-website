@@ -14,6 +14,7 @@
     -webkit-backface-visibility: visible !important;
 }
 
+/* Toggle Button */
 .chatbot-button {
     width: 60px;
     height: 60px;
@@ -30,8 +31,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
     position: relative;
+    z-index: 2147483649; /* Higher than window initially */
 }
 
 .chatbot-button:hover {
@@ -45,8 +47,9 @@
 }
 
 .chatbot-button.active {
-    background: rgba(239, 68, 68, 0.15);
-    border-color: rgba(239, 68, 68, 0.3);
+    transform: scale(0) rotate(90deg);
+    opacity: 0;
+    pointer-events: none;
 }
 
 .chatbot-button svg {
@@ -67,38 +70,60 @@
     }
 }
 
+/* Chat Window - Morphing Animation */
 .chatbot-window {
-    position: absolute;
-    bottom: 80px;
-    right: 0;
-    width: 380px;
-    height: 550px;
+    position: fixed !important;
+    bottom: 30px;
+    right: 30px;
+    width: 60px; /* Start as button size */
+    height: 60px; /* Start as button size */
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(20px);
-    border-radius: 20px;
+    border-radius: 50%; /* Start round */
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-    display: flex; /* Changed from none to flex to allow transitions */
+    display: flex;
     flex-direction: column;
     overflow: hidden;
     border: 1px solid rgba(59, 130, 246, 0.2);
+    z-index: 2147483648;
     
-    /* Smooth Animation Properties */
+    /* Morphing Properties */
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transform: translateY(20px) scale(0.9);
     transform-origin: bottom right;
-    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1); /* Apple-style spring ease */
+    transition: 
+        width 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+        height 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+        border-radius 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+        bottom 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+        right 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+        opacity 0.3s ease,
+        visibility 0.3s ease;
 }
 
 .chatbot-window.active {
+    width: 380px;
+    height: 550px;
+    bottom: 100px; /* Move up slightly */
+    right: 30px;
+    border-radius: 20px;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transform: translateY(0) scale(1);
 }
 
-/* Removed keyframes as we use transitions now */
+/* Fade in content with delay */
+.chatbot-window > * {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    transition-delay: 0.1s;
+}
+
+.chatbot-window.active > * {
+    opacity: 1;
+    transition-delay: 0.2s;
+}
 
 .chatbot-header {
     background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
