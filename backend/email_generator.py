@@ -40,7 +40,7 @@ YOUR EXPERTISE IN THIS AREA:
 - Past Projects: {selected['projects']}
 
 WRITE A PERSONALIZED EMAIL THAT:
-1. Starts directly with the main content (NO greeting like "Hi [Name]" - the template already has "Hello {name}!")
+1. Starts directly with the main content (NO greeting like "Hi [Name]" - the template already has "Hello {{name}}!")
 2. Shows genuine excitement about their specific interest and learning goals
 3. Acknowledges their background and experience level positively
 4. Suggests 2-3 concrete, actionable learning paths or project ideas tailored to their level
