@@ -32,7 +32,7 @@ class AIChatbot {
                 <div class="chatbot-window" id="chatbot-window">
                     <div class="chatbot-header">
                         <div class="chatbot-header-info">
-                            <div class="chatbot-avatar">🤖</div>
+                            <div class="chatbot-avatar">✨</div>
                             <div class="chatbot-title">
                                 <h3>AI Assistant</h3>
                                 <p>Ask me anything about the courses!</p>
@@ -140,7 +140,7 @@ class AIChatbot {
         const messagesContainer = document.getElementById('chatbot-messages');
         const messageHTML = `
             <div class="message ${message.type}">
-                <div class="message-avatar">${message.type === 'bot' ? '🤖' : '👤'}</div>
+                <div class="message-avatar">${message.type === 'bot' ? '✨' : '👤'}</div>
                 <div class="message-content">
                     ${message.text}
                     <div class="message-time">${this.formatTime(message.time)}</div>
@@ -154,7 +154,7 @@ class AIChatbot {
         const messagesContainer = document.getElementById('chatbot-messages');
         const typingHTML = `
             <div class="message bot typing-message">
-                <div class="message-avatar">🤖</div>
+                <div class="message-avatar">✨</div>
                 <div class="message-content">
                     <div class="typing-indicator">
                         <div class="typing-dot"></div>
