@@ -91,7 +91,7 @@
 .chatbot-window.active {
     width: 380px;
     height: 550px;
-    bottom: 100px; /* Move up slightly */
+    bottom: 20px; /* Lowered from 100px to be more centered/grounded */
     right: 30px;
     border-radius: 20px;
     opacity: 1;
@@ -362,7 +362,7 @@
 .chatbot-button svg {
     width: 22px; /* Reduced from 24px */
     height: 22px;
-    fill: white; /* Changed from gradient to white */
+    fill: white !important; /* Force white fill */
     animation: sparkle 3s ease-in-out infinite; /* Re-enabled sparkle */
 }
 /* Mobile Responsive */
