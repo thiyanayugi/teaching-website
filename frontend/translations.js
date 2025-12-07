@@ -115,20 +115,13 @@ function updateLanguage(lang) {
 document.addEventListener('DOMContentLoaded', () => {
     // Initial update based on current page language
     const currentLang = document.documentElement.lang || 'en';
+    console.log('Initial language:', currentLang);
     updateLanguage(currentLang);
-    
-    // Listen for language changes from the language switcher
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'lang') {
-                const newLang = document.documentElement.lang || 'en';
-                updateLanguage(newLang);
-            }
-        });
-    });
-    
-    observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ['lang']
-    });
+});
+
+// Listen for custom languageChanged event from language-switcher.js
+window.addEventListener('languageChanged', (event) => {
+    const newLang = event.detail.language;
+    console.log('Language changed to:', newLang);
+    updateLanguage(newLang);
 });
