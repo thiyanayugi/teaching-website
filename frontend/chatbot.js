@@ -85,10 +85,12 @@ class AIChatbot {
         const input = document.getElementById('chatbot-input');
         const suggestions = document.querySelectorAll('.suggestion-chip');
         const header = document.querySelector('.chatbot-header');
-        const container = document.querySelector('.chatbot-container');
 
         toggleBtn.addEventListener('click', () => this.toggleChatbot());
-        closeBtn.addEventListener('click', () => this.closeChatbot());
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.closeChatbot();
+        });
         sendBtn.addEventListener('click', () => this.sendMessage());
         input.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') this.sendMessage();
@@ -102,72 +104,80 @@ class AIChatbot {
             });
         });
 
-        // Drag functionality
-        header.addEventListener('mousedown', (e) => {
+        // Make entire header draggable
+        this.makeDraggable(header);
+    }
+
+    makeDraggable(element) {
+        let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        const container = document.querySelector('.chatbot-container');
+
+        element.onmousedown = dragMouseDown;
+        element.ontouchstart = dragTouchStart;
+
+        function dragMouseDown(e) {
             // Don't drag if clicking close button
             if (e.target.closest('.chatbot-close')) return;
-            this.dragStart(e);
-        });
-        document.addEventListener('mousemove', (e) => this.drag(e));
-        document.addEventListener('mouseup', () => this.dragEnd());
+            
+            e.preventDefault();
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            document.onmousemove = elementDrag;
+            element.style.cursor = 'grabbing';
+        }
 
-        // Touch support for mobile
-        header.addEventListener('touchstart', (e) => {
+        function dragTouchStart(e) {
             if (e.target.closest('.chatbot-close')) return;
-            this.dragStart(e);
-        });
-        document.addEventListener('touchmove', (e) => this.drag(e));
-        document.addEventListener('touchend', () => this.dragEnd());
-    }
-
-    dragStart(e) {
-        const container = document.querySelector('.chatbot-container');
-        const rect = container.getBoundingClientRect();
-        
-        if (e.type === 'touchstart') {
-            this.initialX = e.touches[0].clientX - rect.left;
-            this.initialY = e.touches[0].clientY - rect.top;
-        } else {
-            this.initialX = e.clientX - rect.left;
-            this.initialY = e.clientY - rect.top;
+            
+            e.preventDefault();
+            const touch = e.touches[0];
+            pos3 = touch.clientX;
+            pos4 = touch.clientY;
+            document.ontouchend = closeDragElement;
+            document.ontouchmove = elementDragTouch;
+            element.style.cursor = 'grabbing';
         }
 
-        this.isDragging = true;
-        container.style.cursor = 'grabbing';
-        e.preventDefault();
-    }
-
-    drag(e) {
-        if (!this.isDragging) return;
-        
-        e.preventDefault();
-        const container = document.querySelector('.chatbot-container');
-
-        let clientX, clientY;
-        if (e.type === 'touchmove') {
-            clientX = e.touches[0].clientX;
-            clientY = e.touches[0].clientY;
-        } else {
-            clientX = e.clientX;
-            clientY = e.clientY;
+        function elementDrag(e) {
+            e.preventDefault();
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            
+            const newTop = (container.offsetTop - pos2);
+            const newLeft = (container.offsetLeft - pos1);
+            
+            container.style.top = newTop + "px";
+            container.style.left = newLeft + "px";
+            container.style.right = "auto";
+            container.style.marginTop = "0";
         }
 
-        // Calculate new position
-        const newLeft = clientX - this.initialX;
-        const newTop = clientY - this.initialY;
+        function elementDragTouch(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            pos1 = pos3 - touch.clientX;
+            pos2 = pos4 - touch.clientY;
+            pos3 = touch.clientX;
+            pos4 = touch.clientY;
+            
+            const newTop = (container.offsetTop - pos2);
+            const newLeft = (container.offsetLeft - pos1);
+            
+            container.style.top = newTop + "px";
+            container.style.left = newLeft + "px";
+            container.style.right = "auto";
+            container.style.marginTop = "0";
+        }
 
-        // Apply new position
-        container.style.left = newLeft + 'px';
-        container.style.top = newTop + 'px';
-        container.style.right = 'auto';
-        container.style.marginTop = '0';
-    }
-
-    dragEnd() {
-        if (this.isDragging) {
-            this.isDragging = false;
-            const container = document.querySelector('.chatbot-container');
-            container.style.cursor = 'auto';
+        function closeDragElement() {
+            document.onmouseup = null;
+            document.onmousemove = null;
+            document.ontouchend = null;
+            document.ontouchmove = null;
+            element.style.cursor = 'grab';
         }
     }
 
