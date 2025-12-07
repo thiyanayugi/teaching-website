@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="chatbot.css">
     <link rel="stylesheet" href="certifications.css">
+    <link rel="stylesheet" href="interactive-features.css">
 </head>
 
 <body>
@@ -278,17 +279,99 @@
             </div>
 
             <button type="submit" class="submit-btn">
-                <span class="button-text">Send Request</span>
-                <span class="button-loading" style="display: none;">✨ Sending...</span>
+                <span class="btn-text">Get My Personalized Learning Path</span>
+                <span class="btn-icon">✨</span>
             </button>
         </form>
 
-        <div id="success-message" class="success-message" style="display: none;">
-            <div class="success-icon">✉️</div>
-            <h3>Thank you!</h3>
-            <p>A personalized email with learning recommendations has been sent to your inbox.</p>
+        <!-- FAQ Accordion Section -->
+        <div class="faq-section">
+            <h3>❓ Frequently Asked Questions</h3>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How does the personalized learning path work?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>After you submit the form, I'll use AI to analyze your background, experience level, and goals to create a customized learning roadmap. You'll receive a detailed email with specific project ideas, learning resources, and next steps tailored just for you!</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What's included in the 1-on-1 sessions?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Each session is completely personalized to your needs. We'll work on hands-on projects, solve real-world problems, and build practical skills. Sessions include code reviews, project guidance, and direct mentorship from my experience at TU Dortmund and in industry.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How much does it cost?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Pricing is flexible based on your needs and goals. After our free 30-minute consultation, I'll provide a customized quote. I offer student discounts and package deals for multiple sessions.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do you teach in English or German?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>I'm fluent in both! Sessions can be conducted in English (C2 level) or German (B2 level), whichever you're more comfortable with.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How quickly will I receive my personalized learning path?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You'll receive your customized learning path via email within minutes of submitting the form! The AI analyzes your information and generates a detailed, personalized roadmap instantly.</p>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="ai-loader">
+                <div class="loader-brain">
+                    <div class="brain-pulse"></div>
+                    <span class="brain-icon">🧠</span>
+                </div>
+                <div class="loader-text">
+                    <h3>Creating Your Personalized Learning Path...</h3>
+                    <p class="loading-step">Analyzing your background and goals</p>
+                </div>
+                <div class="skeleton-loader">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line short"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal with Confetti -->
+    <div id="success-modal" class="success-modal">
+        <div class="success-content">
+            <div class="success-icon">🎉</div>
+            <h2>Success!</h2>
+            <p>Your personalized learning path is on its way!</p>
+            <p class="success-subtitle">Check your email inbox for your customized roadmap.</p>
+            <button class="success-btn" onclick="closeSuccessModal()">Awesome!</button>
+        </div>
+        <canvas id="confetti-canvas"></canvas>
+    </div>
 
     <!-- Footer -->
     <footer>
