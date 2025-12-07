@@ -130,9 +130,9 @@ const translations = {
         formExperienceBeginner: "🌱 Anfänger",
         formExperienceIntermediate: "📈 Fortgeschritten",
         formExperienceAdvanced: "🚀 Experte",
-        formInterest: "Spezifisches Interesse <span style=\"font-style: italic; color: #94a3b8; font-weight: 400;\">(optional)</span>",
+        formInterest: "Spezifisches Interesse <span class=\"optional-tag\">Optional</span>",
         formInterestPlaceholder: "z.B., Chatbots mit LLMs erstellen... / Lagerroboter automatisieren...",
-        formGoal: "Was möchten Sie erreichen? <span style=\"font-style: italic; color: #94a3b8; font-weight: 400;\">(optional)</span>",
+        formGoal: "Was möchten Sie erreichen? <span class=\"optional-tag\">Optional</span>",
         formGoalPlaceholder: "z.B., Ich möchte KI-Agenten für mein Startup entwickeln... / Ich muss Workflows in meinem Unternehmen automatisieren...",
         formSubmit: "Meinen personalisierten Lernpfad erhalten",
         

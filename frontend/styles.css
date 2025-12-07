@@ -996,6 +996,12 @@ footer p {
     display: block;
 }
 
+.optional-tag {
+    font-style: italic;
+    color: #94a3b8;
+    font-weight: 400;
+}
+
 .form-group input,
 .form-group textarea,
 .contact select {
