@@ -1,9 +1,8 @@
 /* AI Chatbot Widget Styles */
 .chatbot-container {
     position: fixed !important;
+    bottom: 30px !important;
     right: 30px !important;
-    top: 50% !important;
-    margin-top: -275px !important; /* Half of chatbot height (550px/2) */
     z-index: 2147483647 !important; /* Maximum z-index */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     pointer-events: auto !important;
@@ -100,12 +99,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    cursor: grab;
-    user-select: none;
-}
-
-.chatbot-header:active {
-    cursor: grabbing;
 }
 
 .chatbot-header-info {

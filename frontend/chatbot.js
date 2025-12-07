@@ -4,13 +4,6 @@ class AIChatbot {
         this.isOpen = false;
         this.messages = [];
         this.apiUrl = '/api/chat';
-        this.isDragging = false;
-        this.currentX = 0;
-        this.currentY = 0;
-        this.initialX = 0;
-        this.initialY = 0;
-        this.xOffset = 0;
-        this.yOffset = 0;
         this.init();
     }
 
@@ -84,13 +77,9 @@ class AIChatbot {
         const sendBtn = document.getElementById('chatbot-send');
         const input = document.getElementById('chatbot-input');
         const suggestions = document.querySelectorAll('.suggestion-chip');
-        const header = document.querySelector('.chatbot-header');
 
         toggleBtn.addEventListener('click', () => this.toggleChatbot());
-        closeBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            this.closeChatbot();
-        });
+        closeBtn.addEventListener('click', () => this.closeChatbot());
         sendBtn.addEventListener('click', () => this.sendMessage());
         input.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') this.sendMessage();
@@ -103,82 +92,6 @@ class AIChatbot {
                 this.sendMessage();
             });
         });
-
-        // Make entire header draggable
-        this.makeDraggable(header);
-    }
-
-    makeDraggable(element) {
-        let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-        const container = document.querySelector('.chatbot-container');
-
-        element.onmousedown = dragMouseDown;
-        element.ontouchstart = dragTouchStart;
-
-        function dragMouseDown(e) {
-            // Don't drag if clicking close button
-            if (e.target.closest('.chatbot-close')) return;
-            
-            e.preventDefault();
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            document.onmouseup = closeDragElement;
-            document.onmousemove = elementDrag;
-            element.style.cursor = 'grabbing';
-        }
-
-        function dragTouchStart(e) {
-            if (e.target.closest('.chatbot-close')) return;
-            
-            e.preventDefault();
-            const touch = e.touches[0];
-            pos3 = touch.clientX;
-            pos4 = touch.clientY;
-            document.ontouchend = closeDragElement;
-            document.ontouchmove = elementDragTouch;
-            element.style.cursor = 'grabbing';
-        }
-
-        function elementDrag(e) {
-            e.preventDefault();
-            pos1 = pos3 - e.clientX;
-            pos2 = pos4 - e.clientY;
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            
-            const newTop = (container.offsetTop - pos2);
-            const newLeft = (container.offsetLeft - pos1);
-            
-            container.style.top = newTop + "px";
-            container.style.left = newLeft + "px";
-            container.style.right = "auto";
-            container.style.marginTop = "0";
-        }
-
-        function elementDragTouch(e) {
-            e.preventDefault();
-            const touch = e.touches[0];
-            pos1 = pos3 - touch.clientX;
-            pos2 = pos4 - touch.clientY;
-            pos3 = touch.clientX;
-            pos4 = touch.clientY;
-            
-            const newTop = (container.offsetTop - pos2);
-            const newLeft = (container.offsetLeft - pos1);
-            
-            container.style.top = newTop + "px";
-            container.style.left = newLeft + "px";
-            container.style.right = "auto";
-            container.style.marginTop = "0";
-        }
-
-        function closeDragElement() {
-            document.onmouseup = null;
-            document.onmousemove = null;
-            document.ontouchend = null;
-            document.ontouchmove = null;
-            element.style.cursor = 'grab';
-        }
     }
 
     toggleChatbot() {
