@@ -603,7 +603,9 @@ footer p {
 }
 
 .about-content.expanded {
-    max-height: 2000px;
+    max-height: none;
+    min-height: 800px; /* Ensure enough space for all content including certifications */
+    padding-bottom: 20px; /* Reduced padding */
     opacity: 1;
 }
 
@@ -752,14 +754,7 @@ footer p {
 
 /* Services Section - Enhanced */
 .services {
-    padding: 80px 5%;
-    background: linear-gradient(135deg, var(--light) 0%, #e0e7ff 100%);
-    position: relative;
-}
-
-.services.about {
-    padding: 80px 5%;
-    padding-bottom: 140px; /* Increased bottom spacing */
+    padding: 3rem 2rem;
     background: var(--light);
     position: relative;
 }

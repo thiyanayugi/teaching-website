@@ -160,14 +160,14 @@ def send_email(to_email: str, subject: str, body: str):
             text-align: center;
         }}
         .header h1 {{
-            color: #ffffff;
+            color: #ffffff !important;
             font-size: 28px;
             font-weight: 700;
             margin: 0 0 12px;
             letter-spacing: -0.5px;
         }}
         .header p {{
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.9) !important;
             font-size: 16px;
             margin: 0;
         }}
@@ -266,7 +266,7 @@ def send_email(to_email: str, subject: str, body: str):
             font-weight: 600;
         }}
         .footer-text {{
-            color: #94a3b8;
+            color: #94a3b8 !important;
             font-size: 13px;
             margin: 0 0 8px;
         }}
@@ -274,10 +274,14 @@ def send_email(to_email: str, subject: str, body: str):
             margin-top: 15px;
         }}
         .footer-links a {{
-            color: #60a5fa;
+            color: #60a5fa !important;
             text-decoration: none;
             font-size: 13px;
             margin: 0 12px;
+        }}
+        .footer-links a:hover {{
+            color: #93c5fd !important;
+            text-decoration: underline;
         }}
         
         @media only screen and (max-width: 600px) {{
@@ -320,7 +324,7 @@ def send_email(to_email: str, subject: str, body: str):
                             <tr>
                                 <td class="content">
                                     <p class="greeting">WELCOME</p>
-                                    <p class="recipient-name">Hello there! 👋</p>
+                                    <p class="recipient-name">Hello {name}! 👋</p>
                                     
                                     <div class="message-body">{body}</div>
                                     
@@ -372,11 +376,7 @@ def send_email(to_email: str, subject: str, body: str):
                         <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td class="footer">
-                                    <div class="social-links">
-                                        <a href="https://linkedin.com/in/thiyanayugi-mariraj-a2b1b820b" target="_blank">
-                                            <span>in</span>
-                                        </a>
-                                    </div>
+
                                     
                                     <p class="footer-text">© 2025 Thiyanayugi Mariraj | Dortmund, Germany</p>
                                     

@@ -1,9 +1,9 @@
 /* Certifications Section */
 .certifications-section {
     margin-top: 60px;
-    margin-bottom: 150px; /* Increased for hover animation visibility */
+    margin-bottom: 30px;
     padding-top: 40px;
-    padding-bottom: 60px; /* Increased padding for extra space */
+    padding-bottom: 20px;
     border-top: 2px solid rgba(59, 130, 246, 0.2);
 }
 
