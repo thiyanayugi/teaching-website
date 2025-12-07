@@ -579,6 +579,7 @@ footer p {
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255,255,255,0.6);
     border-top: none;
+    border-bottom: none; /* Remove bottom border to avoid double border with certifications */
     border-radius: 0 0 25px 25px;
     box-shadow:
         0 8px 24px rgba(0,0,0,0.08),
@@ -614,8 +615,11 @@ footer p {
     backdrop-filter: blur(20px);
     padding: 3rem;
     border-radius: 20px;
-    /* Removed box-shadow and border to prevent double border with certifications */
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        0 0 20px rgba(59, 130, 246, 0.05);
     margin-top: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .intro-text {
@@ -670,75 +674,10 @@ footer p {
     text-align: center;
 }
 
-/* Carousel Container */
-.carousel-container {
-    position: relative;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0 60px;
-}
-
-.competencies-carousel {
-    display: flex;
-    overflow: hidden;
-    scroll-behavior: smooth;
+.competencies-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-    color: white;
-    border: none;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 10;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.carousel-btn:hover {
-    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 6px 16px rgba(30, 64, 175, 0.4);
-}
-
-.carousel-prev {
-    left: 0;
-}
-
-.carousel-next {
-    right: 0;
-}
-
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 30px;
-}
-
-.carousel-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(30, 64, 175, 0.3);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.carousel-dot.active {
-    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-    transform: scale(1.2);
 }
 
 .competency-card {
@@ -749,8 +688,6 @@ footer p {
     transition: all 0.3s;
     position: relative;
     overflow: hidden;
-    min-width: calc(50% - 1rem);
-    flex-shrink: 0;
 }
 
 .competency-card::before {
