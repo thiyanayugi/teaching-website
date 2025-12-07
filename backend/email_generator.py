@@ -40,7 +40,7 @@ YOUR EXPERTISE IN THIS AREA:
 - Past Projects: {selected['projects']}
 
 WRITE A PERSONALIZED EMAIL THAT:
-1. Starts with an enthusiastic greeting using their name
+1. Starts directly with the main content (NO greeting like "Hi [Name]" - the template already has "Hello {name}!")
 2. Shows genuine excitement about their specific interest and learning goals
 3. Acknowledges their background and experience level positively
 4. Suggests 2-3 concrete, actionable learning paths or project ideas tailored to their level
@@ -50,20 +50,13 @@ WRITE A PERSONALIZED EMAIL THAT:
 8. Is concise (250-350 words)
 
 CRITICAL FORMATTING RULES:
+- DO NOT include any greeting (no "Hi", "Hello", "Dear", etc.) - start directly with the content
 - DO NOT include a subject line in the email body
 - DO NOT mention Calendly or booking links in the email content (this will be added automatically in the template)
 - For emphasis, wrap important words/phrases in <b></b> HTML tags (e.g., <b>important term</b>)
 - Use line breaks and spacing for visual clarity
 - Keep paragraphs short (2-3 sentences max)
 - Use bullet points with - or • for lists
-- Capitalise first letter for important words.
-
-STRUCTURE:
-- Warm greeting with their name
-- Express excitement about their specific interest
-- 2-3 specific suggestions or learning paths (use <b></b> for key terms)
-- Brief mention of your relevant experience
-- Encouraging closing statement (NO mention of booking/Calendly)
 
 DO NOT include any sign-off or signature - this will be added automatically."""
 
@@ -314,8 +307,8 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there"):
                             <tr>
                                 <td class="header">
 
-                                    <h1>Your Learning Journey Starts Here!</h1>
-                                    <p>Personalized AI & Automation Guidance</p>
+                                    <h1 style="color: #ffffff !important;">Your Learning Journey Starts Here!</h1>
+                                    <p style="color: rgba(255, 255, 255, 0.9) !important;">Personalized AI & Automation Guidance</p>
                                 </td>
                             </tr>
                         </table>
@@ -378,7 +371,7 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there"):
                                 <td class="footer">
 
                                     
-                                    <p class="footer-text">© 2025 Thiyanayugi Mariraj | Dortmund, Germany</p>
+                                    <p class="footer-text" style="color: #94a3b8 !important;">© 2025 Thiyanayugi Mariraj | Dortmund, Germany</p>
                                     
                                     <div class="footer-links">
                                         <a href="https://linkedin.com/in/thiyanayugi-mariraj-a2b1b820b">LinkedIn</a>
