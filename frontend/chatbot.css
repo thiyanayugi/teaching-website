@@ -352,10 +352,10 @@
 }
 
 .chatbot-button svg {
-    width: 24px;
-    height: 24px;
-    fill: url(#bot-gradient);
-    /* Removed sparkle animation for cleaner look */
+    width: 22px; /* Reduced from 24px */
+    height: 22px;
+    fill: white; /* Changed from gradient to white */
+    animation: sparkle 3s ease-in-out infinite; /* Re-enabled sparkle */
 }
 /* Mobile Responsive */
 @media (max-width: 768px) {
