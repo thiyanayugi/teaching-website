@@ -1,5 +1,5 @@
-// Multi-language translations
-const translations = {
+// Multi-language translations for FAQ, loading, and success modal
+const faqTranslations = {
     en: {
         faq: {
             title: "❓ Frequently Asked Questions",
@@ -78,7 +78,7 @@ const translations = {
 
 // Update FAQ content based on language
 function updateLanguage(lang) {
-    const t = translations[lang] || translations.en;
+    const t = faqTranslations[lang] || faqTranslations.en;
     
     // Update FAQ
     const faqTitle = document.querySelector('.faq-section h3');
