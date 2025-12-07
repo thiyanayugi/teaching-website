@@ -17,6 +17,8 @@
 }
 
 /* Hardware acceleration for smooth animations */
+/* DISABLED - breaks position:fixed for chatbot */
+/*
 *,
 *::before,
 *::after {
@@ -25,6 +27,7 @@
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
+*/
 
 /* Advanced Animations */
 @keyframes float {
@@ -125,7 +128,7 @@ body {
     color: var(--dark);
     background: var(--light);
     overflow-x: hidden;
-    position: relative;
+    /* position: relative; */ /* REMOVED - breaks position:fixed for chatbot */
 }
 
 /* Animated Background Particles */

@@ -8,6 +8,9 @@
     pointer-events: auto !important;
     transform: none !important; /* Override global translateZ that breaks fixed positioning */
     -webkit-transform: none !important;
+    will-change: auto !important;
+    backface-visibility: visible !important;
+    -webkit-backface-visibility: visible !important;
 }
 
 .chatbot-button {
