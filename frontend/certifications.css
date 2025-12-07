@@ -4,7 +4,7 @@
     margin-bottom: 30px;
     padding-top: 40px;
     padding-bottom: 20px;
-    border-top: 2px solid rgba(59, 130, 246, 0.2);
+    /* Removed border-top to avoid double border appearance */
 }
 
 .certifications-section h3 {
