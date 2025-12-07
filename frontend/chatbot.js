@@ -29,7 +29,7 @@ class AIChatbot {
                     <div class="chatbot-header">
                         <div class="chatbot-header-info">
                             <div class="chatbot-avatar">
-                                <img src="avatar.png" alt="AI Assistant" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%; transform: scale(1.3);">
+                                <img src="avatar.png" alt="AI Assistant" style="width: 100%; height: 100%; object-fit: cover; object-position: center 25%; transform: scale(1.6);">
                             </div>
                             <div class="chatbot-title">
                                 <h3>AI Assistant</h3>
@@ -234,9 +234,12 @@ class AIChatbot {
 
     renderMessage(message) {
         const messagesContainer = document.getElementById('chatbot-messages');
+        const avatarHTML = message.type === 'bot' 
+            ? '<img src="avatar.png" alt="AI" style="width: 100%; height: 100%; object-fit: cover; object-position: center 25%; transform: scale(1.6);">'
+            : '👤';
         const messageHTML = `
             <div class="message ${message.type}">
-                <div class="message-avatar">${message.type === 'bot' ? '✨' : '👤'}</div>
+                <div class="message-avatar">${avatarHTML}</div>
                 <div class="message-content">
                     ${message.text}
                     <div class="message-time">${this.formatTime(message.time)}</div>
