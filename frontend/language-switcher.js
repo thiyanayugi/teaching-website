@@ -59,9 +59,9 @@ const translations = {
         formExpBeginner: "🌱 Beginner",
         formExpIntermediate: "📈 Intermediate",
         formExpAdvanced: "🚀 Advanced",
-        formInterest: "Specific Interest (Optional)",
+        formInterest: "Specific Interest <span class='optional-text'>(Optional)</span>",
         formInterestPlaceholder: "e.g., Robotics, Machine Learning, Industrial Automation...",
-        formGoal: "What do you want to achieve? (Optional)",
+        formGoal: "What do you want to achieve? <span class='optional-text'>(Optional)</span>",
         formGoalPlaceholder: "What do you hope to achieve?",
         formSubmit: "Send Message",
         
@@ -136,9 +136,9 @@ const translations = {
         formExpBeginner: "🌱 Anfänger",
         formExpIntermediate: "📈 Fortgeschritten",
         formExpAdvanced: "🚀 Experte",
-        formInterest: "Spezifisches Interesse (Optional)",
+        formInterest: "Spezifisches Interesse <span class='optional-text'>(Optional)</span>",
         formInterestPlaceholder: "z.B., Robotik, Maschinelles Lernen, Industrielle Automatisierung...",
-        formGoal: "Was möchten Sie erreichen? (Optional)",
+        formGoal: "Was möchten Sie erreichen? <span class='optional-text'>(Optional)</span>",
         formGoalPlaceholder: "Was möchten Sie erreichen?",
         formSubmit: "Nachricht Senden",
         

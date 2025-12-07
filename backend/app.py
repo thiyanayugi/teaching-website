@@ -11,6 +11,7 @@ import re
 import html
 from anthropic import Anthropic
 from email_generator import generate_personalized_email, send_email
+from database import db, Submission
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -23,7 +24,12 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', os.urandom(32))
 app.config['WTF_CSRF_ENABLED'] = True
 app.config['WTF_CSRF_TIME_LIMIT'] = None  # No time limit for CSRF tokens
 
-# Initialize security extensions
+# Database Configuration
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///submissions.db')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Initialize extensions
+db.init_app(app)
 csrf = CSRFProtect(app)
 limiter = Limiter(
     app=app,
@@ -229,7 +235,31 @@ Submitted at: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
             import traceback
             traceback.print_exc()
         
-        return jsonify({'success': True, 'message': 'Email sent successfully'})
+        # Save submission to database
+        try:
+            submission = Submission(
+                name=data['name'],
+                email=data['email'],
+                topic=data['topic'],
+                language=data.get('language', 'en'),
+                background=data['background'],
+                experience=data['experience'],
+                interest=data.get('interest', ''),
+                goal=data.get('goal', ''),
+                email_sent=True
+            )
+            db.session.add(submission)
+            db.session.commit()
+            print(f"✅ Submission saved to database (ID: {submission.id})")
+        except Exception as e:
+            print(f"⚠️ Database save error: {str(e)}")
+            # Don't fail the request if database save fails
+            db.session.rollback()
+        
+        return jsonify({
+            'success': True, 
+            'message': 'Your personalized learning path has been sent to your email!'
+        })
     
     except Exception as e:
         print(f"❌ Unexpected error: {type(e).__name__}: {str(e)}")
@@ -331,5 +361,10 @@ If asked to get started, encourage filling out the form or booking a free consul
 
 
 if __name__ == '__main__':
+    # Create database tables if they don't exist
+    with app.app_context():
+        db.create_all()
+        print("✅ Database tables created/verified")
+    
     print(f"🚀 Starting server on port {PORT}...")
     app.run(host='0.0.0.0', port=PORT, debug=True)
