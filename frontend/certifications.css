@@ -1,7 +1,7 @@
 /* Certifications Section */
 .certifications-section {
     margin-top: 60px;
-    margin-bottom: 0; /* Removed to avoid double spacing with about-text padding */
+    margin-bottom: 20px; /* Removed to avoid double spacing with about-text padding */
     padding-top: 40px;
     padding-bottom: 0; /* Removed to avoid double spacing with about-text padding */
     /* Removed border-top to avoid double border appearance */

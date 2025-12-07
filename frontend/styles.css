@@ -458,6 +458,7 @@ footer p {
 .about {
     padding: 3rem 2rem;
     background: var(--light);
+    
 }
 
 .about-container {
@@ -497,7 +498,7 @@ footer p {
     max-width: 100%;
     border-radius: 25px 25px 0 0;
     margin-bottom: 0;
-    padding: 2rem 3rem;
+    padding: 2rem 2rem;
 }
 
 .about-header:hover,
