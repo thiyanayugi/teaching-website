@@ -103,30 +103,41 @@ class AIChatbot {
         });
 
         // Drag functionality
-        header.addEventListener('mousedown', (e) => this.dragStart(e));
+        header.addEventListener('mousedown', (e) => {
+            // Don't drag if clicking close button
+            if (e.target.closest('.chatbot-close')) return;
+            this.dragStart(e);
+        });
         document.addEventListener('mousemove', (e) => this.drag(e));
         document.addEventListener('mouseup', () => this.dragEnd());
 
         // Touch support for mobile
-        header.addEventListener('touchstart', (e) => this.dragStart(e));
+        header.addEventListener('touchstart', (e) => {
+            if (e.target.closest('.chatbot-close')) return;
+            this.dragStart(e);
+        });
         document.addEventListener('touchmove', (e) => this.drag(e));
         document.addEventListener('touchend', () => this.dragEnd());
     }
 
     dragStart(e) {
         const container = document.querySelector('.chatbot-container');
+        
+        // Get current transform values
+        const style = window.getComputedStyle(container);
+        const matrix = new DOMMatrix(style.transform);
+        
         if (e.type === 'touchstart') {
-            this.initialX = e.touches[0].clientX - this.xOffset;
-            this.initialY = e.touches[0].clientY - this.yOffset;
+            this.initialX = e.touches[0].clientX - matrix.m41;
+            this.initialY = e.touches[0].clientY - matrix.m42;
         } else {
-            this.initialX = e.clientX - this.xOffset;
-            this.initialY = e.clientY - this.yOffset;
+            this.initialX = e.clientX - matrix.m41;
+            this.initialY = e.clientY - matrix.m42;
         }
 
-        if (e.target.closest('.chatbot-header')) {
-            this.isDragging = true;
-            container.style.cursor = 'grabbing';
-        }
+        this.isDragging = true;
+        container.style.cursor = 'grabbing';
+        e.preventDefault();
     }
 
     drag(e) {
