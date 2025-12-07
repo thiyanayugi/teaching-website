@@ -62,7 +62,7 @@ CRITICAL FORMATTING RULES:
 - DO NOT include any greeting (no "Hi", "Hello", "Dear", etc.) - start directly with the content
 - DO NOT include a subject line in the email body
 - DO NOT mention Calendly or booking links in the email content (this will be added automatically in the template)
-- For emphasis, wrap important words/phrases in <b></b> HTML tags (e.g., <b>important term</b>)
+- **STRICTLY FORBIDDEN:** Do NOT use markdown bolding (like **text**). You MUST use HTML <b>text</b> tags for emphasis.
 - Use line breaks and spacing for visual clarity
 - Keep paragraphs short (2-3 sentences max)
 - Use bullet points with - or • for lists
@@ -403,7 +403,9 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there", lang
                                     <table role="presentation" cellspacing="0" cellpadding="0">
                                         <tr>
                                             <td style="vertical-align: top; padding-right: 20px;">
-                                                <img src="https://teaching-platform-560659035104.europe-west1.run.app/profile.png" alt="Thiyanayugi Mariraj" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; object-position: center 30%; border: 3px solid #3b82f6;">
+                                                <div style="width: 70px; height: 70px; border-radius: 50%; overflow: hidden; border: 3px solid #3b82f6;">
+                                                    <img src="https://teaching-platform-560659035104.europe-west1.run.app/profile.png" alt="Thiyanayugi Mariraj" style="width: 100%; height: 100%; object-fit: cover; object-position: center 20%; transform: scale(1.6);">
+                                                </div>
                                             </td>
                                             <td style="vertical-align: middle;">
                                                 <h4 style="color: #0f172a; font-size: 18px; font-weight: 700; margin: 0 0 4px;">Thiyanayugi Mariraj</h4>
