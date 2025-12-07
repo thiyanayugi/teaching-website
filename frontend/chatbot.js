@@ -166,14 +166,12 @@ class AIChatbot {
 
         // Click outside to close
         document.addEventListener('click', (e) => {
-            // Ignore clicks if we just finished dragging
-            const dragDuration = new Date().getTime() - dragStartTime;
-            if (isDragging || dragDuration > 200) return;
+            // If we are currently dragging, don't close
+            if (isDragging) return;
 
-            const isClickInside = this.chatbotWindow.contains(e.target);
-            const isClickOnButton = this.toggleBtn.contains(e.target);
+            const isClickInside = this.chatbotContainer.contains(e.target);
             
-            if (this.isOpen && !isClickInside && !isClickOnButton) {
+            if (this.isOpen && !isClickInside) {
                 this.toggleChatbot();
             }
         });
