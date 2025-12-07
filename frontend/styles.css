@@ -606,14 +606,14 @@ footer p {
 .about-content.expanded {
     max-height: none;
     min-height: 800px; /* Ensure enough space for all content including certifications */
-    padding-bottom: 3rem; /* Increased from 20px to match top spacing */
+    padding-bottom: 2rem; /* Reduced to sync with certifications spacing */
     opacity: 1;
 }
 
 .about-text {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(20px);
-    padding: 3rem 0; /* Top/bottom padding, no left/right to align with certifications */
+    padding: 3rem;
     border-radius: 20px;
     box-shadow: 
         0 8px 32px rgba(0, 0, 0, 0.1),
