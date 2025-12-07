@@ -6,6 +6,8 @@
     z-index: 2147483647 !important; /* Maximum z-index */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     pointer-events: auto !important;
+    transform: none !important; /* Override global translateZ that breaks fixed positioning */
+    -webkit-transform: none !important;
 }
 
 .chatbot-button {
