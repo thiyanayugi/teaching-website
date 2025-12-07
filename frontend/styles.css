@@ -607,7 +607,7 @@ footer p {
 .about-content.expanded {
     max-height: none;
     min-height: 800px; /* Ensure enough space for all content including certifications */
-    padding-bottom: 2rem; /* Reduced to sync with certifications spacing */
+    padding-bottom: 0; /* Removed to match services section */
     opacity: 1;
 }
 
@@ -619,7 +619,7 @@ footer p {
     box-shadow: 
         0 8px 32px rgba(0, 0, 0, 0.1),
         0 0 20px rgba(59, 130, 246, 0.05);
-    margin-top: 2rem;
+    /* Removed margin-top to match services section */
     /* Removed border to avoid double border with certifications section */
 }
 
