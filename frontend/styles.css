@@ -757,6 +757,13 @@ footer p {
     position: relative;
 }
 
+.services.about {
+    padding: 80px 5%;
+    padding-bottom: 140px; /* Increased bottom spacing */
+    background: var(--light);
+    position: relative;
+}
+
 .services-content {
     max-height: 0;
     overflow: hidden;
