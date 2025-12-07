@@ -752,8 +752,8 @@ footer p {
 
 /* Services Section - Enhanced */
 .services {
-    padding: 3rem 2rem;
-    background: var(--light);
+    padding: 80px 5%;
+    background: linear-gradient(135deg, var(--light) 0%, #e0e7ff 100%);
     position: relative;
 }
 
