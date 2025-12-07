@@ -79,6 +79,10 @@ DO NOT include any sign-off or signature - this will be added automatically."""
     
     return message.content[0].text
 
+def import_uuid():
+    """Helper to generate UUID for email uniqueness."""
+    import uuid
+    return str(uuid.uuid4())
 
 def send_email(to_email: str, subject: str, body: str, name: str = "there", language: str = "en"):
     """Send email via Gmail SMTP."""
@@ -428,6 +432,12 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there", lang
                 </td>
             </tr>
         </table>
+        </table>
+        
+        <!-- Invisible unique ID to prevent Gmail truncation/threading -->
+        <div style="display: none; max-height: 0px; overflow: hidden; color: transparent; font-size: 0px; line-height: 0px; opacity: 0;">
+            {import_uuid()}
+        </div>
     </div>
 </body>
 </html>
