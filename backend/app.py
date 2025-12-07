@@ -1,7 +1,14 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
+from flask_wtf.csrf import CSRFProtect
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+from wtforms import Form, StringField, SelectField, TextAreaField, validators
+from email_validator import validate_email, EmailNotValidError
 import os
 import datetime
+import re
+import html
 from anthropic import Anthropic
 from email_generator import generate_personalized_email, send_email
 from dotenv import load_dotenv
@@ -10,13 +17,96 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__, static_folder='../frontend', static_url_path='')
-CORS(app)
+
+# Security Configuration
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', os.urandom(32))
+app.config['WTF_CSRF_ENABLED'] = True
+app.config['WTF_CSRF_TIME_LIMIT'] = None  # No time limit for CSRF tokens
+
+# Initialize security extensions
+csrf = CSRFProtect(app)
+limiter = Limiter(
+    app=app,
+    key_func=get_remote_address,
+    default_limits=["200 per day", "50 per hour"],
+    storage_uri="memory://"
+)
+
+# CORS configuration - restrict in production
+CORS(app, resources={
+    r"/api/*": {
+        "origins": ["http://localhost:5000", "https://teaching-platform-560659035104.europe-west1.run.app"],
+        "methods": ["GET", "POST"],
+        "allow_headers": ["Content-Type", "X-CSRFToken"]
+    }
+})
 
 # Initialize Anthropic client
 anthropic_client = Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))
 
-# Get port from environment variable (Railway sets this)
+# Get port from environment variable
 PORT = int(os.environ.get('PORT', 5000))
+
+# Security headers middleware
+@app.after_request
+def set_security_headers(response):
+    response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-XSS-Protection'] = '1; mode=block'
+    response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
+    return response
+
+# Input validation form
+class ContactForm(Form):
+    name = StringField('Name', [
+        validators.DataRequired(message="Name is required"),
+        validators.Length(min=2, max=100, message="Name must be between 2 and 100 characters")
+    ])
+    email = StringField('Email', [
+        validators.DataRequired(message="Email is required"),
+        validators.Email(message="Invalid email address")
+    ])
+    topic = SelectField('Topic', [
+        validators.DataRequired(message="Topic is required")
+    ], choices=[('automation', 'Automation'), ('ai', 'AI'), ('both', 'Both')])
+    language = StringField('Language', [
+        validators.Optional()
+    ])
+    background = SelectField('Background', [
+        validators.DataRequired(message="Background is required")
+    ], choices=[('student', 'Student'), ('professional', 'Professional'), ('researcher', 'Researcher'), ('hobbyist', 'Hobbyist')])
+    experience = SelectField('Experience', [
+        validators.DataRequired(message="Experience level is required")
+    ], choices=[('beginner', 'Beginner'), ('intermediate', 'Intermediate'), ('advanced', 'Advanced')])
+    interest = TextAreaField('Interest', [
+        validators.Optional(),
+        validators.Length(max=500, message="Interest must be less than 500 characters")
+    ])
+    goal = TextAreaField('Goal', [
+        validators.Optional(),
+        validators.Length(max=1000, message="Goal must be less than 1000 characters")
+    ])
+
+def sanitize_input(text):
+    """Sanitize user input to prevent XSS and injection attacks"""
+    if not text:
+        return text
+    # Remove any HTML tags
+    text = re.sub(r'<[^>]+>', '', text)
+    # Escape HTML entities
+    text = html.escape(text)
+    # Remove excessive whitespace
+    text = ' '.join(text.split())
+    return text
+
+def validate_email_address(email):
+    """Validate email address format"""
+    try:
+        # Validate and normalize email
+        valid = validate_email(email, check_deliverability=False)
+        return valid.email
+    except EmailNotValidError as e:
+        raise ValueError(f"Invalid email: {str(e)}")
 
 @app.route('/')
 def index():
@@ -27,16 +117,44 @@ def serve_static(path):
     return send_from_directory(app.static_folder, path)
 
 @app.route('/api/submit', methods=['POST'])
+@limiter.limit("5 per hour")  # Rate limit: 5 submissions per hour per IP
 def handle_submission():
     try:
         data = request.json
+        if not data:
+            return jsonify({'success': False, 'message': 'No data provided'}), 400
+        
         print(f"📥 Received form submission from: {data.get('email')}")
         
-        # Validate required fields
-        required_fields = ['name', 'email', 'topic', 'background', 'experience']
-        for field in required_fields:
-            if not data.get(field):
-                return jsonify({'success': False, 'message': f'Missing required field: {field}'}), 400
+        # Validate form data using WTForms
+        form = ContactForm(data=data)
+        if not form.validate():
+            errors = {field.name: field.errors for field in form if field.errors}
+            print(f"❌ Validation errors: {errors}")
+            return jsonify({
+                'success': False, 
+                'message': 'Validation failed',
+                'errors': errors
+            }), 400
+        
+        # Validate and normalize email
+        try:
+            validated_email = validate_email_address(data['email'])
+            data['email'] = validated_email
+        except ValueError as e:
+            print(f"❌ Email validation error: {str(e)}")
+            return jsonify({'success': False, 'message': str(e)}), 400
+        
+        # Sanitize text inputs
+        data['name'] = sanitize_input(data.get('name', ''))
+        data['interest'] = sanitize_input(data.get('interest', ''))
+        data['goal'] = sanitize_input(data.get('goal', ''))
+        
+        # Validate language code
+        if data.get('language') and data['language'] not in ['en', 'de']:
+            data['language'] = 'en'  # Default to English if invalid
+        
+        print(f"✅ Validation passed for: {data['name']} ({data['email']})")
         
         # Generate personalized email using Claude
         print("🤖 Calling Anthropic API to generate email...")
@@ -45,7 +163,10 @@ def handle_submission():
             print(f"✅ Email content generated successfully ({len(email_content)} chars)")
         except Exception as e:
             print(f"❌ Anthropic API error: {type(e).__name__}: {str(e)}")
-            return jsonify({'success': False, 'message': f'AI generation failed: {str(e)}'}), 500
+            return jsonify({
+                'success': False, 
+                'message': 'Failed to generate personalized content. Please try again later.'
+            }), 500
         
         # Send the email
         print("📧 Sending email via Gmail SMTP...")
@@ -64,7 +185,10 @@ def handle_submission():
             print("✅ Email sent successfully!")
         except Exception as e:
             print(f"❌ Email sending error: {type(e).__name__}: {str(e)}")
-            return jsonify({'success': False, 'message': f'Email sending failed: {str(e)}'}), 500
+            return jsonify({
+                'success': False, 
+                'message': 'Failed to send email. Please check your email address and try again.'
+            }), 500
         
         # Send notification email to admin (invisible to user)
         try:
