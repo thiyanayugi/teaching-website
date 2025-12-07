@@ -86,7 +86,79 @@ class AIChatbot {
         this.closeIcon = document.getElementById('close-icon');
         const suggestions = document.querySelectorAll('.suggestion-chip');
 
-        this.toggleBtn.addEventListener('click', () => this.toggleChatbot());
+        this.chatbotContainer = document.querySelector('.chatbot-container');
+        this.chatbotHeader = document.querySelector('.chatbot-header');
+        
+        // Drag Logic Variables
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+        let dragStartTime;
+
+        const dragStart = (e) => {
+            if (e.type === "touchstart") {
+                initialX = e.touches[0].clientX - xOffset;
+                initialY = e.touches[0].clientY - yOffset;
+            } else {
+                initialX = e.clientX - xOffset;
+                initialY = e.clientY - yOffset;
+            }
+
+            // Allow dragging from button or header
+            if (this.toggleBtn.contains(e.target) || this.chatbotHeader.contains(e.target)) {
+                isDragging = true;
+                dragStartTime = new Date().getTime();
+            }
+        };
+
+        const dragEnd = (e) => {
+            initialX = currentX;
+            initialY = currentY;
+            isDragging = false;
+        };
+
+        const drag = (e) => {
+            if (isDragging) {
+                e.preventDefault();
+                
+                if (e.type === "touchmove") {
+                    currentX = e.touches[0].clientX - initialX;
+                    currentY = e.touches[0].clientY - initialY;
+                } else {
+                    currentX = e.clientX - initialX;
+                    currentY = e.clientY - initialY;
+                }
+
+                xOffset = currentX;
+                yOffset = currentY;
+
+                setTranslate(currentX, currentY, this.chatbotContainer);
+            }
+        };
+
+        const setTranslate = (xPos, yPos, el) => {
+            el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+        };
+
+        // Attach Drag Listeners
+        this.chatbotContainer.addEventListener("mousedown", dragStart);
+        this.chatbotContainer.addEventListener("touchstart", dragStart, { passive: false });
+        document.addEventListener("mouseup", dragEnd);
+        document.addEventListener("touchend", dragEnd);
+        document.addEventListener("mousemove", drag);
+        document.addEventListener("touchmove", drag, { passive: false });
+
+        this.toggleBtn.addEventListener('click', (e) => {
+            // Only toggle if it was a click (short duration), not a drag
+            const dragDuration = new Date().getTime() - dragStartTime;
+            if (dragDuration < 200) {
+                this.toggleChatbot();
+            }
+        });
         
         // Close button click
         this.closeBtn.addEventListener('click', (e) => {
@@ -96,6 +168,10 @@ class AIChatbot {
 
         // Click outside to close
         document.addEventListener('click', (e) => {
+            // Ignore clicks if we just finished dragging
+            const dragDuration = new Date().getTime() - dragStartTime;
+            if (isDragging || dragDuration > 200) return;
+
             const isClickInside = this.chatbotWindow.contains(e.target);
             const isClickOnButton = this.toggleBtn.contains(e.target);
             
