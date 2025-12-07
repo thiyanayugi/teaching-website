@@ -77,22 +77,46 @@ class AIChatbot {
 
     attachEventListeners() {
         const toggleBtn = document.getElementById('chatbot-toggle');
-        const closeBtn = document.getElementById('chatbot-close');
-        const sendBtn = document.getElementById('chatbot-send');
-        const input = document.getElementById('chatbot-input');
+        this.toggleBtn = document.getElementById('chatbot-toggle');
+        this.closeBtn = document.getElementById('chatbot-close');
+        this.sendBtn = document.getElementById('chatbot-send');
+        this.input = document.getElementById('chatbot-input');
+        this.chatbotWindow = document.getElementById('chatbot-window'); // Assign to property
+        this.chatIcon = document.getElementById('chat-icon');
+        this.closeIcon = document.getElementById('close-icon');
         const suggestions = document.querySelectorAll('.suggestion-chip');
 
-        toggleBtn.addEventListener('click', () => this.toggleChatbot());
-        closeBtn.addEventListener('click', () => this.closeChatbot());
-        sendBtn.addEventListener('click', () => this.sendMessage());
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') this.sendMessage();
+        this.toggleBtn.addEventListener('click', () => this.toggleChatbot());
+        
+        // Close button click
+        this.closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent triggering document click
+            this.toggleChatbot();
+        });
+
+        // Click outside to close
+        document.addEventListener('click', (e) => {
+            const isClickInside = this.chatbotWindow.contains(e.target);
+            const isClickOnButton = this.toggleBtn.contains(e.target);
+            
+            if (this.isOpen && !isClickInside && !isClickOnButton) {
+                this.toggleChatbot();
+            }
+        });
+
+        this.sendBtn.addEventListener('click', () => this.sendMessage());
+        
+        // Send message on Enter key
+        this.input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                this.sendMessage(); // Assuming handleUserInput was a typo and sendMessage is intended
+            }
         });
 
         suggestions.forEach(chip => {
             chip.addEventListener('click', () => {
                 const question = chip.getAttribute('data-question');
-                input.value = question;
+                this.input.value = question; // Use this.input
                 this.sendMessage();
             });
         });
