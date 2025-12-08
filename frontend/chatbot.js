@@ -92,8 +92,14 @@ class AIChatbot {
         let xOffset = 0;
         let yOffset = 0;
         let dragStartTime;
+        
+        // Check if device is mobile
+        const isMobile = () => window.innerWidth <= 768;
 
         const dragStart = (e) => {
+            // Disable dragging on mobile
+            if (isMobile()) return;
+            
             if (e.type === "touchstart") {
                 initialX = e.touches[0].clientX - xOffset;
                 initialY = e.touches[0].clientY - yOffset;
@@ -116,6 +122,9 @@ class AIChatbot {
         };
 
         const drag = (e) => {
+            // Disable dragging on mobile
+            if (isMobile()) return;
+            
             if (isDragging) {
                 e.preventDefault();
                 
