@@ -363,9 +363,9 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there", lang
                         
                         <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td style="text-align: center; padding: 40px 20px;">
-                                    <h1 style="color: white; font-size: 32px; font-weight: 700; margin: 0 0 10px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">{t['header_title']}</h1>
-                                    <p style="color: rgba(255, 255, 255, 0.95); font-size: 18px; margin: 0; font-weight: 500;">{subtitle}</p>
+                                <td class="header">
+                                    <h1 style="color: #ffffff !important;">{t['header_title']}</h1>
+                                    <p style="color: rgba(255, 255, 255, 0.9) !important;">{subtitle}</p>
                                 </td>
                             </tr>
                         </table>
