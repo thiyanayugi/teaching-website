@@ -148,19 +148,26 @@ class AIChatbot {
             el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
         };
 
-        // Attach Drag Listeners
-        this.chatbotContainer.addEventListener("mousedown", dragStart);
-        this.chatbotContainer.addEventListener("touchstart", dragStart, { passive: false });
-        document.addEventListener("mouseup", dragEnd);
-        document.addEventListener("touchend", dragEnd);
-        document.addEventListener("mousemove", drag);
-        document.addEventListener("touchmove", drag, { passive: false });
+        // Attach Drag Listeners (only on desktop)
+        if (window.innerWidth > 768) {
+            this.chatbotContainer.addEventListener("mousedown", dragStart);
+            this.chatbotContainer.addEventListener("touchstart", dragStart, { passive: false });
+            document.addEventListener("mouseup", dragEnd);
+            document.addEventListener("touchend", dragEnd);
+            document.addEventListener("mousemove", drag);
+            document.addEventListener("touchmove", drag, { passive: false });
+        }
 
         this.toggleBtn.addEventListener('click', (e) => {
-            // Only toggle if it was a click (short duration), not a drag
-            const dragDuration = new Date().getTime() - dragStartTime;
-            if (dragDuration < 200) {
+            // On mobile, always toggle. On desktop, check if it was a drag
+            if (window.innerWidth <= 768) {
                 this.toggleChatbot();
+            } else {
+                // Only toggle if it was a click (short duration), not a drag
+                const dragDuration = new Date().getTime() - dragStartTime;
+                if (dragDuration < 200) {
+                    this.toggleChatbot();
+                }
             }
         });
         
