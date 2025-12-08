@@ -447,3 +447,14 @@
         cursor: default !important;
     }
 }
+
+/* MOBILE - HIDE CHATBOT COMPLETELY */
+@media (max-width: 768px) {
+    .chatbot-container {
+        display: none !important;
+    }
+    
+    .chatbot-window {
+        display: none !important;
+    }
+}
