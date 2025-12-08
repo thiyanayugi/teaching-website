@@ -156,7 +156,13 @@ class AIChatbot {
         document.addEventListener("touchmove", drag, { passive: false });
 
         this.toggleBtn.addEventListener('click', (e) => {
-            // Only toggle if it was a click (short duration), not a drag
+            // On mobile, always toggle (no drag check needed)
+            if (isMobile()) {
+                this.toggleChatbot();
+                return;
+            }
+            
+            // On desktop, only toggle if it was a click (short duration), not a drag
             const dragDuration = new Date().getTime() - dragStartTime;
             if (dragDuration < 200) {
                 this.toggleChatbot();
