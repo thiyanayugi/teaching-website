@@ -214,12 +214,28 @@ class AIChatbot {
             const containerRect = container.getBoundingClientRect();
             const windowWidth = window.innerWidth;
             const windowHeight = window.innerHeight;
+            const isMobile = windowWidth <= 768;
             
             // Remove any existing positioning classes
             this.chatbotWindow.classList.remove('position-top-left', 'position-top-right', 'position-bottom-left', 'position-bottom-right');
             
-            // Only apply smart positioning on larger screens (desktop)
-            if (windowWidth > 768) {
+            if (isMobile) {
+                // FORCE mobile positioning with inline styles
+                this.chatbotWindow.style.top = '20px';
+                this.chatbotWindow.style.left = '20px';
+                this.chatbotWindow.style.bottom = 'auto';
+                this.chatbotWindow.style.right = 'auto';
+                this.chatbotWindow.style.width = 'calc(100vw - 40px)';
+                this.chatbotWindow.style.height = 'calc(100vh - 120px)';
+            } else {
+                // Clear inline styles for desktop
+                this.chatbotWindow.style.top = '';
+                this.chatbotWindow.style.left = '';
+                this.chatbotWindow.style.bottom = '';
+                this.chatbotWindow.style.right = '';
+                this.chatbotWindow.style.width = '';
+                this.chatbotWindow.style.height = '';
+                
                 // Determine if widget is on right or left side of screen
                 const isOnRight = containerRect.left > windowWidth / 2;
                 // Determine if widget is on bottom or top of screen
@@ -236,7 +252,6 @@ class AIChatbot {
                     this.chatbotWindow.classList.add('position-bottom-right');
                 }
             }
-            // On mobile, use default positioning (no extra class)
             
             this.chatbotWindow.classList.add('active');
             this.chatbotButton.classList.add('active');
