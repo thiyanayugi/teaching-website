@@ -58,25 +58,21 @@
 /* Chat Window - Morphing Animation */
 .chatbot-window {
     position: absolute !important; /* Changed from fixed to absolute */
+    position: absolute;
     bottom: 0;
     right: 0;
-    width: 60px; /* Start as button size */
-    height: 60px; /* Start as button size */
-    /* ... rest of styles ... */
+    width: 60px;
+    height: 60px;
     background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(20px);
-    border-radius: 50%; /* Start round */
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    border: 1px solid rgba(59, 130, 246, 0.2);
-    z-index: 2147483648;
-    
-    /* Morphing Properties */
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 50%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    overflow: hidden;
     transform-origin: bottom right;
     transition: 
         width 0.5s cubic-bezier(0.19, 1, 0.22, 1),
@@ -84,6 +80,8 @@
         border-radius 0.5s cubic-bezier(0.19, 1, 0.22, 1),
         bottom 0.5s cubic-bezier(0.19, 1, 0.22, 1),
         right 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+        left 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+        top 0.5s cubic-bezier(0.19, 1, 0.22, 1),
         opacity 0.3s ease,
         visibility 0.3s ease;
 }
