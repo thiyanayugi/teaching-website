@@ -135,6 +135,13 @@ const translations = {
         formGoal: "Was möchten Sie erreichen? <span class=\"optional-tag\">Optional</span>",
         formGoalPlaceholder: "z.B., Ich möchte KI-Agenten für mein Startup entwickeln... / Ich muss Workflows in meinem Unternehmen automatisieren...",
         formSubmit: "Meinen personalisierten Lernpfad erhalten",
+        formBgStudent: "📚 Student",
+        formBgProfessional: "💼 Berufstätig",
+        formBgResearcher: "🔬 Forscher",
+        formBgHobbyist: "🎯 Hobbyist/Selbstlerner",
+        formExpBeginner: "🌱 Anfänger",
+        formExpIntermediate: "📈 Fortgeschritten",
+        formExpAdvanced: "🚀 Experte",
         
         // Footer
         footer: "© 2025 Thiyanayugi Mariraj | Dortmund, Deutschland",
