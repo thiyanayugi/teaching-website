@@ -84,7 +84,7 @@ def import_uuid():
     import uuid
     return str(uuid.uuid4())
 
-def send_email(to_email: str, subject: str, body: str, name: str = "there", language: str = "en"):
+def send_email(to_email: str, subject: str, body: str, name: str = "there", language: str = "en", topic: str = "both"):
     """Send email via Gmail SMTP."""
     import smtplib
     from email.mime.text import MIMEText
@@ -96,7 +96,7 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there", lang
     if not gmail_password:
         raise ValueError("GMAIL_PASSWORD not configured. Please set it in environment variables")
     
-    print(f"📧 Sending email from {sender_email} to {to_email} via Gmail SMTP (Language: {language})")
+    print(f"📧 Sending email from {sender_email} to {to_email} via Gmail SMTP (Language: {language}, Topic: {topic})")
     
     # Language-specific translations
     translations = {
