@@ -102,7 +102,11 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there", lang
     translations = {
         'en': {
             'header_title': 'Your Learning Journey Starts Here!',
-            'header_subtitle': 'Personalized AI & Automation Guidance',
+            'header_subtitle': {
+                'automation': 'Personalized Automation Guidance',
+                'ai': 'Personalized AI Guidance',
+                'both': 'Personalized AI & Automation Guidance'
+            },
             'greeting': 'WELCOME',
             'signoff': 'Best Regards,',
             'cta_title': 'Ready to Take the Next Step?',
@@ -116,7 +120,11 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there", lang
         },
         'de': {
             'header_title': 'Ihre Lernreise beginnt hier!',
-            'header_subtitle': 'Personalisierte KI & Automatisierungs-Beratung',
+            'header_subtitle': {
+                'automation': 'Personalisierte Automatisierungs-Beratung',
+                'ai': 'Personalisierte KI-Beratung',
+                'both': 'Personalisierte KI & Automatisierungs-Beratung'
+            },
             'greeting': 'WILLKOMMEN',
             'signoff': 'Mit freundlichen Grüßen,',
             'cta_title': 'Bereit für den nächsten Schritt?',
@@ -131,6 +139,9 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there", lang
     }
     
     t = translations.get(language, translations['en'])
+    
+    # Get dynamic subtitle based on topic
+    subtitle = t['header_subtitle'].get(topic, t['header_subtitle']['both'])
     
     # Professional HTML Email Template
     html_body = f"""
@@ -352,10 +363,9 @@ def send_email(to_email: str, subject: str, body: str, name: str = "there", lang
                         
                         <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td class="header">
-
-                                    <h1 style="color: #ffffff !important;">{t['header_title']}</h1>
-                                    <p style="color: rgba(255, 255, 255, 0.9) !important;">{t['header_subtitle']}</p>
+                                <td style="text-align: center; padding: 40px 20px;">
+                                    <h1 style="color: white; font-size: 32px; font-weight: 700; margin: 0 0 10px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">{t['header_title']}</h1>
+                                    <p style="color: rgba(255, 255, 255, 0.95); font-size: 18px; margin: 0; font-weight: 500;">{subtitle}</p>
                                 </td>
                             </tr>
                         </table>
