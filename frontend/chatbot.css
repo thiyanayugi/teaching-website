@@ -368,40 +368,21 @@
     fill: white !important; /* Force white fill */
     animation: sparkle 3s ease-in-out infinite; /* Re-enabled sparkle */
 }
-/* Mobile Responsive Styles */
+/* Mobile Responsive */
 @media (max-width: 768px) {
     .chatbot-container {
         bottom: 20px;
         right: 20px;
-        /* Disable dragging on mobile to prevent glitches */
-        touch-action: none;
+    }
+    
+    .chatbot-window {
+        width: calc(100vw - 40px);
+        height: calc(100vh - 140px);
+        max-height: 600px;
     }
     
     .chatbot-button {
         width: 56px;
         height: 56px;
-        cursor: pointer; /* Change from grab to pointer on mobile */
-    }
-    
-    .chatbot-button:active {
-        cursor: pointer; /* No grabbing cursor on mobile */
-    }
-    
-    .chatbot-window.active {
-        width: calc(100vw - 40px); /* Full width minus margins */
-        max-width: 380px;
-        height: 500px; /* Slightly shorter on mobile */
-        bottom: 10px;
-        right: 20px;
-        left: 20px;
-        margin: 0 auto;
-    }
-    
-    .chatbot-messages {
-        padding: 15px;
-    }
-    
-    .chatbot-input-area {
-        padding: 12px;
     }
 }

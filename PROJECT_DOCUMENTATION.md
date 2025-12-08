@@ -707,8 +707,7 @@ All icons use Unicode emojis for:
 ## Contact & Support
 
 **Developer**: Thiyanayugi Mariraj
-**Email**: mariraj.thiyanayugi@gmail.com
-**LinkedIn**: [Profile Link]
+**Email**: yugimariraj01@gmail.com
 **Location**: Dortmund, Germany
 
 ---
