@@ -57,8 +57,7 @@
 }
 /* Chat Window - Morphing Animation */
 .chatbot-window {
-    position: absolute !important; /* Changed from fixed to absolute */
-    position: absolute;
+    position: fixed !important;
     bottom: 0;
     right: 0;
     width: 60px;
