@@ -98,35 +98,6 @@
 }
 
 
-/* Mobile-specific styles - MUST come before desktop positioning */
-@media (max-width: 768px) {
-    .chatbot-container {
-        bottom: 20px !important;
-        right: 20px !important;
-        cursor: pointer !important;
-    }
-    
-    /* Override ALL positioning for mobile */
-    .chatbot-window.active,
-    .chatbot-window.active.position-top-left,
-    .chatbot-window.active.position-top-right,
-    .chatbot-window.active.position-bottom-left,
-    .chatbot-window.active.position-bottom-right {
-        width: calc(100vw - 40px) !important;
-        height: calc(100vh - 120px) !important;
-        top: 20px !important;
-        left: 20px !important;
-        bottom: auto !important;
-        right: auto !important;
-        max-width: none !important;
-        transform: none !important;
-        transform-origin: top left !important;
-    }
-    
-    .chatbot-header {
-        cursor: default !important;
-    }
-}
 
 /* Smart positioning based on widget location (desktop only) */
 @media (min-width: 769px) {
