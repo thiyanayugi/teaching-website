@@ -199,22 +199,26 @@ class AIChatbot {
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
             
-            // Determine optimal position for chat window
+            // Determine optimal position for chat window (open AWAY from edges)
             const isOnRightSide = rect.left > viewportWidth / 2;
             const isOnBottomHalf = rect.top > viewportHeight / 2;
             
-            // Apply positioning classes
+            // Apply positioning classes - INVERTED to open away from edges
             this.chatbotWindow.classList.remove('position-left', 'position-right', 'position-top', 'position-bottom');
             
+            // If widget is on right side, open window to the LEFT
             if (isOnRightSide) {
                 this.chatbotWindow.classList.add('position-left');
             } else {
+                // If widget is on left side, open window to the RIGHT
                 this.chatbotWindow.classList.add('position-right');
             }
             
+            // If widget is on bottom half, open window to the TOP
             if (isOnBottomHalf) {
                 this.chatbotWindow.classList.add('position-top');
             } else {
+                // If widget is on top half, open window to the BOTTOM
                 this.chatbotWindow.classList.add('position-bottom');
             }
             

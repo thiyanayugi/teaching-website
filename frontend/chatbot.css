@@ -100,24 +100,28 @@
 }
 
 /* Smart positioning based on widget location */
-.chatbot-window.position-right {
-    right: 0;
-    left: auto;
-}
-
+/* When widget is on RIGHT side, open window to LEFT (anchored to left of container) */
 .chatbot-window.position-left {
     right: auto;
     left: 0;
 }
 
-.chatbot-window.position-bottom {
-    bottom: 20px;
-    top: auto;
+/* When widget is on LEFT side, open window to RIGHT (anchored to right of container) */
+.chatbot-window.position-right {
+    right: 0;
+    left: auto;
 }
 
+/* When widget is on BOTTOM half, open window to TOP (anchored to top of container) */
 .chatbot-window.position-top {
     bottom: auto;
-    top: 20px;
+    top: 0;
+}
+
+/* When widget is on TOP half, open window to BOTTOM (anchored to bottom of container) */
+.chatbot-window.position-bottom {
+    bottom: 0;
+    top: auto;
 }
 
 /* Fade in content with delay */
