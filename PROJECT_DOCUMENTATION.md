@@ -1,10 +1,35 @@
-# Teaching Platform - Complete Implementation Documentation
+# Teaching Platform - Complete Technical Documentation
+
+<div align="center">
+
+**Comprehensive Technical Reference & Implementation Guide**
+
+[![Version](https://img.shields.io/badge/Version-1.0.0-success)](https://github.com/thiyanayugi/teaching-website)
+[![Status](https://img.shields.io/badge/Status-Production-brightgreen)](https://teaching-platform-560659035104.europe-west1.run.app)
+[![Documentation](https://img.shields.io/badge/Docs-Complete-blue)](PROJECT_DOCUMENTATION.md)
+
+_Last Updated: December 8, 2025_
+
+</div>
+
+---
+
+## 📑 Table of Contents
+
+1. [Project Overview](#project-overview)
+2. [Architecture & Design](#architecture--design)
+3. [Technology Stack](#technology-stack)
+4. [Core Features](#core-features)
+5. [Implementation Details](#implementation-details)
+6. [Deployment](#deployment)
+7. [API Reference](#api-reference)
+8. [Security](#security)
+
+---
 
 ## Project Overview
 
-A modern, bilingual (English/German) teaching platform for AI and Automation courses, featuring an AI-powered chatbot assistant, personalized email generation, and a responsive glassmorphic design.
-
-**Live URL**: https://teaching-platform-560659035104.europe-west1.run.app
+A production-ready, AI-enhanced teaching platform for AI and Automation courses. This platform combines modern web technologies with advanced AI capabilities to deliver personalized learning experiences through intelligent chatbot assistance and automated email generation.
 
 ---
 

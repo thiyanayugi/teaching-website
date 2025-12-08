@@ -1,45 +1,55 @@
 # Teaching Platform - AI & Automation Courses
 
-A modern, bilingual teaching platform built with AI-powered features for personalized learning experiences.
+<div align="center">
 
-**🌐 Live Demo**: [https://teaching-platform-560659035104.europe-west1.run.app](https://teaching-platform-560659035104.europe-west1.run.app)
+**A Modern, AI-Powered Bilingual Teaching Platform**
+
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=for-the-badge)](https://teaching-platform-560659035104.europe-west1.run.app)
+[![Google Cloud](https://img.shields.io/badge/Google_Cloud-Run-4285F4?style=for-the-badge&logo=google-cloud)](https://cloud.google.com/run)
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python)](https://www.python.org/)
+[![Anthropic](https://img.shields.io/badge/Anthropic-Claude_4.5-000000?style=for-the-badge)](https://www.anthropic.com/)
+
+[Live Website](https://teaching-platform-560659035104.europe-west1.run.app) • [Documentation](PROJECT_DOCUMENTATION.md) • [Contact](#-author)
+
+</div>
 
 ---
 
-## 📋 Project Overview
+## 🎯 Overview
 
-This is a professional teaching platform designed for AI and Automation courses, featuring:
+A cutting-edge teaching platform designed for AI and Automation courses, featuring intelligent chatbot assistance, personalized learning path generation, and seamless bilingual support. Built with modern web technologies and powered by Anthropic's Claude AI, this platform delivers an exceptional user experience with glassmorphic design and smooth animations.
 
-- **Bilingual Support** (English/German)
-- **AI-Powered Chatbot** for course inquiries
-- **Personalized Email Generation** using Claude AI
-- **Modern Glassmorphic Design** with smooth animations
-- **Responsive Layout** optimized for all devices
+### ✨ Key Highlights
+
+- 🤖 **AI-Powered Chatbot** - Intelligent course assistant with custom 3D avatar
+- 📧 **Smart Email Generation** - Personalized learning paths using Claude 3.5 Sonnet
+- 🌍 **Bilingual Interface** - Seamless English/German language switching
+- 🎨 **Modern Design** - Glassmorphism effects with fluid animations
+- 📱 **Fully Responsive** - Optimized for all devices and screen sizes
+- ☁️ **Cloud-Native** - Deployed on Google Cloud Run for scalability
 
 ---
 
 ## 🛠️ Technology Stack
 
-### Backend
+### Backend Infrastructure
 
-- **Python 3.11+** with Flask framework
-- **Anthropic Claude 3.5 Sonnet** for AI-powered responses and email generation
-- **Gmail SMTP** for automated email delivery
-- **Gunicorn** WSGI server for production
+| Technology           | Purpose               | Version    |
+| -------------------- | --------------------- | ---------- |
+| **Python**           | Core backend language | 3.11+      |
+| **Flask**            | Web framework         | Latest     |
+| **Anthropic Claude** | AI language model     | 3.5 Sonnet |
+| **Gmail SMTP**       | Email delivery        | -          |
+| **Gunicorn**         | WSGI server           | Latest     |
 
-### Frontend
+### Frontend Technologies
 
-- **Vanilla JavaScript (ES6+)** - No frameworks, pure performance
-- **HTML5 & CSS3** with modern features (Grid, Flexbox, Custom Properties)
-- **Glassmorphism Effects** using backdrop-filter
-- **Canvas Confetti** for celebration animations
-
-### Infrastructure
-
-- **Google Cloud Run** - Containerized deployment
-- **Docker** - Container orchestration
-- **Git/GitHub** - Version control
-- **Python Virtual Environment** - Dependency isolation
+| Technology          | Purpose                                       |
+| ------------------- | --------------------------------------------- |
+| **HTML5**           | Semantic structure                            |
+| **CSS3**            | Styling with Grid, Flexbox, Custom Properties |
+| **JavaScript ES6+** | Interactive functionality                     |
+| **Glassmorphism**   | Modern UI effects with backdrop-filter        |
 
 ---
 
