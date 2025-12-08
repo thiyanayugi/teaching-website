@@ -64,63 +64,39 @@
     height: 60px; /* Start as button size */
     /* ... rest of styles ... */
     background: rgba(255, 255, 255, 0.98);
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 60px;
-    height: 60px;
-    background: white;
-    border-radius: 50%;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-    opacity: 0;
-    visibility: hidden;
-    transition: width 0.5s cubic-bezier(0.19, 1, 0.22, 1),
-                height 0.5s cubic-bezier(0.19, 1, 0.22, 1),
-                border-radius 0.5s cubic-bezier(0.19, 1, 0.22, 1),
-                bottom 0.5s cubic-bezier(0.19, 1, 0.22, 1),
-                right 0.5s cubic-bezier(0.19, 1, 0.22, 1),
-                left 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    backdrop-filter: blur(20px);
+    border-radius: 50%; /* Start round */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    z-index: 2147483648; /* Kept original z-index */
-    pointer-events: none; /* Kept original pointer-events */
-    transform-origin: bottom right; /* Kept original transform-origin */
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    z-index: 2147483648;
+    
+    /* Morphing Properties */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform-origin: bottom right;
+    transition: 
+        width 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+        height 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+        border-radius 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+        bottom 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+        right 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+        opacity 0.3s ease,
+        visibility 0.3s ease;
 }
 
 .chatbot-window.active {
-    width: min(380px, calc(100vw - 40px));
-    height: min(550px, calc(100vh - 100px));
-    bottom: 20px;
+    width: 380px;
+    height: 550px;
+    bottom: 20px; /* Lowered from 100px to be more centered/grounded */
+    right: 30px;
     border-radius: 20px;
     opacity: 1;
     visibility: visible;
-    pointer-events: auto; /* Kept original pointer-events */
-}
-
-/* Side-aware positioning */
-.chatbot-container[data-side="left"] .chatbot-window.active {
-    right: auto;
-    left: 0;
-}
-
-.chatbot-container[data-side="right"] .chatbot-window.active {
-    right: 0;
-    left: auto;
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-    .chatbot-window.active {
-        width: calc(100vw - 40px);
-        height: calc(100vh - 120px);
-        bottom: 10px;
-    }
-    
-    .chatbot-container {
-        bottom: 20px !important;
-        right: 20px !important;
-    }
+    pointer-events: auto;
 }
 
 /* Fade in content with delay */
@@ -392,21 +368,40 @@
     fill: white !important; /* Force white fill */
     animation: sparkle 3s ease-in-out infinite; /* Re-enabled sparkle */
 }
-/* Mobile Responsive */
+/* Mobile Responsive Styles */
 @media (max-width: 768px) {
     .chatbot-container {
         bottom: 20px;
         right: 20px;
-    }
-    
-    .chatbot-window {
-        width: calc(100vw - 40px);
-        height: calc(100vh - 140px);
-        max-height: 600px;
+        /* Disable dragging on mobile to prevent glitches */
+        touch-action: none;
     }
     
     .chatbot-button {
         width: 56px;
         height: 56px;
+        cursor: pointer; /* Change from grab to pointer on mobile */
+    }
+    
+    .chatbot-button:active {
+        cursor: pointer; /* No grabbing cursor on mobile */
+    }
+    
+    .chatbot-window.active {
+        width: calc(100vw - 40px); /* Full width minus margins */
+        max-width: 380px;
+        height: 500px; /* Slightly shorter on mobile */
+        bottom: 10px;
+        right: 20px;
+        left: 20px;
+        margin: 0 auto;
+    }
+    
+    .chatbot-messages {
+        padding: 15px;
+    }
+    
+    .chatbot-input-area {
+        padding: 12px;
     }
 }

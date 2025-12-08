@@ -94,6 +94,11 @@ class AIChatbot {
         let dragStartTime;
 
         const dragStart = (e) => {
+            // Disable dragging on mobile devices to prevent glitches
+            if (window.innerWidth <= 768) {
+                return;
+            }
+            
             if (e.type === "touchstart") {
                 initialX = e.touches[0].clientX - xOffset;
                 initialY = e.touches[0].clientY - yOffset;
@@ -110,50 +115,17 @@ class AIChatbot {
         };
 
         const dragEnd = (e) => {
-            if (isDragging) {
-                // Snap to nearest horizontal edge (left or right only)
-                const containerRect = this.chatbotContainer.getBoundingClientRect();
-                const viewportWidth = window.innerWidth;
-                
-                const centerX = containerRect.left + containerRect.width / 2;
-                
-                // Calculate distances to left and right edges
-                const distToLeft = centerX;
-                const distToRight = viewportWidth - centerX;
-                
-                // Determine nearest horizontal edge
-                const nearestHorizontal = distToLeft < distToRight ? 'left' : 'right';
-                
-                // Snap to left or right edge, keep vertical position
-                let snapX;
-                const margin = 30; // Distance from edge
-                
-                if (nearestHorizontal === 'left') {
-                    snapX = margin - containerRect.left;
-                } else {
-                    snapX = (viewportWidth - margin - containerRect.width) - containerRect.left;
-                }
-                
-                // Apply snap with smooth transition
-                this.chatbotContainer.style.transition = 'transform 0.3s ease-out';
-                xOffset = snapX;
-                yOffset = currentY; // Keep vertical position
-                setTranslate(snapX, currentY, this.chatbotContainer);
-                
-                // Store position for smart expansion
-                this.chatbotContainer.dataset.side = nearestHorizontal;
-                
-                setTimeout(() => {
-                    this.chatbotContainer.style.transition = '';
-                }, 300);
-            }
-            
             initialX = currentX;
             initialY = currentY;
             isDragging = false;
         };
 
         const drag = (e) => {
+            // Disable dragging on mobile devices
+            if (window.innerWidth <= 768) {
+                return;
+            }
+            
             if (isDragging) {
                 e.preventDefault();
                 
