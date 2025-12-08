@@ -99,6 +99,27 @@
     pointer-events: auto;
 }
 
+/* Smart positioning based on widget location */
+.chatbot-window.position-right {
+    right: 0;
+    left: auto;
+}
+
+.chatbot-window.position-left {
+    right: auto;
+    left: 0;
+}
+
+.chatbot-window.position-bottom {
+    bottom: 20px;
+    top: auto;
+}
+
+.chatbot-window.position-top {
+    bottom: auto;
+    top: 20px;
+}
+
 /* Fade in content with delay */
 .chatbot-window > * {
     opacity: 0;
