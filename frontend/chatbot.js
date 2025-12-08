@@ -200,27 +200,31 @@ class AIChatbot {
             const windowWidth = window.innerWidth;
             const windowHeight = window.innerHeight;
             
-            // Determine if widget is on right or left side of screen
-            const isOnRight = containerRect.left > windowWidth / 2;
-            // Determine if widget is on bottom or top of screen
-            const isOnBottom = containerRect.top > windowHeight / 2;
-            
             // Remove any existing positioning classes
             this.chatbotWindow.classList.remove('position-top-left', 'position-top-right', 'position-bottom-left', 'position-bottom-right');
             
-            // Add appropriate positioning class
-            if (isOnBottom && isOnRight) {
-                this.chatbotWindow.classList.add('position-top-left');
-            } else if (isOnBottom && !isOnRight) {
-                this.chatbotWindow.classList.add('position-top-right');
-            } else if (!isOnBottom && isOnRight) {
-                this.chatbotWindow.classList.add('position-bottom-left');
-            } else {
-                this.chatbotWindow.classList.add('position-bottom-right');
+            // Only apply smart positioning on larger screens (desktop)
+            if (windowWidth > 768) {
+                // Determine if widget is on right or left side of screen
+                const isOnRight = containerRect.left > windowWidth / 2;
+                // Determine if widget is on bottom or top of screen
+                const isOnBottom = containerRect.top > windowHeight / 2;
+                
+                // Add appropriate positioning class
+                if (isOnBottom && isOnRight) {
+                    this.chatbotWindow.classList.add('position-top-left');
+                } else if (isOnBottom && !isOnRight) {
+                    this.chatbotWindow.classList.add('position-top-right');
+                } else if (!isOnBottom && isOnRight) {
+                    this.chatbotWindow.classList.add('position-bottom-left');
+                } else {
+                    this.chatbotWindow.classList.add('position-bottom-right');
+                }
             }
+            // On mobile, use default positioning (no extra class)
             
             this.chatbotWindow.classList.add('active');
-            this.chatbotButton.classList.add('active'); // Add active class to button too
+            this.chatbotButton.classList.add('active');
             this.chatIcon.style.display = 'none';
             this.closeIcon.style.display = 'block';
             this.chatbotWindow.style.opacity = '1';
@@ -231,12 +235,12 @@ class AIChatbot {
                 el.style.opacity = '0';
                 setTimeout(() => {
                     el.style.opacity = '1';
-                }, 300); // Adjust delay as needed
+                }, 300);
             });
 
         } else {
             this.chatbotWindow.classList.remove('active');
-            this.chatbotButton.classList.remove('active'); // Remove active class from button
+            this.chatbotButton.classList.remove('active');
             this.chatIcon.style.display = 'block';
             this.closeIcon.style.display = 'none';
             this.chatbotWindow.style.opacity = '0';

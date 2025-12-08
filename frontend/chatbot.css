@@ -91,7 +91,7 @@
 .chatbot-window.active {
     width: 380px;
     height: 550px;
-    bottom: 20px; /* Lowered from 100px to be more centered/grounded */
+    bottom: 20px;
     right: 30px;
     border-radius: 20px;
     opacity: 1;
@@ -99,35 +99,53 @@
     pointer-events: auto;
 }
 
-/* Smart positioning based on widget location */
-.chatbot-window.position-top-left {
-    bottom: 80px !important;
-    right: 0px !important;
-    transform-origin: bottom right;
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    .chatbot-window.active {
+        width: calc(100vw - 20px);
+        height: calc(100vh - 100px);
+        bottom: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+    
+    .chatbot-container {
+        bottom: 20px;
+        right: 20px;
+    }
 }
 
-.chatbot-window.position-top-right {
-    bottom: 80px !important;
-    right: auto !important;
-    left: 0px !important;
-    transform-origin: bottom left;
-}
+/* Smart positioning based on widget location (desktop only) */
+@media (min-width: 769px) {
+    .chatbot-window.position-top-left {
+        bottom: 80px !important;
+        right: 0px !important;
+        transform-origin: bottom right;
+    }
 
-.chatbot-window.position-bottom-left {
-    bottom: auto !important;
-    top: 80px !important;
-    right: 0px !important;
-    transform-origin: top right;
-}
+    .chatbot-window.position-top-right {
+        bottom: 80px !important;
+        right: auto !important;
+        left: 0px !important;
+        transform-origin: bottom left;
+    }
 
-.chatbot-window.position-bottom-right {
-    bottom: auto !important;
-    top: 80px !important;
-    right: auto !important;
-    left: 0px !important;
-    transform-origin: top left;
-}
+    .chatbot-window.position-bottom-left {
+        bottom: auto !important;
+        top: 80px !important;
+        right: 0px !important;
+        transform-origin: top right;
+    }
 
+    .chatbot-window.position-bottom-right {
+        bottom: auto !important;
+        top: 80px !important;
+        right: auto !important;
+        left: 0px !important;
+        transform-origin: top left;
+    }
+}
 
 /* Fade in content with delay */
 .chatbot-window > * {
