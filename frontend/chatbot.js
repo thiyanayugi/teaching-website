@@ -110,6 +110,61 @@ class AIChatbot {
         };
 
         const dragEnd = (e) => {
+            if (isDragging) {
+                // Snap to nearest edge
+                const containerRect = this.chatbotContainer.getBoundingClientRect();
+                const viewportWidth = window.innerWidth;
+                const viewportHeight = window.innerHeight;
+                
+                const centerX = containerRect.left + containerRect.width / 2;
+                const centerY = containerRect.top + containerRect.height / 2;
+                
+                // Calculate distances to each edge
+                const distToLeft = centerX;
+                const distToRight = viewportWidth - centerX;
+                const distToTop = centerY;
+                const distToBottom = viewportHeight - centerY;
+                
+                // Find nearest horizontal and vertical edges
+                const nearestHorizontal = distToLeft < distToRight ? 'left' : 'right';
+                const nearestVertical = distToTop < distToBottom ? 'top' : 'bottom';
+                
+                // Snap to nearest side (prioritize horizontal)
+                let snapX, snapY;
+                const margin = 30; // Distance from edge
+                
+                if (Math.min(distToLeft, distToRight) < Math.min(distToTop, distToBottom)) {
+                    // Snap to left or right
+                    if (nearestHorizontal === 'left') {
+                        snapX = margin - containerRect.left;
+                    } else {
+                        snapX = (viewportWidth - margin - containerRect.width) - containerRect.left;
+                    }
+                    snapY = currentY; // Keep vertical position
+                } else {
+                    // Snap to top or bottom
+                    if (nearestVertical === 'top') {
+                        snapY = margin - containerRect.top;
+                    } else {
+                        snapY = (viewportHeight - margin - containerRect.height) - containerRect.top;
+                    }
+                    snapX = currentX; // Keep horizontal position
+                }
+                
+                // Apply snap with smooth transition
+                this.chatbotContainer.style.transition = 'transform 0.3s ease-out';
+                xOffset = snapX;
+                yOffset = snapY;
+                setTranslate(snapX, snapY, this.chatbotContainer);
+                
+                // Store position for smart expansion
+                this.chatbotContainer.dataset.side = nearestHorizontal;
+                
+                setTimeout(() => {
+                    this.chatbotContainer.style.transition = '';
+                }, 300);
+            }
+            
             initialX = currentX;
             initialY = currentY;
             isDragging = false;

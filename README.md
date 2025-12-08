@@ -398,23 +398,16 @@ teaching-website/
 
 ---
 
-## 📝 License
-
-This project is proprietary and confidential. All rights reserved.
-
----
-
 ## 👤 Author
 
 **Thiyanayugi Mariraj**
 
 - M.Sc. Automation & Robotics, TU Dortmund
-- AI & Automation Expert
 - Location: Dortmund, Germany
 
 ### Contact
 
-- 📧 Email: mariraj.thiyanayugi@gmail.com
+- 📧 Email: yugimariraj01@gmail.com
 - 💼 LinkedIn: [Thiyanayugi Mariraj](https://linkedin.com/in/thiyanayugi-mariraj-a2b1b820b)
 - 📅 Book a Call: [Calendly](https://calendly.com/mariraj-thiyanayugi/30min)
 
@@ -453,9 +446,5 @@ The collaborative human-AI development process enabled rapid iteration, high cod
 ## 📚 Additional Documentation
 
 For detailed technical documentation, see [PROJECT_DOCUMENTATION.md](PROJECT_DOCUMENTATION.md)
-
----
-
-_Built with ❤️ using AI-assisted development_
 
 _Last Updated: December 7, 2025_
