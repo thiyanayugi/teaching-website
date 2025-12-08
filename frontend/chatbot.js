@@ -220,7 +220,8 @@ class AIChatbot {
             this.chatbotWindow.classList.remove('position-top-left', 'position-top-right', 'position-bottom-left', 'position-bottom-right');
             
             if (isMobile) {
-                // CENTER on mobile
+                // CENTER on mobile - disable transitions for instant positioning
+                this.chatbotWindow.style.transition = 'none';
                 this.chatbotWindow.style.top = '50%';
                 this.chatbotWindow.style.left = '50%';
                 this.chatbotWindow.style.transform = 'translate(-50%, -50%)';
@@ -231,6 +232,7 @@ class AIChatbot {
                 this.chatbotWindow.style.maxWidth = '500px';
             } else {
                 // Clear inline styles for desktop
+                this.chatbotWindow.style.transition = '';
                 this.chatbotWindow.style.top = '';
                 this.chatbotWindow.style.left = '';
                 this.chatbotWindow.style.bottom = '';
