@@ -220,13 +220,15 @@ class AIChatbot {
             this.chatbotWindow.classList.remove('position-top-left', 'position-top-right', 'position-bottom-left', 'position-bottom-right');
             
             if (isMobile) {
-                // FORCE mobile positioning with inline styles
-                this.chatbotWindow.style.top = '20px';
-                this.chatbotWindow.style.left = '20px';
+                // CENTER on mobile
+                this.chatbotWindow.style.top = '50%';
+                this.chatbotWindow.style.left = '50%';
+                this.chatbotWindow.style.transform = 'translate(-50%, -50%)';
                 this.chatbotWindow.style.bottom = 'auto';
                 this.chatbotWindow.style.right = 'auto';
                 this.chatbotWindow.style.width = 'calc(100vw - 40px)';
                 this.chatbotWindow.style.height = 'calc(100vh - 120px)';
+                this.chatbotWindow.style.maxWidth = '500px';
             } else {
                 // Clear inline styles for desktop
                 this.chatbotWindow.style.top = '';
@@ -235,6 +237,8 @@ class AIChatbot {
                 this.chatbotWindow.style.right = '';
                 this.chatbotWindow.style.width = '';
                 this.chatbotWindow.style.height = '';
+                this.chatbotWindow.style.transform = '';
+                this.chatbotWindow.style.maxWidth = '';
                 
                 // Determine if widget is on right or left side of screen
                 const isOnRight = containerRect.left > windowWidth / 2;
