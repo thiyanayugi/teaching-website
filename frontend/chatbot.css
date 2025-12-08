@@ -57,15 +57,16 @@
 }
 /* Chat Window - Morphing Animation */
 .chatbot-window {
-    position: absolute;
+    position: absolute !important; /* Changed from fixed to absolute */
     bottom: 0;
     right: 0;
-    width: 60px;
-    height: 60px;
+    width: 60px; /* Start as button size */
+    height: 60px; /* Start as button size */
+    /* ... rest of styles ... */
     background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(20px) saturate(180%);
-    border-radius: 50%;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 50%; /* Start round */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -83,8 +84,6 @@
         border-radius 0.5s cubic-bezier(0.19, 1, 0.22, 1),
         bottom 0.5s cubic-bezier(0.19, 1, 0.22, 1),
         right 0.5s cubic-bezier(0.19, 1, 0.22, 1),
-        top 0.5s cubic-bezier(0.19, 1, 0.22, 1),
-        left 0.5s cubic-bezier(0.19, 1, 0.22, 1),
         opacity 0.3s ease,
         visibility 0.3s ease;
 }
@@ -92,7 +91,8 @@
 .chatbot-window.active {
     width: 380px;
     height: 550px;
-    /* Removed default bottom and right - positioning classes will handle this */
+    bottom: 20px; /* Lowered from 100px to be more centered/grounded */
+    right: 30px;
     border-radius: 20px;
     opacity: 1;
     visibility: visible;
@@ -100,29 +100,34 @@
 }
 
 /* Smart positioning based on widget location */
-/* When widget is on RIGHT side, open window to LEFT */
-.chatbot-window.active.position-left {
+.chatbot-window.position-top-left {
+    bottom: 80px !important;
+    right: 0px !important;
+    transform-origin: bottom right;
+}
+
+.chatbot-window.position-top-right {
+    bottom: 80px !important;
     right: auto !important;
-    left: 20px !important;
+    left: 0px !important;
+    transform-origin: bottom left;
 }
 
-/* When widget is on LEFT side, open window to RIGHT */
-.chatbot-window.active.position-right {
-    right: 20px !important;
-    left: auto !important;
-}
-
-/* When widget is on BOTTOM half, open window to TOP */
-.chatbot-window.active.position-top {
+.chatbot-window.position-bottom-left {
     bottom: auto !important;
-    top: 20px !important;
+    top: 80px !important;
+    right: 0px !important;
+    transform-origin: top right;
 }
 
-/* When widget is on TOP half, open window to BOTTOM */
-.chatbot-window.active.position-bottom {
-    bottom: 20px !important;
-    top: auto !important;
+.chatbot-window.position-bottom-right {
+    bottom: auto !important;
+    top: 80px !important;
+    right: auto !important;
+    left: 0px !important;
+    transform-origin: top left;
 }
+
 
 /* Fade in content with delay */
 .chatbot-window > * {
