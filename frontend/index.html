@@ -5,394 +5,333 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Thiyanayugi Mariraj - AI & Automation Teaching. Master's student at TU Dortmund specializing in AI-driven automation, multi-agent systems, and robotics.">
+        content="Learn AI & Automation with Thiyanayugi Mariraj - Master's student at TU Dortmund specializing in AI-driven automation, multi-agent systems, and robotics.">
     <title>Thiyanayugi Mariraj | AI & Automation Teaching</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=2">
-    <link rel="stylesheet" href="interactive-features.css?v=2">
-    <link rel="stylesheet" href="certifications.css?v=2">
-    <link rel="stylesheet" href="chatbot.css?v=2">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- Google Fonts: Baloo 2 + Comic Neue -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&family=Comic+Neue:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Language Switcher -->
-    <div class="language-switcher">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <span class="lang-separator">/</span>
-        <button class="lang-btn" data-lang="de">DE</button>
-    </div>
-
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <div class="hero-image">
-                <div class="image-placeholder">
-                    <img src="profile.png" alt="Thiyanayugi Mariraj">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Master AI & Automation with Personalized Teaching</h1>
+                    <p class="hero-subtitle">I'm Thiyanayugi Mariraj, an M.Sc. student at TU Dortmund specializing in
+                        AI-driven automation, multi-agent systems, and robotics. I help students and professionals build
+                        real-world skills through hands-on, personalized guidance.</p>
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn-primary">Start Learning Today</a>
+                        <a href="#features" class="btn-secondary">See What I Teach</a>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-text">
-                <p class="greeting">Hello, I'm</p>
-                <h1>Thiyanayugi Mariraj</h1>
-                <p class="tagline">M.Sc. Automation & Robotics | AI Engineer | Educator</p>
-                <p class="intro">
-                    I'm a Master's student at TU Dortmund specializing in AI-driven automation,
-                    multi-agent systems, and robotics. I help students and professionals
-                    master cutting-edge technologies through personalized, hands-on teaching.
-                </p>
-                <a href="#contact" class="cta-button">Start Learning →</a>
+                <div class="hero-image">
+                    <div class="image-card">
+                        <img src="profile.png" alt="Thiyanayugi Mariraj - AI & Automation Educator">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- About Me Section -->
-    <section class="about" id="about">
-        <div class="about-container">
-            <div class="about-header" onclick="toggleAbout()">
-                <h2>About Me</h2>
-                <span class="toggle-icon" id="about-toggle">+</span>
-            </div>
-            <div class="about-content" id="about-content">
-                <div class="about-text">
-                    <p class="intro-text">
-                        With hands-on experience in both research and
-                        industry,
-                        I bridge the gap between cutting-edge AI research and practical engineering applications.
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">What Makes Me Different</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.817A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.5-2.3-2.585-1.067-3.817L4.2 15.3M19.8 15.3l-5.55-1.387m-8.5 0L5 14.5" />
+                        </svg>
+                    </div>
+                    <h3>Academic Excellence</h3>
+                    <p>M.Sc. Automation & Robotics at TU Dortmund with hands-on research experience in AI and industrial
+                        automation.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                        </svg>
+                    </div>
+                    <h3>Industry Experience</h3>
+                    <p>Research Assistant at TU Dortmund's Information Processing Lab, working on cutting-edge AI
+                        projects.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                        </svg>
+                    </div>
+                    <h3>Real-World Projects</h3>
+                    <p>Completed Master's Thesis on 6G-enabled collaborative robotics with Graph Neural Networks for
+                        warehouse automation.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                        </svg>
+                    </div>
+                    <h3>Bilingual Teaching</h3>
+                    <p>Fluent in English (C2) and German (B2), offering flexible learning in your preferred language.
                     </p>
-
-                    <div class="highlights">
-                        <div class="highlight-item">
-                            <div class="highlight-icon">🎓</div>
-                            <div class="highlight-content">
-                                <h4>Academic Excellence</h4>
-                                <p>M.Sc. Automation & Robotics at TU Dortmund | B.E. Robotics & Automation from PSG
-                                    College of Technology, India</p>
-                            </div>
-                        </div>
-
-                        <div class="highlight-item">
-                            <div class="highlight-icon">💼</div>
-                            <div class="highlight-content">
-                                <h4>Professional Experience</h4>
-                                <p>Research Assistant at TU Dortmund's Information Processing Lab | Robotics Engineering
-                                    Intern at Pricol Limited</p>
-                            </div>
-                        </div>
-
-                        <div class="highlight-item">
-                            <div class="highlight-icon">✅</div>
-                            <div class="highlight-content">
-                                <h4>Recent Achievement</h4>
-                                <p>Completed Master's Thesis on 6G-enabled collaborative robotics with Graph Neural
-                                    Networks for warehouse automation</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="expertise-areas">
-                        <h3>Core Competencies</h3>
-                        <div class="competencies-grid">
-                            <div class="competency-card">
-                                <div class="competency-icon">🤖</div>
-                                <h4>AI & Machine Learning</h4>
-                                <ul>
-                                    <li>LLM Fine-tuning & Prompt Engineering</li>
-                                    <li>RAG & Vector Databases</li>
-                                    <li>Multi-agent Systems (LangChain)</li>
-                                    <li>Deep Learning (PyTorch/TensorFlow)</li>
-                                    <li>Natural Language Processing</li>
-                                </ul>
-                            </div>
-                            <div class="competency-card">
-                                <div class="competency-icon">⚙️</div>
-                                <h4>Robotics & Automation</h4>
-                                <ul>
-                                    <li>ROS Framework & Development</li>
-                                    <li>Computer Vision & Object Detection</li>
-                                    <li>Sensor Fusion & SLAM</li>
-                                    <li>Path Planning & Navigation</li>
-                                    <li>Industrial Automation Systems</li>
-                                </ul>
-                            </div>
-                            <div class="competency-card">
-                                <div class="competency-icon">💻</div>
-                                <h4>Development & Deployment</h4>
-                                <ul>
-                                    <li>Python, C++, SQL</li>
-                                    <li>AWS SageMaker & Cloud ML</li>
-                                    <li>MLOps & Model Deployment</li>
-                                    <li>Docker & Containerization</li>
-                                    <li>Git, Linux, Agile Methods</li>
-                                </ul>
-                            </div>
-                            <div class="competency-card">
-                                <div class="competency-icon">🌍</div>
-                                <h4>Communication</h4>
-                                <ul>
-                                    <li>English (Fluent/C2)</li>
-                                    <li>German (B2)</li>
-                                    <li>Tamil (Native)</li>
-                                    <li>Cross-functional Collaboration</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Certifications Section -->
-                    <div class="certifications-section">
-                        <h3>🎓 Professional Certifications</h3>
-                        <div class="certifications-grid">
-                            <div class="cert-card">
-                                <div class="cert-header">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS" class="cert-logo aws-logo">
-                                    <h4>AWS</h4>
-                                </div>
-                                <ul class="cert-list">
-                                    <li>SageMaker JumpStart Foundations</li>
-                                    <li>Building Language Models on AWS</li>
-                                    <li>Customizing LLMs</li>
-                                    <li>No-code ML and Gen AI</li>
-                                </ul>
-                            </div>
-
-                            <div class="cert-card">
-                                <div class="cert-header cert-header-multi">
-                                    <img src="deeplearning-logo.jpg" alt="DeepLearning.AI" class="cert-logo deeplearning-logo">
-                                    <span class="logo-separator">|</span>
-                                    <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" class="cert-logo huggingface-logo">
-                                    <h4>AI Tools</h4>
-                                </div>
-                                <ul class="cert-list">
-                                    <li>ChatGPT Prompt Engineering (DeepLearning.AI)</li>
-                                    <li>Fundamentals of AI Agents (Hugging Face)</li>
-                                </ul>
-                            </div>
-
-                            <div class="cert-card">
-                                <div class="cert-header">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn Learning" class="cert-logo linkedin-logo">
-                                    <h4>LinkedIn Learning</h4>
-                                </div>
-                                <ul class="cert-list">
-                                    <li>What Is Generative AI?</li>
-                                    <li>Evolution of Thoughtful Online Search</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-        <!-- What I Teach Section -->
-        <section class="services" id="services">
-            <div class="services-header expanded" onclick="toggleServices()">
-                <h2>What I Teach</h2>
-                <span class="toggle-icon rotated" id="services-toggle">+</span>
-            </div>
-            
-            <div class="services-content expanded" id="services-content">
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="icon">⚡</div>
-                        <h3>Automation</h3>
-                        <ul>
-                            <li>ROS & Robot Operating System</li>
-                            <li>Industrial Automation</li>
-                            <li>Sensor Fusion & SLAM</li>
-                            <li>Computer Vision</li>
-                        </ul>
-                    </div>
+    <!-- Expertise Section -->
+    <section class="expertise">
+        <div class="container">
+            <h2 class="section-title">My Expertise</h2>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <h3>AI & Machine Learning</h3>
+                    <ul>
+                        <li>LLM Fine-tuning & Prompt Engineering</li>
+                        <li>RAG & Vector Databases</li>
+                        <li>Multi-agent Systems (LangChain, CrewAI)</li>
+                        <li>Deep Learning (PyTorch/TensorFlow)</li>
+                        <li>Natural Language Processing</li>
+                    </ul>
+                </div>
 
-                    <div class="service-card">
-                        <div class="icon">✨</div>
-                        <h3>Artificial Intelligence</h3>
-                        <ul>
-                            <li>LLMs & Prompt Engineering</li>
-                            <li>RAG Systems</li>
-                            <li>Multi-Agent Systems</li>
-                            <li>Machine Learning Ops</li>
-                        </ul>
-                    </div>
+                <div class="expertise-card">
+                    <h3>Robotics & Automation</h3>
+                    <ul>
+                        <li>ROS Framework & Development</li>
+                        <li>Computer Vision & Object Detection</li>
+                        <li>Sensor Fusion & SLAM</li>
+                        <li>Path Planning & Navigation</li>
+                        <li>Industrial Automation Systems</li>
+                    </ul>
                 </div>
-            </div>
-        </section>
 
-    <!-- Contact Form Section -->
-    <section class="contact" id="contact">
-        <h2>Let's Start Your Learning Journey</h2>
-        <p class="form-subtitle">Tell me about yourself and I'll craft a personalized learning path for you.</p>
-
-        <form id="contact-form" class="contact-form">
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="name">Your Name *</label>
-                    <input type="text" id="name" name="name" required placeholder="e.g., Max Mustermann">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required placeholder="max@example.com">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="topic">I Want to Learn *</label>
-                    <select id="topic" name="topic" required>
-                        <option value="">Select a topic...</option>
-                        <option value="automation">⚡ Automation</option>
-                        <option value="ai">✨ Artificial Intelligence</option>
-                        <option value="both">🚀 Both</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="background">My Background *</label>
-                    <select id="background" name="background" required>
-                        <option value="">Select your background...</option>
-                        <option value="student">📚 Student</option>
-                        <option value="professional">💼 Working Professional</option>
-                        <option value="researcher">🔬 Researcher</option>
-                        <option value="hobbyist">🎯 Hobbyist/Self-learner</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="experience">Experience Level *</label>
-                    <select id="experience" name="experience" required>
-                        <option value="">Select level...</option>
-                        <option value="beginner">🌱 Beginner - Just starting out</option>
-                        <option value="intermediate">🌿 Intermediate - Some experience</option>
-                        <option value="advanced">🌳 Advanced - Looking to specialize</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="interest">Specific Interest <span class="optional-tag">(Optional)</span></label>
-                    <input type="text" id="interest" name="interest" placeholder="e.g., LLM agents, robotics, MLOps...">
-                </div>
-            </div>
-
-            <div class="form-group full-width">
-                <label for="goal">What do you want to achieve? <span class="optional-tag">(Optional)</span></label>
-                <textarea id="goal" name="goal" rows="3"
-                    placeholder="e.g., I want to build AI agents for my startup... / I need to automate workflows at my company..."></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">
-                <span class="btn-text">Get My Personalized Learning Path</span>
-                <span class="btn-icon">✨</span>
-            </button>
-        </form>
-
-        <!-- FAQ Accordion Section -->
-        <div class="faq-section">
-            <h3>❓ Frequently Asked Questions</h3>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>How does the personalized learning path work?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>After you submit the form, I'll use AI to analyze your background, experience level, and goals to create a customized learning roadmap. You'll receive a detailed email with specific project ideas, learning resources, and next steps tailored just for you!</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>What's included in the 1-on-1 sessions?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Each session is completely personalized to your needs. We'll work on hands-on projects, solve real-world problems, and build practical skills. Sessions include code reviews, project guidance, and direct mentorship from my experience at TU Dortmund and in industry.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>How much does it cost?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Pricing is flexible based on your needs and goals. After our free 30-minute consultation, I'll provide a customized quote. I offer student discounts and package deals for multiple sessions.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Do you teach in English or German?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>I'm fluent in both! Sessions can be conducted in English (C2 level) or German (B2 level), whichever you're more comfortable with.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>How quickly will I receive my personalized learning path?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>You'll receive your customized learning path via email within minutes of submitting the form! The AI analyzes your information and generates a detailed, personalized roadmap instantly.</p>
+                <div class="expertise-card">
+                    <h3>Development & Deployment</h3>
+                    <ul>
+                        <li>Python, C++, JavaScript, SQL</li>
+                        <li>AWS SageMaker & Cloud ML</li>
+                        <li>MLOps & Model Deployment</li>
+                        <li>Docker & Containerization</li>
+                        <li>Git, Linux, Agile Methods</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Loading Overlay -->
-    <div id="loading-overlay" class="loading-overlay">
-        <div class="loading-content">
-            <div class="ai-loader">
-                <div class="loader-brain">
-                    <div class="brain-pulse"></div>
-                    <span class="brain-icon">🧬</span>
+    <!-- Certifications Section -->
+    <section class="certifications">
+        <div class="container">
+            <h2 class="section-title">Professional Certifications</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg"
+                        alt="AWS" class="cert-logo">
+                    <h4>AWS</h4>
+                    <ul>
+                        <li>SageMaker JumpStart Foundations</li>
+                        <li>Building Language Models on AWS</li>
+                        <li>Customizing LLMs</li>
+                    </ul>
                 </div>
-                <div class="loader-text">
-                    <h3>Creating Your Personalized Learning Path...</h3>
-                    <p class="loading-step">Analyzing your background and goals</p>
+
+                <div class="cert-card">
+                    <img src="deeplearning-logo.jpg" alt="DeepLearning.AI" class="cert-logo">
+                    <h4>DeepLearning.AI</h4>
+                    <ul>
+                        <li>ChatGPT Prompt Engineering</li>
+                        <li>AI Fundamentals</li>
+                    </ul>
                 </div>
-                <div class="skeleton-loader">
-                    <div class="skeleton-line"></div>
-                    <div class="skeleton-line"></div>
-                    <div class="skeleton-line short"></div>
+
+                <div class="cert-card">
+                    <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face"
+                        class="cert-logo">
+                    <h4>Hugging Face</h4>
+                    <ul>
+                        <li>Fundamentals of AI Agents</li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Success Modal with Confetti -->
-    <div id="success-modal" class="success-modal">
-        <div class="success-content">
-            <div class="success-icon">🎉</div>
-            <h2>Success!</h2>
-            <p>Your personalized learning path is on its way!</p>
-            <p class="success-subtitle">Check your email inbox for your customized roadmap.</p>
-            <button class="success-btn" onclick="closeSuccessModal()">Awesome!</button>
+    <!-- What I Teach Section -->
+    <section class="courses">
+        <div class="container">
+            <h2 class="section-title">What I Teach</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                        </svg>
+                    </div>
+                    <h3>Artificial Intelligence</h3>
+                    <ul>
+                        <li>LLMs & Prompt Engineering</li>
+                        <li>RAG Systems & Vector DBs</li>
+                        <li>Multi-Agent AI Systems</li>
+                        <li>Machine Learning Operations</li>
+                    </ul>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L12 12m6.894 5.785l-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864l-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495" />
+                        </svg>
+                    </div>
+                    <h3>Robotics & Automation</h3>
+                    <ul>
+                        <li>ROS & Robot Operating System</li>
+                        <li>Computer Vision & SLAM</li>
+                        <li>Industrial Automation</li>
+                        <li>Sensor Fusion</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <canvas id="confetti-canvas"></canvas>
-    </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Ready to Start Learning?</h2>
+                    <p>Fill out the form and I'll send you a personalized learning path tailored to your background and
+                        goals.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                            </svg>
+                            <a href="mailto:yugimariraj01@gmail.com">yugimariraj01@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                            </svg>
+                            <a href="https://linkedin.com/in/thiyanayugi-mariraj-a2b1b820b" target="_blank">LinkedIn
+                                Profile</a>
+                        </div>
+                        <div class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                            </svg>
+                            <a href="https://calendly.com/mariraj-thiyanayugi/30min" target="_blank">Book a Free
+                                Call</a>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Max Mustermann">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="max@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topic">I Want to Learn</label>
+                        <select id="topic" name="topic" required>
+                            <option value="">Select a topic...</option>
+                            <option value="ai">Artificial Intelligence</option>
+                            <option value="automation">Robotics & Automation</option>
+                            <option value="both">Both AI & Automation</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience">Experience Level</label>
+                        <select id="experience" name="experience" required>
+                            <option value="">Select level...</option>
+                            <option value="beginner">Beginner - Just starting</option>
+                            <option value="intermediate">Intermediate - Some experience</option>
+                            <option value="advanced">Advanced - Looking to specialize</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="goal">What do you want to achieve?</label>
+                        <textarea id="goal" name="goal" rows="4"
+                            placeholder="I want to build AI agents for my startup..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-submit">Get My Learning Path</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>© 2025 Thiyanayugi Mariraj | Dortmund, Germany</p>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Thiyanayugi Mariraj | Dortmund, Germany</p>
             <div class="social-links">
                 <a href="https://linkedin.com/in/thiyanayugi-mariraj-a2b1b820b" target="_blank">LinkedIn</a>
-                <a href="mailto:mariraj.thiyanayugi@gmail.com">Email</a>
-                <a href="https://calendly.com/mariraj-thiyanayugi/30min" target="_blank">Book Appointment</a>
+                <a href="mailto:yugimariraj01@gmail.com">Email</a>
+                <a href="https://calendly.com/mariraj-thiyanayugi/30min" target="_blank">Book Call</a>
             </div>
         </div>
     </footer>
 
-    <script src="liquid-glass.js"></script>
-    <script src="language-switcher.js"></script>
-    <script src="translations.js"></script>
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <h3>Success!</h3>
+            <p>Your learning path is on its way! Check your email inbox.</p>
+            <button class="btn-primary" onclick="closeModal()">Got it!</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
-    <script src="chatbot.js"></script>
 </body>
 
 </html>
