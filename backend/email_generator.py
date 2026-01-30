@@ -1,3 +1,7 @@
+"""
+email_generator module.
+"""
+
 from anthropic import Anthropic
 import smtplib
 from email.mime.text import MIMEText
