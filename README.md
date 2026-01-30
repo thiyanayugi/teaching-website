@@ -1,3 +1,4 @@
+<!-- Updated: 2026-01-30 -->
 # Teaching Platform - AI & Automation Courses
 
 <div align="center">
