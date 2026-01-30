@@ -1,6 +1,7 @@
 <!-- Updated: 2026-01-30 -->
 # Teaching Platform - AI & Automation Courses
 
+# TODO: Add error handling
 <div align="center">
 
 **A Modern, AI-Powered Bilingual Teaching Platform**
