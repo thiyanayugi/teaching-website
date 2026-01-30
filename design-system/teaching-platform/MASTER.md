@@ -1,4 +1,5 @@
 # Design System Master File
+# TODO: Add error handling
 
 > **LOGIC:** When building a specific page, first check `design-system/pages/[page-name].md`.
 > If that file exists, its rules **override** this Master file.
