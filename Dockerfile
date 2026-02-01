@@ -1,21 +1,23 @@
-# Use Python 3.11 slim image
-FROM python:3.11-slim
+# Use official Python runtime as a parent image
+FROM python:3.9-slim
 
-# Set working directory
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy requirements first for better caching
-COPY requirements.txt .
+# Copy the backend requirements file into the container at /app
+COPY backend/requirements.txt .
 
-# Install dependencies
+# Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
-COPY . .
+# Copy the backend code
+COPY backend/ .
+# Copy frontend code for static serving
+COPY frontend/ ../frontend/
 
-# Expose port (Cloud Run will set PORT env variable)
+# Make port 8080 available to the world outside this container
 ENV PORT=8080
+EXPOSE 8080
 
-# Change to backend directory and run the application
-WORKDIR /app/backend
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 app:app
+# Run app.py when the container launches
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:app"]

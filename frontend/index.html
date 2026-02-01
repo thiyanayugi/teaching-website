@@ -12,25 +12,38 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&family=Comic+Neue:wght@300;400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en" onclick="changeLanguage('en')">EN</button>
+        <span class="divider">/</span>
+        <button class="lang-btn" data-lang="de" onclick="changeLanguage('de')">DE</button>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Neural Network Background -->
+    <canvas id="neural-network"></canvas>
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Master AI & Automation with Personalized Teaching</h1>
-                    <p class="hero-subtitle">I'm Thiyanayugi Mariraj, an M.Sc. student at TU Dortmund specializing in
+                    <h1 data-i18n="heroTitle">Master AI & Automation with Personalized Teaching</h1>
+                    <p class="hero-subtitle" data-i18n="heroSubtitle">I'm Thiyanayugi Mariraj, an M.Sc. student at TU
+                        Dortmund specializing in
                         AI-driven automation, multi-agent systems, and robotics. I help students and professionals build
                         real-world skills through hands-on, personalized guidance.</p>
                     <div class="hero-cta">
-                        <a href="#contact" class="btn-primary">Start Learning Today</a>
-                        <a href="#features" class="btn-secondary">See What I Teach</a>
+                        <a href="#contact" class="btn-primary" data-i18n="ctaStart">Start Learning Today</a>
+                        <a href="#features" class="btn-secondary" data-i18n="ctaCourses">See What I Teach</a>
                     </div>
                 </div>
                 <div class="hero-image">
@@ -150,7 +163,7 @@
             <div class="cert-grid">
                 <div class="cert-card">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg"
-                        alt="AWS" class="cert-logo">
+                        alt="AWS" class="cert-logo logo-white">
                     <h4>AWS</h4>
                     <ul>
                         <li>SageMaker JumpStart Foundations</li>
@@ -160,7 +173,8 @@
                 </div>
 
                 <div class="cert-card">
-                    <img src="deeplearning-logo.jpg" alt="DeepLearning.AI" class="cert-logo">
+                    <img src="https://avatars.githubusercontent.com/u/26379768?v=4" alt="DeepLearning.AI"
+                        class="cert-logo logo-white">
                     <h4>DeepLearning.AI</h4>
                     <ul>
                         <li>ChatGPT Prompt Engineering</li>
@@ -331,6 +345,8 @@
         </div>
     </div>
 
+    <script src="translations.js"></script>
+    <script src="chatbot.js"></script>
     <script src="script.js"></script>
 </body>
 

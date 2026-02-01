@@ -182,12 +182,13 @@ If asked to get started, encourage filling out the form or booking a free consul
         # Generate response using Claude
         
         response = anthropic_client.messages.create(
-            model="claude-sonnet-4-20250514",
+            model="claude-3-5-sonnet-20240620",
             max_tokens=300,
+            system=context,
             messages=[
                 {
                     "role": "user",
-                    "content": f"{context}\n\nUser question: {user_message}\n\nProvide a helpful, concise response:"
+                    "content": f"User question: {user_message}\n\nProvide a helpful, concise response:"
                 }
             ]
         )
